@@ -38,14 +38,14 @@ This repository contains the following Selenium tests:
 
 | Module   | Test name                          | Description |
   | ---   | ---                                   | --- |
-| E2E      | End to End Scenario                | This test scenario verifies successful product purchase lifecycle end-to-end. It demonstrates the [Page Object Model design pattern](https://www.browserstack.com/guide/page-object-model-in-selenium) and is also the default test executed in all the single test run profiles. |
-| Login    | Login with given username          | This test verifies the login workflow with different types of valid login users. |
-| Login    | Login as Locked User               | This test verifies the login workflow error for a locked user. |
-| Offers   | Offers for Mumbai location     | This test mocks the GPS location for Mumbai and verifies that the product offers applicable for the Mumbai location are shown.   |
-| Product  | Apply Apple Vendor Filter          | This test verifies that the Apple products are only shown if the Apple vendor filter option is applied. |
-| Product  | Apply Lowest to Highest Order By   | This test verifies that the product prices are in ascending order when the product sort "Lowest to Highest" is applied. |
-| User     | Login as User with no image loaded | This test verifies that the product images load for user: "image_not_loading_user" on the e-commerce application. Since the images do not load, the test case assertion fails.|
-| User     | Login as User with existing Orders |  This test verifies that existing orders are shown for user: "existing_orders_user"  |
+| E2E      | OrderTest.class               | This test scenario verifies successful product purchase lifecycle end-to-end. It demonstrates the [Page Object Model design pattern](https://www.browserstack.com/guide/page-object-model-in-selenium) and is also the default test executed in all the single test run profiles. |
+| Login    | LoginTest.class               | This test verifies the login workflow with different types of valid login users. |
+| Login    | LoginFailTest.class           | This test verifies the login workflow error for a locked user. |
+| Offers   | OfferTest.class               | This test mocks the GPS location for Mumbai and verifies that the product offers applicable for the Mumbai location are shown.   |
+| Product  | FilterTest.class              | This test verifies that the Apple products are only shown if the Apple vendor filter option is applied. |
+| Product  | FilterTest.class              | This test verifies that the product prices are in ascending order when the product sort "Lowest to Highest" is applied. |
+| User     | UserTest.class                | This test verifies that the product images load for user: "image_not_loading_user" on the e-commerce application. Since the images do not load, the test case assertion fails.|
+| User     | UserTest.class                |  This test verifies that existing orders are shown for user: "existing_orders_user"  |
   
 ---
 
@@ -280,7 +280,7 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
   set BROWSERSTACK_ACCESS_KEY=<browserstack-access-key>
   ```
 
-  Alternatively, you can also hardcode username and access_key objects in the [caps.json](resources/conf/capabilities/test_caps.json) file.
+  Alternatively, you can also hardcode username and access_key objects in the [test_caps.json](resources/conf/capabilities/test_caps.json) file.
 
 Note:
 - We have configured a list of test capabilities in the [test_caps.json](resources/conf/capabilities/test_caps.json) file. You can certainly update them based on your device / browser test requirements.
