@@ -17,7 +17,7 @@ The Selenium tests are run on different platforms like on-prem, docker and Brows
 - Clone the repository
 
 - Ensure you have the following dependencies installed on the machine
-   - Java >= 8
+   - Java >= 13.0
    - Maven >= 3.1+
 
   Maven:
