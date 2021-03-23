@@ -25,6 +25,12 @@ The Selenium tests are run on different platforms like on-prem, docker and Brows
      mvn install -DskipTests
     ```
 
+  Gradle:
+
+    ```sh
+     gradle clean build
+    ```
+
 
 ## About the tests in this repository
 

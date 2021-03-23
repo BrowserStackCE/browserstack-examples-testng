@@ -34,7 +34,7 @@ allure {
     resultsDir = file('../allure-results')
 }
 
-task onprem(type: Test) {
+task on_prem(type: Test) {
     useTestNG()
     include '**/OrderTest.class'
     testLogging {
@@ -42,7 +42,7 @@ task onprem(type: Test) {
     }
 }
 
-task onpremsuite(type: Test) {
+task on_prem_suite(type: Test) {
     useTestNG()
     exclude '**/OfferTest.class'
     testLogging {
@@ -59,10 +59,11 @@ task docker(type: Test) {
     }
 }
 
-task dockerparallel(type: Test) {
+task docker_parallel(type: Test) {
+    println testngParallel
     useTestNG() {
-        parallel 'classes'
-        threadCount 2
+        parallel project.property('testngParallel')
+        threadCount Integer.parseInt(project.property('testngThreadCount'))
     }
     exclude '**/OfferTest.class'
     systemProperty "environment", "docker"
@@ -71,7 +72,7 @@ task dockerparallel(type: Test) {
     }
 }
 
-task bstacksingle(type: Test) {
+task bstack_single(type: Test) {
     useTestNG() {
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
@@ -83,7 +84,7 @@ task bstacksingle(type: Test) {
     }
 }
 
-task bstacklocal(type: Test) {
+task bstack_local(type: Test) {
     useTestNG() {
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
@@ -95,10 +96,10 @@ task bstacklocal(type: Test) {
     }
 }
 
-task bstacklocalparallel(type: Test) {
+task bstack_local_parallel(type: Test) {
     useTestNG() {
-        parallel 'classes'
-        threadCount 2
+        parallel project.property('testngParallel')
+        threadCount Integer.parseInt(project.property('testngThreadCount'))
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
     exclude '**/OfferTest.class'
@@ -109,11 +110,11 @@ task bstacklocalparallel(type: Test) {
     }
 }
 
-task bstacklocalparallelbrowsers(type: Test) {
+task bstack_local_parallel_browsers(type: Test) {
     useTestNG() {
         suites 'testng-browserstack-parallel.xml'
-        parallel 'classes'
-        threadCount 2
+        parallel project.property('testngParallel')
+        threadCount Integer.parseInt(project.property('testngThreadCount'))
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
     exclude '**/OfferTest.class'
@@ -124,10 +125,10 @@ task bstacklocalparallelbrowsers(type: Test) {
     }
 }
 
-task bstackparallel(type: Test) {
+task bstack_parallel(type: Test) {
     useTestNG() {
-        parallel 'classes'
-        threadCount 2
+        parallel project.property('testngParallel')
+        threadCount Integer.parseInt(project.property('testngThreadCount'))
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
     exclude '**/OfferTest.class'
@@ -138,11 +139,11 @@ task bstackparallel(type: Test) {
     }
 }
 
-task bstackparallelbrowsers(type: Test) {
+task bstack_parallel_browsers(type: Test) {
     useTestNG() {
         suites 'testng-browserstack-parallel.xml'
-        parallel 'classes'
-        threadCount 2
+        parallel project.property('testngParallel')
+        threadCount Integer.parseInt(project.property('testngThreadCount'))
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
     exclude '**/OfferTest.class'
