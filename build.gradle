@@ -1,0 +1,154 @@
+apply plugin: 'java'
+apply plugin: 'io.qameta.allure'
+
+repositories {
+    mavenCentral()
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.8.1"
+    }
+}
+
+dependencies {
+    implementation 'org.seleniumhq.selenium:selenium-java:3.12.0'
+    implementation 'com.browserstack:browserstack-local-java:1.0.6'
+    implementation 'org.testng:testng:7.1.0'
+    implementation 'io.qameta.allure:allure-testng:2.13.8'
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    implementation 'org.assertj:assertj-core:3.18.0'
+}
+
+group = 'com.browserstack'
+version = '1.0-SNAPSHOT'
+description = 'browserstack-examples-testng'
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+allure {
+    autoconfigure = true
+    version = '2.4.1'
+    resultsDir = file('../allure-results')
+}
+
+task onprem(type: Test) {
+    useTestNG()
+    include '**/OrderTest.class'
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+task onpremsuite(type: Test) {
+    useTestNG()
+    exclude '**/OfferTest.class'
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+task docker(type: Test) {
+    useTestNG()
+    include '**/OrderTest.class'
+    systemProperty "environment", "docker"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+task dockerparallel(type: Test) {
+    useTestNG() {
+        parallel 'classes'
+        threadCount 2
+    }
+    exclude '**/OfferTest.class'
+    systemProperty "environment", "docker"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+task bstacksingle(type: Test) {
+    useTestNG() {
+        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+    }
+    include '**/OrderTest.class'
+    systemProperty "environment", "remote"
+    systemProperty "test", "single"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+task bstacklocal(type: Test) {
+    useTestNG() {
+        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+    }
+    include '**/OrderTest.class'
+    systemProperty "environment", "remote"
+    systemProperty "test", "local"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+task bstacklocalparallel(type: Test) {
+    useTestNG() {
+        parallel 'classes'
+        threadCount 2
+        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+    }
+    exclude '**/OfferTest.class'
+    systemProperty "environment", "remote"
+    systemProperty "test", "local"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+task bstacklocalparallelbrowsers(type: Test) {
+    useTestNG() {
+        suites 'testng-browserstack-parallel.xml'
+        parallel 'classes'
+        threadCount 2
+        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+    }
+    exclude '**/OfferTest.class'
+    systemProperty "environment", "remote"
+    systemProperty "test", "local"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+task bstackparallel(type: Test) {
+    useTestNG() {
+        parallel 'classes'
+        threadCount 2
+        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+    }
+    exclude '**/OfferTest.class'
+    systemProperty "environment", "remote"
+    systemProperty "test", "parallel"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+task bstackparallelbrowsers(type: Test) {
+    useTestNG() {
+        suites 'testng-browserstack-parallel.xml'
+        parallel 'classes'
+        threadCount 2
+        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+    }
+    exclude '**/OfferTest.class'
+    systemProperty "environment", "remote"
+    systemProperty "test", "parallel"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}

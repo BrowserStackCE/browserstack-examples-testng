@@ -1,0 +1,144 @@
+{
+  "user": "BROWSERSTACK_USERNAME",
+  "key": "BROWSERSTACK_ACCESS_KEY",
+  "application_endpoint": "https://bstackdemo.com",
+  "tests": {
+    "parallel": {
+      "common_caps": {
+        "project": "BrowserStack Demo",
+        "build": "Automate Demo",
+        "name": "Parallel Test: ",
+        "browserstack.debug": "true",
+        "browserstack.networkLogs": "true",
+        "browserstack.console": "verbose"
+      },
+      "env_caps": [
+        {
+          "os": "Windows",
+          "os_version": "10",
+          "browser": "Firefox",
+          "browser_version": "latest-1"
+        },
+        {
+          "os": "Windows",
+          "os_version": "10",
+          "browser": "Chrome",
+          "browser_version": "latest-1"
+        },
+        {
+          "os": "OS X",
+          "os_version": "Big Sur",
+          "browser": "Chrome",
+          "browser_version": "latest"
+        },
+        {
+          "os": "OS X",
+          "os_version": "Catalina",
+          "browser": "Safari",
+          "browser_version": "13.0"
+        },
+        {
+          "os": "Android",
+          "os_version": "11.0",
+          "device": "Samsung Galaxy S20",
+          "realMobile": true
+        },
+        {
+          "os": "iPhone",
+          "os_version": "13.0",
+          "device": "iPhone XS",
+          "realMobile": true
+        }
+      ]
+    },
+    "single": {
+      "common_caps": {
+        "project": "BrowserStack",
+        "build": "Automate Demo",
+        "name": "Single Test: "
+      },
+      "env_caps": [
+        {
+          "os": "Windows",
+          "os_version": "10",
+          "browser": "Chrome"
+        }
+      ]
+    },
+    "local": {
+      "application_env": "dev",
+      "application_endpoint": "http://localhost:3000",
+      "common_caps": {
+        "project": "BrowserStack Demo",
+        "build": "Automate Demo",
+        "name": "Parallel Test: ",
+        "browserstack.debug": "true",
+        "browserstack.networkLogs": "true",
+        "browserstack.console": "verbose",
+        "browserstack.local": "true"
+      },
+      "env_caps": [
+        {
+          "os": "Windows",
+          "os_version": "10",
+          "browser": "Firefox",
+          "browser_version": "latest-1"
+        },
+        {
+          "os": "Windows",
+          "os_version": "10",
+          "browser": "Chrome",
+          "browser_version": "latest-1"
+        },
+        {
+          "os": "OS X",
+          "os_version": "Big Sur",
+          "browser": "Chrome",
+          "browser_version": "latest"
+        },
+        {
+          "os": "OS X",
+          "os_version": "Catalina",
+          "browser": "Safari",
+          "browser_version": "13.0"
+        },
+        {
+          "os": "Android",
+          "os_version": "11.0",
+          "device": "Samsung Galaxy S20",
+          "realMobile": true
+        },
+        {
+          "os": "iPhone",
+          "os_version": "13.0",
+          "device": "iPhone XS",
+          "realMobile": true
+        }
+      ],
+      "local_binding_caps": {
+        "force": "true",
+        "forceLocal": "true",
+        "verbose": "true",
+        "logFile": "local_test.log"
+      }
+    },
+    "mobile": {
+      "common_caps": {
+        "project": "BrowserStack",
+        "build": "Automate Demo",
+        "name": "Mobile Parallel Test"
+      },
+      "env_caps": [
+        {
+          "device": "Google Pixel",
+          "realMobile": true
+        },
+        {
+          "device": "iPhone 11",
+          "os_version": "13",
+          "realMobile": true
+        }
+      ]
+    }
+  }
+}
