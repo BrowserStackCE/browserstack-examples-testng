@@ -70,13 +70,19 @@ For all the parallel run configuration profiles, you can configure the maximum p
 
   Maven:
 
-  [File name / path]
-  [Configuration attribute] = [Configuration value]
+  `pom.xml`
+  ```xml
+  <testng.parallel>classes</testng.parallel>
+  <testng.threadCount>2</testng.threadCount>
+  ```
 
   Gradle:
 
-  [File name / path]
-  [Configuration attribute] = [Configuration value]
+  `gradle.properties`
+  ```sh
+  testngParallel=classes
+  testngThreadCount=2
+  ```
 
 ## Test Reporting
 
@@ -104,29 +110,28 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   Maven:
     ```sh
-  mvn install -P on-prem
+  mvn test -P on-prem
   ```
 
   Gradle:
     ```sh 
-  <Gradle command>
+  gradle clean on_prem
   ```
 
-  To run a specific test scenario, use the following command with the additional 'test-name' argument:
+  To run a specific test scenario, use the following command with the additional 'test' argument:
 
   Maven:
   ```sh
-  mvn install -P on-prem -Dtest-name="<Test scenario name>"
+  mvn test -P on-prem -Dtest=LoginDataDrivenTest
+
   ```
 
   Gradle:
   ```sh
-  <Gradle command>
+  gradle on_prem -Ptest=LoginDataDrivenTest
   ```
 
-  where,  the argument 'test-name' can be any Cucumber scenario name configured in this repository.
-
-  E.g. "Login as username", "Login as Locked User", "Offers for mumbai geo-location" or any of the other test scenario names, as outlined in [About the tests in this repository](#About-the-tests-in-this-repository) section.
+  where, the argument 'test' can be any testclass implemented this repository.
 
 - Output
 
@@ -141,12 +146,12 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   Maven:
   ```sh
-  mvn install -P on-prem-suite
+  mvn test -P on-prem-suite
   ```
 
   Gradle:
   ```sh
-  <Gradle command>
+  gradle on_prem_suite
   ```
 
 - Output
@@ -187,24 +192,22 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   Gradle:
     ```sh
-  <Gradle command>
+  gradle docker
   ```
 
   To run a specific test scenario, use the following command with the additional 'test-name' argument:
 
   Maven:
   ```sh
-  mvn install -P docker -Dtest-name="<Test scenario name>"
+  mvn test -P docker -Dtest=LoginDataDrivenTest
   ```
 
   Gradle:
   ```sh
-  <Gradle command>
+  gradle docker -Ptest=LoginDataDrivenTest
   ```
 
-  where,  the argument 'test-name' can be any Cucumber scenario name configured in this repository.
-
-  E.g. "Login as username", "Login as Locked User", "Offers for mumbai geo-location" or any of the other test scenario names, as outlined in [About the tests in this repository](#About-the-tests-in-this-repository) section.
+  where,  the argument 'test' can be any Cucumber scenario name configured in this repository.
 
 
 - After tests are complete, you can stop the Docker by running the following command:
@@ -237,7 +240,7 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   Gradle:
   ```sh
-  <Gradle command>
+  gradle docker_parallel
   ```
 
    - After the tests are complete stop the Selenium grid by running the following command:
@@ -277,10 +280,10 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
   set BROWSERSTACK_ACCESS_KEY=<browserstack-access-key>
   ```
 
-  Alternatively, you can also hardcode username and access_key objects in the [caps.json](resources/conf/caps/caps.json) file.
+  Alternatively, you can also hardcode username and access_key objects in the [caps.json](resources/conf/capabilities/test_caps.json) file.
 
 Note:
-- We have configured a list of test capabilities in the [caps.json](resources/conf/caps/caps.json) file. You can certainly update them based on your device / browser test requirements.
+- We have configured a list of test capabilities in the [test_caps.json](resources/conf/capabilities/test_caps.json) file. You can certainly update them based on your device / browser test requirements.
 - The exact test capability values can be easily identified using the [Browserstack Capability Generator](https://browserstack.com/automate/capabilities)
 
 
@@ -301,23 +304,21 @@ In this section, we will run a single test on Chrome browser on Browserstack. To
 
   Gradle:
     ```sh
-  <Gradle command>
+  gradle bstack_single
   ```
 
   To run a specific test scenario, use the following command with the additional 'test-name' argument:
   Maven:
   ```sh
-  mvn install -P bstack-single -Dtest-name="<Test scenario name>"
+  mvn test -P bstack-single -Dtest=LoginDataDrivenTest
   ```
 
   Gradle:
   ```sh
-  <Gradle command>
+  gradle bstack_single -Ptest=LoginDataDrivenTest
   ```
 
-  where,  the argument 'test-name' can be any Cucumber scenario name configured in this repository.
-
-  E.g. "Login as username", "Login as Locked User", "Offers for mumbai geo-location" or any of the other test scenario names, as outlined in [About the tests in this repository](#About-the-tests-in-this-repository) section.
+  where, the argument 'test' can be any testclass implemented in this repository.
 
 
 - Output
@@ -327,7 +328,7 @@ In this section, we will run a single test on Chrome browser on Browserstack. To
 
 ### Run the entire test suite in parallel on a single BrowserStack browser
 
-In this section, we will run the tests in parallel on a single browser on Browserstack. Refer to `single` object in `caps.json` file to change test capabilities for this configuration.
+In this section, we will run the tests in parallel on a single browser on Browserstack. Refer to `single` object in `test_caps.json` file to change test capabilities for this configuration.
 
 - How to run the test?
 
@@ -335,11 +336,11 @@ In this section, we will run the tests in parallel on a single browser on Browse
 
   Maven:
   ```sh
-  mvn install -P bstack-parallel
+  mvn test -P bstack-parallel
   ```
   Gradle:
     ```sh
-  <Gradle command>
+  gradle bstack_parallel
   ```
 
 
@@ -360,12 +361,12 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
 
   Maven:
   ```sh
-  mvn compile exec:java -P bstack-parallel-browsers
+  mvn test -P bstack-parallel-browsers
   ```
 
   Gradle:
   ```sh
-  <Gradle command>
+  gradle bstack_parallel_browsers
   ```
 
 ### [Web application hosted on internal environment] Running your tests on BrowserStack using BrowserStackLocal
@@ -398,23 +399,21 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
 
   Gradle:
     ```sh
-  <Gradle command>
+  gradle bstack_local
   ```
 
   To run a specific test scenario, use the following command with the additional test-name argument:
   Maven:
   ```sh
-  mvn install -P bstack-local -Dtest-name="<Test scenario name>"
+  mvn test -P bstack-local -Dtest=LoginDataDrivenTest
   ```
 
   Gradle:
   ```sh
-  <Gradle command>
+  gradle bstack_local -Ptest=LoginDataDrivenTest
   ```
 
-  where,  the argument 'test-name' can be any Cucumber scenario name configured in this repository.
-
-  E.g. "Login as username", "Login as Locked User", "Offers for mumbai geo-location" or any of the other test scenario names, as outlined in [About the tests in this repository](#About-the-tests-in-this-repository) section.
+  where, the argument 'test' can be any testclass implemented in this repository.
 
 
 - Output
@@ -431,12 +430,12 @@ In this section, we will run the test cases to test the internally hosted websit
   To run the entire test suite in parallel on a single BrowserStack browser using BrowserStackLocal, use the following command:
   Maven:
   ```sh
-  mvn install -P bstack-local-parallel
+  mvn test -P bstack-local-parallel
   ```
 
   Gradle:
   ```sh
-  <Gradle command>
+  gradle bstack_local_parallel
   ```
 
 - Output
@@ -455,12 +454,12 @@ In this section, we will run the test cases to test the internally hosted websit
 
   Maven:
   ```sh
-  mvn compile exec:java -P bstack-local-parallel-browsers
+  mvn test -P bstack-local-parallel-browsers
   ```
 
   Gradle:
     ```sh
-  <Gradle command>
+  gradle bstack_local_parallel_browsers
   ```
 
 - Output
@@ -483,11 +482,3 @@ In this section, we will run the test cases to test the internally hosted websit
 - [Using Automate REST API](https://www.browserstack.com/automate/rest-api) to access information about your tests via the command-line interface
 - Understand how many parallel sessions you need by using our [Parallel Test Calculator](https://www.browserstack.com/automate/parallel-calculator?ref=github)
 - For testing public web applications behind IP restriction, [Inbound IP Whitelisting](https://www.browserstack.com/local-testing/inbound-ip-whitelisting) can be enabled with the [BrowserStack Enterprise](https://www.browserstack.com/enterprise) offering
-
-## Observations
-
-<Placeholder section for any other technical or general observations specific to the repository. If none, please remove the section>
-
-## Open Issues
-
-<Placeholder section for any known open issues (some test known to not work or is flaky). If none, please remove the section>

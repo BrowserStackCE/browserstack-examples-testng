@@ -36,7 +36,11 @@ allure {
 
 task on_prem(type: Test) {
     useTestNG()
-    include '**/OrderTest.class'
+    if (project.hasProperty('test')) {
+        include '**/'+project.property('test')+'.class'
+    }else {
+        include '**/OrderTest.class'
+    }
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
@@ -52,7 +56,11 @@ task on_prem_suite(type: Test) {
 
 task docker(type: Test) {
     useTestNG()
-    include '**/OrderTest.class'
+    if (project.hasProperty('test')) {
+        include '**/'+project.property('test')+'.class'
+    }else {
+        include '**/OrderTest.class'
+    }
     systemProperty "environment", "docker"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
@@ -60,7 +68,6 @@ task docker(type: Test) {
 }
 
 task docker_parallel(type: Test) {
-    println testngParallel
     useTestNG() {
         parallel project.property('testngParallel')
         threadCount Integer.parseInt(project.property('testngThreadCount'))
@@ -76,7 +83,11 @@ task bstack_single(type: Test) {
     useTestNG() {
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
-    include '**/OrderTest.class'
+    if (project.hasProperty('test')) {
+        include '**/'+project.property('test')+'.class'
+    }else {
+        include '**/OrderTest.class'
+    }
     systemProperty "environment", "remote"
     systemProperty "test", "single"
     testLogging {
@@ -88,7 +99,11 @@ task bstack_local(type: Test) {
     useTestNG() {
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
-    include '**/OrderTest.class'
+    if (project.hasProperty('test')) {
+        include '**/'+project.property('test')+'.class'
+    }else {
+        include '**/OrderTest.class'
+    }
     systemProperty "environment", "remote"
     systemProperty "test", "local"
     testLogging {
