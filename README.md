@@ -128,10 +128,10 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   Gradle:
   ```sh
-  gradle on_prem -Ptest=LoginDataDrivenTest
+  gradle on_prem -Ptestscript=LoginDataDrivenTest
   ```
 
-  where, the argument 'test' can be any testclass implemented this repository.
+  where, the argument `test` or `testscript` can be any testclass implemented this repository.
 
 - Output
 
@@ -204,10 +204,10 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   Gradle:
   ```sh
-  gradle docker -Ptest=LoginDataDrivenTest
+  gradle docker -Ptestscript=LoginDataDrivenTest
   ```
 
-  where,  the argument 'test' can be any Cucumber scenario name configured in this repository.
+  where,  the argument `test` or `testscript` can be any testclass implemented in this repository.
 
 
 - After tests are complete, you can stop the Docker by running the following command:
@@ -315,10 +315,10 @@ In this section, we will run a single test on Chrome browser on Browserstack. To
 
   Gradle:
   ```sh
-  gradle bstack_single -Ptest=LoginDataDrivenTest
+  gradle bstack_single -Ptestscript=LoginDataDrivenTest
   ```
 
-  where, the argument 'test' can be any testclass implemented in this repository.
+  where, the argument `test` or `testscript` can be any testclass implemented in this repository.
 
 
 - Output
@@ -410,10 +410,10 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
 
   Gradle:
   ```sh
-  gradle bstack_local -Ptest=LoginDataDrivenTest
+  gradle bstack_local -Ptestscript=LoginDataDrivenTest
   ```
 
-  where, the argument 'test' can be any testclass implemented in this repository.
+  where, the argument `test` or `testscript` can be any testclass implemented in this repository.
 
 
 - Output
