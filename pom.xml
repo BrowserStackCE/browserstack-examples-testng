@@ -16,7 +16,7 @@
         <aspectj.version>1.9.5</aspectj.version>
         <allure-maven.version>2.10.0</allure-maven.version>
         <testng.parallel>classes</testng.parallel>
-        <testng.threadCount>2</testng.threadCount>
+        <testng.threadCount>5</testng.threadCount>
     </properties>
     <build>
         <plugins>

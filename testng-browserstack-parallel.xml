@@ -1,21 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Single">
-    <test name="BStackDemo chrome">
-        <parameter name="env_cap_id" value="1"/>
+<suite name="Parallel">
+<!--    <test name="BStackDemo chrome">-->
+<!--        <parameter name="env_cap_id" value="1"/>-->
+<!--        <classes>-->
+<!--            <class name="com.browserstack.test.suites.e2e.OrderTest"/>-->
+<!--            <class name="com.browserstack.test.suites.login.LoginTest"/>-->
+<!--            <class name="com.browserstack.test.suites.login.LoginFailTest"/>-->
+<!--            <class name="com.browserstack.test.suites.offers.OfferTest"/>-->
+<!--            <class name="com.browserstack.test.suites.product.FilterTest"/>-->
+<!--            <class name="com.browserstack.test.suites.user.UserTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="BStackDemo firefox">-->
+<!--        <parameter name="env_cap_id" value="0"/>-->
+<!--        <classes>-->
+<!--            <class name="com.browserstack.test.suites.e2e.OrderTest"/>-->
+<!--            <class name="com.browserstack.test.suites.login.LoginTest"/>-->
+<!--            <class name="com.browserstack.test.suites.login.LoginFailTest"/>-->
+<!--            <class name="com.browserstack.test.suites.offers.OfferTest"/>-->
+<!--            <class name="com.browserstack.test.suites.product.FilterTest"/>-->
+<!--            <class name="com.browserstack.test.suites.user.UserTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+    <test name="BStackDemo safari">
+        <parameter name="env_cap_id" value="4"/>
         <classes>
             <class name="com.browserstack.test.suites.e2e.OrderTest"/>
             <class name="com.browserstack.test.suites.login.LoginTest"/>
+            <class name="com.browserstack.test.suites.login.LoginFailTest"/>
             <class name="com.browserstack.test.suites.offers.OfferTest"/>
             <class name="com.browserstack.test.suites.product.FilterTest"/>
             <class name="com.browserstack.test.suites.user.UserTest"/>
         </classes>
     </test>
-    <test name="BStackDemo firefox">
-        <parameter name="env_cap_id" value="0"/>
+<!--    <test name="BStackDemo mobile">-->
+<!--        <parameter name="env_cap_id" value="5"/>-->
+<!--        <classes>-->
+<!--            <class name="com.browserstack.test.suites.e2e.OrderTest"/>-->
+<!--            <class name="com.browserstack.test.suites.login.LoginTest"/>-->
+<!--            <class name="com.browserstack.test.suites.login.LoginFailTest"/>-->
+<!--            <class name="com.browserstack.test.suites.offers.OfferTest"/>-->
+<!--            <class name="com.browserstack.test.suites.product.FilterTest"/>-->
+<!--            <class name="com.browserstack.test.suites.user.UserTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+    <test name="BStackDemo ie">
+        <parameter name="env_cap_id" value="7"/>
         <classes>
             <class name="com.browserstack.test.suites.e2e.OrderTest"/>
             <class name="com.browserstack.test.suites.login.LoginTest"/>
+            <class name="com.browserstack.test.suites.login.LoginFailTest"/>
             <class name="com.browserstack.test.suites.offers.OfferTest"/>
             <class name="com.browserstack.test.suites.product.FilterTest"/>
             <class name="com.browserstack.test.suites.user.UserTest"/>

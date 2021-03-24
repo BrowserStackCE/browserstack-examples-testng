@@ -13,7 +13,7 @@ public class BrowserstackTestStatusListener extends TestListenerAdapter {
             JavascriptExecutor jse = (JavascriptExecutor) driver;
             jse.executeScript("browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \"" + status + "\", \"reason\": \"" + reason + "\"}}");
         } catch (Exception e) {
-            System.out.print("Error executing javascript");
+            System.out.print("Error executing javascript" + e.getLocalizedMessage());
         }
     }
 

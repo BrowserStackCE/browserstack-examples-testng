@@ -12,6 +12,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
+import java.lang.reflect.Method;
 
 import java.io.FileReader;
 import java.net.URL;
@@ -39,7 +40,7 @@ public class TestBase {
 
     @BeforeMethod
     @Parameters(value = {"environment", "test", "env_cap_id"})
-    public void setUp(@Optional("local") String environment, @Optional("single") String test, @Optional("0") int env_cap_id) throws Exception {
+    public void setUp(@Optional("local") String environment, @Optional("single") String test, @Optional("0") int env_cap_id, Method m) throws Exception {
         JSONParser parser = new JSONParser();
         JSONObject config = (JSONObject) parser.parse(new FileReader("src/test/resources/conf/capabilities/test_caps.json"));
         String url = (String) config.get("application_endpoint");
@@ -59,6 +60,7 @@ public class TestBase {
             JSONObject envs = (JSONObject) profilesJson.get(test);
 
             Map<String, String> commonCapabilities = (Map<String, String>) envs.get("common_caps");
+            commonCapabilities.put("name",m.getName());
             Map<String, String> envCapabilities = (Map<String, String>) ((org.json.simple.JSONArray) envs.get("env_caps")).get(env_cap_id);
             Map<String, String> localCapabilities = (Map<String, String>) envs.get("local_binding_caps");
 

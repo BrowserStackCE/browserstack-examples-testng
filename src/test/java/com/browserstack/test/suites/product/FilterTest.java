@@ -31,7 +31,7 @@ public class FilterTest extends TestBase {
         getDriver().findElement(By.xpath("//span[contains(text(), 'Samsung')]")).click();
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".products-found"), "16 Product(s) found."));
 
-        List<String> values = getDriver().findElements(By.cssSelector(".shelf-item__title")).stream().map(WebElement::getText).collect(Collectors.toList());
+        List<String> values = getDriver().findElements(By.cssSelector(".shelf-item__title")).stream().map(WebElement::getText).map(String :: trim).collect(Collectors.toList());
         Assertions.assertThat(values).containsExactly("iPhone 12",
                 "iPhone 12 Mini",
                 "iPhone 12 Pro Max",

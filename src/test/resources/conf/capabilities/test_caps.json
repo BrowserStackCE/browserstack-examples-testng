@@ -5,8 +5,8 @@
   "tests": {
     "parallel": {
       "common_caps": {
-        "project": "BrowserStack Demo",
-        "build": "Automate Demo",
+        "project": "browserstack-examples",
+        "build": "browserstack-examples-testng",
         "name": "Parallel Test: ",
         "browserstack.debug": "true",
         "browserstack.networkLogs": "true",
@@ -23,6 +23,12 @@
           "os": "Windows",
           "os_version": "10",
           "browser": "Chrome",
+          "browser_version": "latest-1"
+        },
+        {
+          "os": "Windows",
+          "os_version": "10",
+          "browser": "Firefox",
           "browser_version": "latest-1"
         },
         {
@@ -48,6 +54,12 @@
           "os_version": "13.0",
           "device": "iPhone XS",
           "realMobile": true
+        },
+        {
+          "os": "Windows",
+          "os_version": "10",
+          "browser": "Edge",
+          "browser_version": "latest-beta"
         }
       ]
     },
