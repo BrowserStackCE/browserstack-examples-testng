@@ -18,3 +18,4 @@ testng.out.xml
 settings.json
 local.log
 .gradle/
+src/test/resources/drivers/
