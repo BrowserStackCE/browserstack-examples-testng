@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class LoginDataDrivenTest extends TestBase {
 
-    @DataProvider(name = "errors")
+    @DataProvider(name = "login_error_messages")
     public Object[][] data() {
         return new Object[][]{
                 {"locked_user", "testingisfun99", "Your account has been locked."},
@@ -18,7 +18,7 @@ public class LoginDataDrivenTest extends TestBase {
         };
     }
 
-    @Test(dataProvider = "errors")
+    @Test(dataProvider = "login_error_messages")
     public void validateErrors(String username, String password, String error) {
         getDriver().findElement(By.id("signin")).click();
         getDriver().findElement(By.cssSelector("#username input")).sendKeys(username + Keys.ENTER);

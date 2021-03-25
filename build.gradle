@@ -15,7 +15,7 @@ buildscript {
 }
 
 dependencies {
-    implementation 'org.seleniumhq.selenium:selenium-java:3.12.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
     implementation 'com.browserstack:browserstack-local-java:1.0.6'
     implementation 'org.testng:testng:7.1.0'
     implementation 'io.qameta.allure:allure-testng:2.13.8'
@@ -34,10 +34,10 @@ allure {
     resultsDir = file('../allure-results')
 }
 
-task on_prem(type: Test) {
+tasks.register('on-prem', Test) {
     useTestNG()
-    if (project.hasProperty('testscript')) {
-        include '**/'+project.property('testscript')+'.class'
+    if (project.hasProperty('test-name')) {
+        include '**/' + project.property('test-name') + '.class'
     } else {
         include '**/OrderTest.class'
     }
@@ -46,7 +46,7 @@ task on_prem(type: Test) {
     }
 }
 
-task on_prem_suite(type: Test) {
+tasks.register('on-prem-suite', Test) {
     useTestNG()
     exclude '**/OfferTest.class'
     testLogging {
@@ -54,11 +54,11 @@ task on_prem_suite(type: Test) {
     }
 }
 
-task docker(type: Test) {
+tasks.register('docker', Test) {
     useTestNG()
-    if (project.hasProperty('testscript')) {
-        include '**/'+project.property('testscript')+'.class'
-    }else {
+    if (project.hasProperty('test-name')) {
+        include '**/' + project.property('test-name') + '.class'
+    } else {
         include '**/OrderTest.class'
     }
     systemProperty "environment", "docker"
@@ -67,7 +67,7 @@ task docker(type: Test) {
     }
 }
 
-task docker_parallel(type: Test) {
+tasks.register('docker-parallel', Test) {
     useTestNG() {
         parallel project.property('testngParallel')
         threadCount Integer.parseInt(project.property('testngThreadCount'))
@@ -79,13 +79,13 @@ task docker_parallel(type: Test) {
     }
 }
 
-task bstack_single(type: Test) {
+tasks.register('bstack-single', Test) {
     useTestNG() {
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
-    if (project.hasProperty('testscript')) {
-        include '**/'+project.property('testscript')+'.class'
-    }else {
+    if (project.hasProperty('test-name')) {
+        include '**/' + project.property('test-name') + '.class'
+    } else {
         include '**/OrderTest.class'
     }
     systemProperty "environment", "remote"
@@ -95,13 +95,13 @@ task bstack_single(type: Test) {
     }
 }
 
-task bstack_local(type: Test) {
+tasks.register('bstack-local', Test) {
     useTestNG() {
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
-    if (project.hasProperty('testscript')) {
-        include '**/'+project.property('testscript')+'.class'
-    }else {
+    if (project.hasProperty('test-name')) {
+        include '**/' + project.property('test-name') + '.class'
+    } else {
         include '**/OrderTest.class'
     }
     systemProperty "environment", "remote"
@@ -111,7 +111,7 @@ task bstack_local(type: Test) {
     }
 }
 
-task bstack_local_parallel(type: Test) {
+tasks.register('bstack-local-parallel', Test) {
     useTestNG() {
         parallel project.property('testngParallel')
         threadCount Integer.parseInt(project.property('testngThreadCount'))
@@ -125,9 +125,9 @@ task bstack_local_parallel(type: Test) {
     }
 }
 
-task bstack_local_parallel_browsers(type: Test) {
+tasks.register('bstack-local-parallel-browsers', Test) {
     useTestNG() {
-        suites 'testng-browserstack-parallel.xml'
+        suites 'src/test/resources/conf/runners/testng-browserstack-parallel.xml'
         parallel project.property('testngParallel')
         threadCount Integer.parseInt(project.property('testngThreadCount'))
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
@@ -140,13 +140,12 @@ task bstack_local_parallel_browsers(type: Test) {
     }
 }
 
-task bstack_parallel(type: Test) {
+tasks.register('bstack-parallel', Test) {
     useTestNG() {
         parallel project.property('testngParallel')
         threadCount Integer.parseInt(project.property('testngThreadCount'))
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
-    exclude '**/OfferTest.class'
     systemProperty "environment", "remote"
     systemProperty "test", "parallel"
     testLogging {
@@ -154,14 +153,13 @@ task bstack_parallel(type: Test) {
     }
 }
 
-task bstack_parallel_browsers(type: Test) {
+tasks.register('bstack-parallel-browsers', Test) {
     useTestNG() {
-        suites 'testng-browserstack-parallel.xml'
+        suites 'src/test/resources/conf/runners/testng-browserstack-parallel.xml'
         parallel project.property('testngParallel')
         threadCount Integer.parseInt(project.property('testngThreadCount'))
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
-    exclude '**/OfferTest.class'
     systemProperty "environment", "remote"
     systemProperty "test", "parallel"
     testLogging {

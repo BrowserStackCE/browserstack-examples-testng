@@ -38,14 +38,14 @@ This repository contains the following Selenium tests:
 
 | Module   | Test name                          | Description |
   | ---   | ---                                   | --- |
-| E2E      | OrderTest.class               | This test scenario verifies successful product purchase lifecycle end-to-end. It demonstrates the [Page Object Model design pattern](https://www.browserstack.com/guide/page-object-model-in-selenium) and is also the default test executed in all the single test run profiles. |
-| Login    | LoginTest.class               | This test verifies the login workflow with different types of valid login users. |
-| Login    | LoginFailTest.class           | This test verifies the login workflow error for a locked user. |
-| Offers   | OfferTest.class               | This test mocks the GPS location for Mumbai and verifies that the product offers applicable for the Mumbai location are shown.   |
-| Product  | FilterTest.class              | This test verifies that the Apple products are only shown if the Apple vendor filter option is applied. |
-| Product  | FilterTest.class              | This test verifies that the product prices are in ascending order when the product sort "Lowest to Highest" is applied. |
-| User     | UserTest.class                | This test verifies that the product images load for user: "image_not_loading_user" on the e-commerce application. Since the images do not load, the test case assertion fails.|
-| User     | UserTest.class                |  This test verifies that existing orders are shown for user: "existing_orders_user"  |
+| E2E      | OrderTest               | This test scenario verifies successful product purchase lifecycle end-to-end. It demonstrates the [Page Object Model design pattern](https://www.browserstack.com/guide/page-object-model-in-selenium) and is also the default test executed in all the single test run profiles. |
+| Login    | LoginTest               | This test verifies the login workflow with different types of valid login users. |
+| Login    | LoginFailTest           | This test verifies the login workflow error for a locked user. |
+| Offers   | OfferTest               | This test mocks the GPS location for Mumbai and verifies that the product offers applicable for the Mumbai location are shown.   |
+| Product  | FilterTest              | This test verifies that the Apple products are only shown if the Apple vendor filter option is applied. |
+| Product  | FilterTest              | This test verifies that the product prices are in ascending order when the product sort "Lowest to Highest" is applied. |
+| User     | UserTest                | This test verifies that the product images load for user: "image_not_loading_user" on the e-commerce application. Since the images do not load, the test case assertion fails.|
+| User     | UserTest                |  This test verifies that existing orders are shown for user: "existing_orders_user"  |
   
 ---
 
@@ -73,7 +73,7 @@ For all the parallel run configuration profiles, you can configure the maximum p
   `pom.xml`
   ```xml
   <testng.parallel>classes</testng.parallel>
-  <testng.threadCount>2</testng.threadCount>
+  <testng.threadCount>5</testng.threadCount>
   ```
 
   Gradle:
@@ -81,7 +81,7 @@ For all the parallel run configuration profiles, you can configure the maximum p
   `gradle.properties`
   ```sh
   testngParallel=classes
-  testngThreadCount=2
+  testngThreadCount=5
   ```
 
 ## Test Reporting
@@ -115,7 +115,7 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   Gradle:
     ```sh 
-  gradle clean on_prem
+  gradle clean on-prem
   ```
 
   To run a specific test scenario, use the following command with the additional 'test' argument:
@@ -128,10 +128,10 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   Gradle:
   ```sh
-  gradle on_prem -Ptestscript=LoginDataDrivenTest
+  gradle on-prem -Ptest-name=LoginDataDrivenTest
   ```
 
-  where, the argument `test` or `testscript` can be any testclass implemented this repository.
+  where, the argument `test` or `test-name` can be any testclass implemented this repository.
 
 - Output
 
@@ -151,7 +151,7 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   Gradle:
   ```sh
-  gradle on_prem_suite
+  gradle on-prem-suite
   ```
 
 - Output
@@ -204,10 +204,10 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   Gradle:
   ```sh
-  gradle docker -Ptestscript=LoginDataDrivenTest
+  gradle docker -Ptest-name=LoginDataDrivenTest
   ```
 
-  where,  the argument `test` or `testscript` can be any testclass implemented in this repository.
+  where,  the argument `test` or `test-name` can be any testclass implemented in this repository.
 
 
 - After tests are complete, you can stop the Docker by running the following command:
@@ -240,7 +240,7 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   Gradle:
   ```sh
-  gradle docker_parallel
+  gradle docker-parallel
   ```
 
    - After the tests are complete stop the Selenium grid by running the following command:
@@ -304,7 +304,7 @@ In this section, we will run a single test on Chrome browser on Browserstack. To
 
   Gradle:
     ```sh
-  gradle bstack_single
+  gradle bstack-single
   ```
 
   To run a specific test scenario, use the following command with the additional 'test-name' argument:
@@ -315,10 +315,10 @@ In this section, we will run a single test on Chrome browser on Browserstack. To
 
   Gradle:
   ```sh
-  gradle bstack_single -Ptestscript=LoginDataDrivenTest
+  gradle bstack-single -Ptest-name=LoginDataDrivenTest
   ```
 
-  where, the argument `test` or `testscript` can be any testclass implemented in this repository.
+  where, the argument `test` or `test-name` can be any testclass implemented in this repository.
 
 
 - Output
@@ -340,7 +340,7 @@ In this section, we will run the tests in parallel on a single browser on Browse
   ```
   Gradle:
     ```sh
-  gradle bstack_parallel
+  gradle bstack-parallel
   ```
 
 
@@ -366,7 +366,7 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
 
   Gradle:
   ```sh
-  gradle bstack_parallel_browsers
+  gradle bstack-parallel-browsers
   ```
 
 ### [Web application hosted on internal environment] Running your tests on BrowserStack using BrowserStackLocal
@@ -399,7 +399,7 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
 
   Gradle:
     ```sh
-  gradle bstack_local
+  gradle bstack-local
   ```
 
   To run a specific test scenario, use the following command with the additional test-name argument:
@@ -410,10 +410,10 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
 
   Gradle:
   ```sh
-  gradle bstack_local -Ptestscript=LoginDataDrivenTest
+  gradle bstack-local -Ptest-name=LoginDataDrivenTest
   ```
 
-  where, the argument `test` or `testscript` can be any testclass implemented in this repository.
+  where, the argument `test` or `test-name` can be any testclass implemented in this repository.
 
 
 - Output
@@ -435,7 +435,7 @@ In this section, we will run the test cases to test the internally hosted websit
 
   Gradle:
   ```sh
-  gradle bstack_local_parallel
+  gradle bstack-local-parallel
   ```
 
 - Output
@@ -459,7 +459,7 @@ In this section, we will run the test cases to test the internally hosted websit
 
   Gradle:
     ```sh
-  gradle bstack_local_parallel_browsers
+  gradle bstack-local-parallel-browsers
   ```
 
 - Output

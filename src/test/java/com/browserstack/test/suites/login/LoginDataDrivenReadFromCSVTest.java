@@ -16,7 +16,7 @@ import java.util.List;
 
 public class LoginDataDrivenReadFromCSVTest extends TestBase {
 
-    @DataProvider(name = "errors")
+    @DataProvider(name = "login_error_messages")
     public Iterator<Object[]> provider() throws IOException {
         return readCsv("data/users.csv");
     }
@@ -35,7 +35,7 @@ public class LoginDataDrivenReadFromCSVTest extends TestBase {
         return testCases.iterator();
     }
 
-    @Test(dataProvider = "errors")
+    @Test(dataProvider = "login_error_messages")
     public void validateErrors(String username, String password, String error) {
         getDriver().findElement(By.id("signin")).click();
         getDriver().findElement(By.cssSelector("#username input")).sendKeys(username + Keys.ENTER);

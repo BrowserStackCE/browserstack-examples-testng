@@ -5,8 +5,8 @@
   "tests": {
     "parallel": {
       "common_caps": {
-        "project": "browserstack-examples",
-        "build": "browserstack-examples-testng",
+        "project": "BrowserStack Demo",
+        "build": "Automate Demo",
         "name": "Parallel Test: ",
         "browserstack.debug": "true",
         "browserstack.networkLogs": "true",
@@ -16,19 +16,15 @@
         {
           "os": "Windows",
           "os_version": "10",
-          "browser": "Firefox",
-          "browser_version": "latest-1"
+          "browser": "Internet Explorer",
+          "browser_version": "11.0",
+          "browserstack.selenium_version": "3.141.59",
+          "browserstack.sendKeys": true
         },
         {
           "os": "Windows",
           "os_version": "10",
           "browser": "Chrome",
-          "browser_version": "latest-1"
-        },
-        {
-          "os": "Windows",
-          "os_version": "10",
-          "browser": "Firefox",
           "browser_version": "latest-1"
         },
         {
@@ -54,12 +50,6 @@
           "os_version": "13.0",
           "device": "iPhone XS",
           "realMobile": true
-        },
-        {
-          "os": "Windows",
-          "os_version": "10",
-          "browser": "Edge",
-          "browser_version": "latest"
         }
       ]
     },
@@ -93,8 +83,10 @@
         {
           "os": "Windows",
           "os_version": "10",
-          "browser": "Firefox",
-          "browser_version": "latest-1"
+          "browser": "Internet Explorer",
+          "browser_version": "11.0",
+          "browserstack.selenium_version": "3.141.59",
+          "browserstack.sendKeys": true
         },
         {
           "os": "Windows",

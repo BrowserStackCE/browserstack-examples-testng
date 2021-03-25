@@ -11,8 +11,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>13</maven.compiler.source>
-        <maven.compiler.target>13</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <aspectj.version>1.9.5</aspectj.version>
         <allure-maven.version>2.10.0</allure-maven.version>
         <testng.parallel>classes</testng.parallel>
@@ -24,8 +24,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>13</source>
-                    <target>13</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -39,7 +39,7 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <environment>local</environment>
+                        <environment>on-prem</environment>
                     </systemPropertyVariables>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
@@ -60,7 +60,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.12.0</version>
+            <version>3.141.59</version>
         </dependency>
         <dependency>
             <groupId>com.browserstack</groupId>
@@ -159,7 +159,7 @@
                             <parallel>${testng.parallel}</parallel>
                             <threadCount>${testng.threadCount}</threadCount>
                             <suiteXmlFiles>
-                                <suiteXmlFile>testng.xml</suiteXmlFile>
+                                <suiteXmlFile>src/test/resources/conf/runners/testng.xml</suiteXmlFile>
                             </suiteXmlFiles>
                             <excludes>
                                 <exclude>com.browserstack.test.suites.offers.OfferTest</exclude>
@@ -274,7 +274,7 @@
                             <parallel>${testng.parallel}</parallel>
                             <threadCount>${testng.threadCount}</threadCount>
                             <suiteXmlFiles>
-                                <suiteXmlFile>testng-browserstack-parallel.xml</suiteXmlFile>
+                                <suiteXmlFile>src/test/resources/conf/runners/testng-browserstack-parallel.xml</suiteXmlFile>
                             </suiteXmlFiles>
                             <excludes>
                                 <exclude>com.browserstack.test.suites.offers.OfferTest</exclude>
@@ -330,7 +330,7 @@
                             <parallel>${testng.parallel}</parallel>
                             <threadCount>${testng.threadCount}</threadCount>
                             <suiteXmlFiles>
-                                <suiteXmlFile>testng-browserstack-parallel.xml</suiteXmlFile>
+                                <suiteXmlFile>src/test/resources/conf/runners/testng-browserstack-parallel.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>

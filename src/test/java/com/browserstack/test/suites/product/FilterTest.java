@@ -20,18 +20,26 @@ public class FilterTest extends TestBase {
 
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@class = 'shelf-item__title'][1]"), "Pixel 2"));
 
-        List<Integer> values = getDriver().findElements(By.cssSelector(".val > b")).stream().map(WebElement::getText).map(Integer::parseInt).collect(Collectors.toList());
+        List<Integer> values = getDriver().findElements(By.cssSelector(".val > b"))
+                .stream()
+                .map(WebElement::getText)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
         Assertions.assertThat(values).isSorted();
     }
 
     @Test
     public void filterVendorTest() {
-        getDriver().findElement(By.xpath("//span[contains(text(), 'Apple')]")).click();
+        getDriver().findElement(By.cssSelector("input[value='Apple'] + span")).click();
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".products-found"), "9 Product(s) found."));
-        getDriver().findElement(By.xpath("//span[contains(text(), 'Samsung')]")).click();
+        getDriver().findElement(By.cssSelector("input[value='Samsung'] + span")).click();
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".products-found"), "16 Product(s) found."));
 
-        List<String> values = getDriver().findElements(By.cssSelector(".shelf-item__title")).stream().map(WebElement::getText).map(String :: trim).collect(Collectors.toList());
+        List<String> values = getDriver().findElements(By.cssSelector(".shelf-item__title"))
+                .stream()
+                .map(WebElement::getText)
+                .map(String::trim)
+                .collect(Collectors.toList());
         Assertions.assertThat(values).containsExactly("iPhone 12",
                 "iPhone 12 Mini",
                 "iPhone 12 Pro Max",

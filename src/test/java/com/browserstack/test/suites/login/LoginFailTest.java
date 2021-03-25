@@ -11,7 +11,7 @@ public class LoginFailTest extends TestBase {
     @Test
     public void loginSuccess() {
         getDriver().findElement(By.id("signin")).click();
-        getDriver().findElement(By.cssSelector("#username input")).sendKeys("fav_user" + Keys.ENTER); // change
+        getDriver().findElement(By.cssSelector("#username input")).sendKeys("fav_user" + Keys.ENTER);
         getDriver().findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
         getDriver().findElement(By.id("login-btn")).click();
 

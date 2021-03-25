@@ -21,7 +21,10 @@ public class UserTest extends TestBase {
         getDriver().findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
         getDriver().findElement(By.id("login-btn")).click();
 
-        List<WebElement> imageSrc = getDriver().findElements(By.cssSelector(".shelf-item__thumb img")).stream().filter(image -> !image.getAttribute("src").equals("")).collect(Collectors.toList());
+        List<WebElement> imageSrc = getDriver().findElements(By.cssSelector(".shelf-item__thumb img"))
+                .stream()
+                .filter(image -> !image.getAttribute("src").equals(""))
+                .collect(Collectors.toList());
         Assert.assertTrue(imageSrc.isEmpty());
     }
 
@@ -45,7 +48,7 @@ public class UserTest extends TestBase {
         getDriver().findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
         getDriver().findElement(By.id("login-btn")).click();
 
-        getDriver().findElement(By.xpath("//p[text() = 'iPhone 12']/../div/button")).click();
+        getDriver().findElement(By.cssSelector("div[id='1'] > div > button")).click();
 
         getDriver().findElement(By.id("favourites")).click();
         wait.until(ExpectedConditions.urlContains("favourites"));
