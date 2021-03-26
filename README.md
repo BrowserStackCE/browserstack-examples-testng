@@ -45,10 +45,8 @@ This repository contains the following Selenium tests:
 | Login    | LoginDataDrivenReadFromCSVTest  | This test verifies the login for all error cases in a datadriven way with CSV-file  |
 | Login    | LoginRequestedTest              | This test verifies that the login page is shown when you access the favourites page with being logged in  |
 | Offers   | OfferTest                       | This test mocks the GPS location for Mumbai and verifies that the product offers applicable for the Mumbai location are shown.   |
-| Product  | FilterTest                      | This test verifies that the Apple products are only shown if the Apple vendor filter option is applied. |
-| Product  | FilterTest                      | This test verifies that the product prices are in ascending order when the product sort "Lowest to Highest" is applied. |
-| User     | UserTest                        | This test verifies that the product images load for user: "image_not_loading_user" on the e-commerce application. Since the images do not load, the test case assertion fails.|
-| User     | UserTest                        |  This test verifies that existing orders are shown for user: "existing_orders_user"  |
+| Product  | FilterTest                      | This test verifies that both filter options are working |
+| User     | UserTest                        | The first test verifies that the product images load for user: "image_not_loading_user" on the e-commerce application. Since the images do not load, the test case assertion fails. The second test verifies that existing orders are shown for user: "existing_orders_user" |
   
 ---
 
