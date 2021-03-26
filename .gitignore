@@ -5,8 +5,6 @@ target/
 .settings/
 .classpath
 .idea/
-*.iml
-target/
 build/
 logs/
 bin

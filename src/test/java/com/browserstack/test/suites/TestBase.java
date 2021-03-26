@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("unchecked")
 @Listeners({ScreenshotListener.class})
 public class TestBase {
     public static final String PATH_TO_TEST_CAPS_JSON = "src/test/resources/conf/capabilities/test_caps.json";
@@ -65,32 +66,11 @@ public class TestBase {
                 caps.merge(new DesiredCapabilities(localCapabilities));
             }
 
-            String username = System.getenv("BROWSERSTACK_USERNAME");
-            if (username == null) {
-                username = (String) testCapsConfig.get("user").toString();
-            }
-            caps.setCapability("browserstack.user", username);
+            caps.setCapability("browserstack.user", getUsername(testCapsConfig));
+            caps.setCapability("browserstack.key", getAccessKey(testCapsConfig));
 
-            String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
-            if (accessKey == null) {
-                accessKey = (String) testCapsConfig.get("key").toString();
-            }
-            caps.setCapability("browserstack.key", accessKey);
-
-            if (!getGeolocation().isEmpty()) {
-                caps.setCapability("browserstack.geoLocation", getGeolocation());
-            }
-
-            if (caps.getCapability("browserstack.local") != null
-                    && caps.getCapability("browserstack.local").equals("true")) {
-                local = new Local();
-                UUID uuid = UUID.randomUUID();
-                caps.setCapability("browserstack.localIdentifier", uuid.toString());
-                Map<String, String> options = new HashMap<String, String>();
-                options.put("key", accessKey);
-                options.put("localIdentifier", uuid.toString());
-                local.start(options);
-            }
+            setGeoLocationIfNeeded(caps);
+            createSecureTunnelIfNeeded(caps, testCapsConfig);
 
             driver.set(new RemoteWebDriver(new URL(BROWSERSTACK_HUB_URL), caps));
         } else if (environment.equalsIgnoreCase("docker")) {
@@ -111,6 +91,41 @@ public class TestBase {
         }
         if (local != null) {
             local.stop();
+        }
+    }
+
+    private String getUsername(JSONObject testCapsConfig) {
+        String username = System.getenv("BROWSERSTACK_USERNAME");
+        if (username == null) {
+            username = testCapsConfig.get("user").toString();
+        }
+        return username;
+    }
+
+    private String getAccessKey(JSONObject testCapsConfig) {
+        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+        if (accessKey == null) {
+            accessKey = testCapsConfig.get("key").toString();
+        }
+        return accessKey;
+    }
+
+    private void createSecureTunnelIfNeeded(DesiredCapabilities caps, JSONObject testCapsConfig) throws Exception {
+        if (caps.getCapability("browserstack.local") != null
+                && caps.getCapability("browserstack.local").equals("true")) {
+            local = new Local();
+            UUID uuid = UUID.randomUUID();
+            caps.setCapability("browserstack.localIdentifier", uuid.toString());
+            Map<String, String> options = new HashMap<>();
+            options.put("key", getAccessKey(testCapsConfig));
+            options.put("localIdentifier", uuid.toString());
+            local.start(options);
+        }
+    }
+
+    private void setGeoLocationIfNeeded(DesiredCapabilities caps) {
+        if (!getGeolocation().isEmpty()) {
+            caps.setCapability("browserstack.geoLocation", getGeolocation());
         }
     }
 

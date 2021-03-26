@@ -1,6 +1,7 @@
 package com.browserstack.test.suites.product;
 
 import com.browserstack.test.suites.TestBase;
+import com.browserstack.test.utils.CsvUtil;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -29,7 +30,7 @@ public class FilterTest extends TestBase {
     }
 
     @Test
-    public void filterVendorTest() {
+    public void filterVendorTest() throws Exception {
         getDriver().findElement(By.cssSelector("input[value='Apple'] + span")).click();
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".products-found"), "9 Product(s) found."));
         getDriver().findElement(By.cssSelector("input[value='Samsung'] + span")).click();
@@ -40,21 +41,7 @@ public class FilterTest extends TestBase {
                 .map(WebElement::getText)
                 .map(String::trim)
                 .collect(Collectors.toList());
-        Assertions.assertThat(values).containsExactly("iPhone 12",
-                "iPhone 12 Mini",
-                "iPhone 12 Pro Max",
-                "iPhone 12 Pro",
-                "iPhone 11",
-                "iPhone 11 Pro",
-                "iPhone XS",
-                "iPhone XR",
-                "iPhone XS Max",
-                "Galaxy S20",
-                "Galaxy S20+",
-                "Galaxy S20 Ultra",
-                "Galaxy S10",
-                "Galaxy S9",
-                "Galaxy Note 20",
-                "Galaxy Note 20 Ultra");
+        List<String> expectedValues = CsvUtil.readSpecificColumn("src/test/resources/data/products.csv", 2);
+        Assertions.assertThat(values).containsExactly(expectedValues.toArray(new String[0]));
     }
 }

@@ -34,7 +34,6 @@ public class CheckoutPage extends BasePage {
         addressInput.sendKeys(address);
         stateInput.sendKeys(state);
         postcodeInput.sendKeys(postcode);
-
         checkoutButton.click();
         return new ConfirmationPage(driver);
     }

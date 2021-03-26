@@ -10,6 +10,9 @@ public class HomePage extends BasePage {
     @FindBy(id = "signin")
     private WebElement signInLink;
 
+    @FindBy(css = "a#orders")
+    private WebElement ordersLink;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -26,7 +29,7 @@ public class HomePage extends BasePage {
     }
 
     public OrdersPage navigateToOrders() {
-        driver.findElement(By.cssSelector("a#orders")).click();
+        ordersLink.click();
         return new OrdersPage(driver);
     }
 

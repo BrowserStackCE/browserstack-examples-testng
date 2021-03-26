@@ -29,7 +29,7 @@ public class BrowserstackTestStatusListener extends TestListenerAdapter {
         Object currentClass = result.getInstance();
         WebDriver driver = ((TestBase) currentClass).getDriver();
         String message = result.getThrowable().getMessage();
-        String reason = (message != null && message.length() > 254) ? message.substring(0, 254): message;
+        String reason = (message != null && message.length() > 254) ? message.substring(0, 254) : message;
         markTestStatus("failed", reason, driver);
     }
 

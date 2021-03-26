@@ -58,6 +58,16 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+        <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.141.59</version>
@@ -87,6 +97,11 @@
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
             <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>5.4</version>
         </dependency>
     </dependencies>
     <profiles>
@@ -274,7 +289,8 @@
                             <parallel>${testng.parallel}</parallel>
                             <threadCount>${testng.threadCount}</threadCount>
                             <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/conf/runners/testng-browserstack-parallel.xml</suiteXmlFile>
+                                <suiteXmlFile>src/test/resources/conf/runners/testng-browserstack-parallel.xml
+                                </suiteXmlFile>
                             </suiteXmlFiles>
                             <excludes>
                                 <exclude>com.browserstack.test.suites.offers.OfferTest</exclude>
@@ -330,7 +346,8 @@
                             <parallel>${testng.parallel}</parallel>
                             <threadCount>${testng.threadCount}</threadCount>
                             <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/conf/runners/testng-browserstack-parallel.xml</suiteXmlFile>
+                                <suiteXmlFile>src/test/resources/conf/runners/testng-browserstack-parallel.xml
+                                </suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>
