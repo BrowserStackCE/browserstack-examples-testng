@@ -140,6 +140,24 @@
             </build>
         </profile>
         <profile>
+            <id>on-prem-suite-parallel</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <parallel>${testng.parallel}</parallel>
+                            <threadCount>${testng.threadCount}</threadCount>
+                            <excludes>
+                                <exclude>com.browserstack.test.suites.offers.OfferTest</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
             <id>docker</id>
             <build>
                 <plugins>
