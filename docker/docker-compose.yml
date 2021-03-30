@@ -14,7 +14,7 @@ services:
       - SCREEN_HEIGHT=1800
     links:
       - selenium-hub:hub
-    scale: 2
+    scale: 4
 
   firefox:
     image: selenium/node-firefox:4.0.0
@@ -30,7 +30,7 @@ services:
       - SCREEN_HEIGHT=1800
     links:
       - selenium-hub:hub
-    scale: 2
+    scale: 4
 
   selenium-hub:
     image: selenium/hub:4.0.0
