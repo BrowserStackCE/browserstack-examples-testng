@@ -1,0 +1,171 @@
+apply plugin: 'java'
+apply plugin: 'io.qameta.allure'
+
+repositories {
+    mavenCentral()
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.8.1"
+    }
+}
+
+dependencies {
+    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    implementation 'com.browserstack:browserstack-local-java:1.0.6'
+    implementation 'org.testng:testng:7.1.0'
+    implementation 'io.qameta.allure:allure-testng:2.13.8'
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    implementation 'org.assertj:assertj-core:3.18.0'
+    implementation 'com.opencsv:opencsv:5.4'
+    implementation 'org.slf4j:slf4j-api:1.7.30'
+    implementation 'org.slf4j:slf4j-simple:1.7.30'
+}
+
+group = 'com.browserstack'
+version = '1.0-SNAPSHOT'
+description = 'browserstack-examples-testng'
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+allure {
+    autoconfigure = true
+    version = '2.4.1'
+    resultsDir = file('../allure-results')
+}
+
+tasks.register('on-prem', Test) {
+    useTestNG()
+    if (project.hasProperty('test-name')) {
+        include '**/' + project.property('test-name') + '.class'
+    } else {
+        include '**/OrderTest.class'
+    }
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+tasks.register('on-prem-suite', Test) {
+    useTestNG()
+    exclude '**/OfferTest.class'
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+tasks.register('docker', Test) {
+    useTestNG()
+    if (project.hasProperty('test-name')) {
+        include '**/' + project.property('test-name') + '.class'
+    } else {
+        include '**/OrderTest.class'
+    }
+    systemProperty "environment", "docker"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+tasks.register('docker-parallel', Test) {
+    useTestNG() {
+        parallel project.property('testngParallel')
+        threadCount Integer.parseInt(project.property('testngThreadCount'))
+    }
+    exclude '**/OfferTest.class'
+    systemProperty "environment", "docker"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+tasks.register('bstack-single', Test) {
+    useTestNG() {
+        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+    }
+    if (project.hasProperty('test-name')) {
+        include '**/' + project.property('test-name') + '.class'
+    } else {
+        include '**/OrderTest.class'
+    }
+    systemProperty "environment", "remote"
+    systemProperty "test", "single"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+tasks.register('bstack-local', Test) {
+    useTestNG() {
+        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+    }
+    if (project.hasProperty('test-name')) {
+        include '**/' + project.property('test-name') + '.class'
+    } else {
+        include '**/OrderTest.class'
+    }
+    systemProperty "environment", "remote"
+    systemProperty "test", "local"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+tasks.register('bstack-local-parallel', Test) {
+    useTestNG() {
+        parallel project.property('testngParallel')
+        threadCount Integer.parseInt(project.property('testngThreadCount'))
+        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+    }
+    exclude '**/OfferTest.class'
+    systemProperty "environment", "remote"
+    systemProperty "test", "local"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+tasks.register('bstack-local-parallel-browsers', Test) {
+    useTestNG() {
+        suites 'src/test/resources/conf/runners/testng-browserstack-parallel.xml'
+        parallel project.property('testngParallel')
+        threadCount Integer.parseInt(project.property('testngThreadCount'))
+        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+    }
+    exclude '**/OfferTest.class'
+    systemProperty "environment", "remote"
+    systemProperty "test", "local"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+tasks.register('bstack-parallel', Test) {
+    useTestNG() {
+        parallel project.property('testngParallel')
+        threadCount Integer.parseInt(project.property('testngThreadCount'))
+        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+    }
+    systemProperty "environment", "remote"
+    systemProperty "test", "parallel"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+tasks.register('bstack-parallel-browsers', Test) {
+    useTestNG() {
+        suites 'src/test/resources/conf/runners/testng-browserstack-parallel.xml'
+        parallel project.property('testngParallel')
+        threadCount Integer.parseInt(project.property('testngThreadCount'))
+        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+    }
+    systemProperty "environment", "remote"
+    systemProperty "test", "parallel"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
