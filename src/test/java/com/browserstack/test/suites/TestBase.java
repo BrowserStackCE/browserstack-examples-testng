@@ -41,8 +41,8 @@ public class TestBase {
     }
 
     @BeforeMethod
-    @Parameters(value = {"environment", "test", "env_cap_id"})
-    public void setUp(@Optional("on-prem") String environment, @Optional("single") String test, @Optional("0") int env_cap_id, Method m) throws Exception {
+    @Parameters(value = {"environment", "testtype", "env_cap_id"})
+    public void setUp(@Optional("on-prem") String environment, @Optional("single") String testtype, @Optional("0") int env_cap_id, Method m) throws Exception {
         JSONParser parser = new JSONParser();
         JSONObject testCapsConfig = (JSONObject) parser.parse(new FileReader(PATH_TO_TEST_CAPS_JSON));
         String url = (String) testCapsConfig.get("application_endpoint");
@@ -51,7 +51,7 @@ public class TestBase {
             driver.set(new ChromeDriver());
         } else if (environment.equalsIgnoreCase("remote")) {
             JSONObject profilesJson = (JSONObject) testCapsConfig.get("tests");
-            JSONObject envs = (JSONObject) profilesJson.get(test);
+            JSONObject envs = (JSONObject) profilesJson.get(testtype);
 
             Map<String, String> commonCapabilities = (Map<String, String>) envs.get("common_caps");
             commonCapabilities.put("name", m.getName());
@@ -61,7 +61,7 @@ public class TestBase {
             DesiredCapabilities caps = new DesiredCapabilities();
             caps.merge(new DesiredCapabilities(commonCapabilities));
             caps.merge(new DesiredCapabilities(envCapabilities));
-            if (test.equals("local")) {
+            if (testtype.equals("local")) {
                 url = (String) envs.get("application_endpoint");
                 caps.merge(new DesiredCapabilities(localCapabilities));
             }

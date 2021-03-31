@@ -25,7 +25,7 @@ public class UserTest extends TestBase {
                 .stream()
                 .filter(image -> !image.getAttribute("src").equals(""))
                 .collect(Collectors.toList());
-        Assert.assertTrue(imageSrc.isEmpty());
+        Assert.assertTrue(!imageSrc.isEmpty());
     }
 
     @Test

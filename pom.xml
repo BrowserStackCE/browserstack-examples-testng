@@ -212,7 +212,7 @@
                         <configuration>
                             <systemPropertyVariables>
                                 <environment>remote</environment>
-                                <test>single</test>
+                                <testtype>single</testtype>
                             </systemPropertyVariables>
                             <properties>
                                 <property>
@@ -240,7 +240,7 @@
                         <configuration>
                             <systemPropertyVariables>
                                 <environment>remote</environment>
-                                <test>local</test>
+                                <testtype>local</testtype>
                             </systemPropertyVariables>
                             <properties>
                                 <property>
@@ -268,7 +268,7 @@
                         <configuration>
                             <systemPropertyVariables>
                                 <environment>remote</environment>
-                                <test>local</test>
+                                <testtype>local</testtype>
                             </systemPropertyVariables>
                             <properties>
                                 <property>
@@ -296,7 +296,7 @@
                         <configuration>
                             <systemPropertyVariables>
                                 <environment>remote</environment>
-                                <test>local</test>
+                                <testtype>local</testtype>
                             </systemPropertyVariables>
                             <properties>
                                 <property>
@@ -328,7 +328,7 @@
                         <configuration>
                             <systemPropertyVariables>
                                 <environment>remote</environment>
-                                <test>parallel</test>
+                                <testtype>parallel</testtype>
                             </systemPropertyVariables>
                             <properties>
                                 <property>
@@ -353,7 +353,7 @@
                         <configuration>
                             <systemPropertyVariables>
                                 <environment>remote</environment>
-                                <test>parallel</test>
+                                <testtype>parallel</testtype>
                             </systemPropertyVariables>
                             <properties>
                                 <property>
