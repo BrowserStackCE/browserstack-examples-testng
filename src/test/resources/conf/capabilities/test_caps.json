@@ -5,9 +5,9 @@
   "tests": {
     "parallel": {
       "common_caps": {
-        "project": "BrowserStack Demo",
-        "build": "Automate Demo",
-        "name": "Parallel Test: ",
+        "project": "browserstack-examples",
+        "build": "browserstack-examples-testNG",
+        "name": "Parallel Test",
         "browserstack.debug": "true",
         "browserstack.networkLogs": "true",
         "browserstack.console": "verbose"
@@ -16,16 +16,16 @@
         {
           "os": "Windows",
           "os_version": "10",
-          "browser": "Internet Explorer",
-          "browser_version": "11.0",
+          "browser": "Chrome",
+          "browser_version": "latest-1",
           "browserstack.selenium_version": "3.141.59",
           "browserstack.sendKeys": true
         },
         {
           "os": "Windows",
           "os_version": "10",
-          "browser": "Chrome",
-          "browser_version": "latest-1"
+          "browser": "Internet Explorer",
+          "browser_version": "11.0"
         },
         {
           "os": "OS X",
@@ -55,9 +55,9 @@
     },
     "single": {
       "common_caps": {
-        "project": "BrowserStack",
-        "build": "Automate Demo",
-        "name": "Single Test: "
+        "project": "browserstack-examples",
+        "build": "browserstack-examples-testNG",
+        "name": "Single Test"
       },
       "env_caps": [
         {
@@ -71,9 +71,9 @@
       "application_env": "dev",
       "application_endpoint": "http://localhost:3000",
       "common_caps": {
-        "project": "BrowserStack Demo",
-        "build": "Automate Demo",
-        "name": "Parallel Test: ",
+        "project": "browserstack-examples",
+        "build": "browserstack-examples-testNG",
+        "name": "Parallel Test",
         "browserstack.debug": "true",
         "browserstack.networkLogs": "true",
         "browserstack.console": "verbose",
@@ -83,16 +83,16 @@
         {
           "os": "Windows",
           "os_version": "10",
-          "browser": "Internet Explorer",
-          "browser_version": "11.0",
+          "browser": "Chrome",
+          "browser_version": "latest-1",          
           "browserstack.selenium_version": "3.141.59",
           "browserstack.sendKeys": true
         },
         {
           "os": "Windows",
           "os_version": "10",
-          "browser": "Chrome",
-          "browser_version": "latest-1"
+          "browser": "Internet Explorer",
+          "browser_version": "11.0"
         },
         {
           "os": "OS X",
@@ -128,8 +128,8 @@
     },
     "mobile": {
       "common_caps": {
-        "project": "BrowserStack",
-        "build": "Automate Demo",
+        "project": "browserstack-examples",
+        "build": "browserstack-examples-testNG",
         "name": "Mobile Parallel Test"
       },
       "env_caps": [
