@@ -93,7 +93,7 @@ For all the parallel run configuration profiles, you can configure the maximum p
 
 # On Premise / Self Hosted
 
-This infrastructure points to running the tests on your own machine using a browser (e.g. Chrome) using the browser's driver executables (e.g. ChromeDriver for Chrome). #{ Selenium enables this functionality using WebDriver for many popular browsers.}
+This infrastructure points to running the tests on your own machine using a browser (e.g. Chrome) using the browser's driver executables (e.g. ChromeDriver for Chrome). Selenium enables this functionality using WebDriver for many popular browsers.
 
 ## Prerequisites
 
@@ -471,15 +471,36 @@ In this section, we will run the test cases to test the internally hosted websit
 
 ## Generating Allure Reports
 
-- Generate Report using the following command: `mvn allure:generate`
-- Serve the Allure report on a server: `mvn allure:serve`
+- Generate Report using the following command: 
+
+  Maven:
+  ```sh
+  mvn allure:generate
+  ```
+
+  Gradle:
+    ```sh
+  gradle allureReport
+  ```
+
+- Serve the Allure report on a server: 
+
+  Maven:
+  ```sh
+  mvn allure:serve
+  ```
+
+  Gradle:
+    ```sh
+  gradle allureServe
+  ```
 
 ## Additional Resources
 
 - View your test results on the [BrowserStack Automate dashboard](https://www.browserstack.com/automate)
 - Documentation for writing [Automate test scripts in Java](https://www.browserstack.com/automate/java)
 - Customizing your tests capabilities on BrowserStack using our [test capability generator](https://www.browserstack.com/automate/capabilities)
-- [List of Browsers & mobile devices](https://www.browserstack.com/list-of-browsers-and-platforms?product=automate) for automation testing on BrowserStack #{ Replace link for non-Selenium frameworks. }
+- [List of Browsers & mobile devices](https://www.browserstack.com/list-of-browsers-and-platforms?product=automate) for automation testing on BrowserStack
 - [Using Automate REST API](https://www.browserstack.com/automate/rest-api) to access information about your tests via the command-line interface
 - Understand how many parallel sessions you need by using our [Parallel Test Calculator](https://www.browserstack.com/automate/parallel-calculator?ref=github)
 - For testing public web applications behind IP restriction, [Inbound IP Whitelisting](https://www.browserstack.com/local-testing/inbound-ip-whitelisting) can be enabled with the [BrowserStack Enterprise](https://www.browserstack.com/enterprise) offering
