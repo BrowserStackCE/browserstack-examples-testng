@@ -19,7 +19,7 @@ public class FilterTest extends TestBase {
         Select sortSelect = new Select(driver.get().findElement(By.cssSelector(".sort select")));
         sortSelect.selectByValue("lowestprice");
 
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@class = 'shelf-item__title'][1]"), "Pixel 2"));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("p.shelf-item__title:first-of-type"), "Pixel 2"));
 
         List<Integer> values = getDriver().findElements(By.cssSelector(".val > b"))
                 .stream()
