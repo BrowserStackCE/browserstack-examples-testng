@@ -16,13 +16,8 @@ public class OfferTest extends TestBase {
     private static final String OFFER_LATITUDE = "1";
     private static final String OFFER_LONGITUDE = "103";
 
-    @Override
-    public String getGeolocation() {
-        return "IN";
-    }
-
     @Test
-    public void checkOffersInIndia() {
+    public void checkOffersInSingapore() {
         String locationScript = String.format(LOCATION_SCRIPT_FORMAT, OFFER_LATITUDE, OFFER_LONGITUDE);
         ((JavascriptExecutor) getDriver()).executeScript(locationScript);
 

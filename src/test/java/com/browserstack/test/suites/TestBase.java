@@ -69,7 +69,6 @@ public class TestBase {
             caps.setCapability("browserstack.user", getUsername(testCapsConfig));
             caps.setCapability("browserstack.key", getAccessKey(testCapsConfig));
 
-            setGeoLocationIfNeeded(caps);
             createSecureTunnelIfNeeded(caps, testCapsConfig);
 
             driver.set(new RemoteWebDriver(new URL(BROWSERSTACK_HUB_URL), caps));
@@ -120,12 +119,6 @@ public class TestBase {
             options.put("key", getAccessKey(testCapsConfig));
             options.put("localIdentifier", uuid.toString());
             local.start(options);
-        }
-    }
-
-    private void setGeoLocationIfNeeded(DesiredCapabilities caps) {
-        if (!getGeolocation().isEmpty()) {
-            caps.setCapability("browserstack.geoLocation", getGeolocation());
         }
     }
 

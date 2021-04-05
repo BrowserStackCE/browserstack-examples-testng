@@ -44,7 +44,7 @@ This repository contains the following Selenium tests:
 | Login    | LoginDataDrivenTest             | This test verifies the login for all error cases in a datadriven way |
 | Login    | LoginDataDrivenReadFromCSVTest  | This test verifies the login for all error cases in a datadriven way with CSV-file  |
 | Login    | LoginRequestedTest              | This test verifies that the login page is shown when you access the favourites page with being logged in  |
-| Offers   | OfferTest                       | This test mocks the GPS location for Mumbai and verifies that the product offers applicable for the Mumbai location are shown.   |
+| Offers   | OfferTest                       | This test mocks the GPS location for Singapore and verifies that the product offers applicable for the Singapore location are shown.   |
 | Product  | FilterTest                      | This test verifies that both filter options are working |
 | User     | UserTest                        | The first test verifies that the product images load for user: "image_not_loading_user" on the e-commerce application. Since the images do not load, the test case assertion fails. The second test verifies that existing orders are shown for user: "existing_orders_user" |
   
@@ -111,7 +111,7 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   Maven:
     ```sh
-  mvn test -P on-prem
+  mvn clean test -P on-prem
   ```
 
   Gradle:
@@ -123,13 +123,13 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   Maven:
   ```sh
-  mvn test -P on-prem -Dtest=LoginDataDrivenTest
+  mvn clean test -P on-prem -Dtest=LoginDataDrivenTest
 
   ```
 
   Gradle:
   ```sh
-  gradle on-prem -Ptest-name=LoginDataDrivenTest
+  gradle clean on-prem -Ptest-name=LoginDataDrivenTest
   ```
 
   where, the argument `test` or `test-name` can be any testclass implemented this repository.
@@ -147,12 +147,12 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   Maven:
   ```sh
-  mvn test -P on-prem-suite
+  mvn clean test -P on-prem-suite
   ```
 
   Gradle:
   ```sh
-  gradle on-prem-suite
+  gradle clean on-prem-suite
   ```
 
 - Output
@@ -188,24 +188,24 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   Maven:
   ```sh
-  mvn test -P docker
+  mvn clean test -P docker
   ```
 
   Gradle:
     ```sh
-  gradle docker
+  gradle clean docker
   ```
 
   To run a specific test scenario, use the following command with the additional 'test-name' argument:
 
   Maven:
   ```sh
-  mvn test -P docker -Dtest=LoginDataDrivenTest
+  mvn clean test -P docker -Dtest=LoginDataDrivenTest
   ```
 
   Gradle:
   ```sh
-  gradle docker -Ptest-name=LoginDataDrivenTest
+  gradle clean docker -Ptest-name=LoginDataDrivenTest
   ```
 
   where,  the argument `test` or `test-name` can be any testclass implemented in this repository.
@@ -236,12 +236,12 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   Maven:
   ```sh
-  mvn test -P docker-parallel
+  mvn clean test -P docker-parallel
   ```
 
   Gradle:
   ```sh
-  gradle docker-parallel
+  gradle clean docker-parallel
   ```
 
    - After the tests are complete stop the Selenium grid by running the following command:
@@ -300,23 +300,23 @@ In this section, we will run a single test on Chrome browser on Browserstack. To
 
   Maven:
   ```sh
-  mvn test -P bstack-single
+  mvn clean test -P bstack-single
   ```
 
   Gradle:
     ```sh
-  gradle bstack-single
+  gradle clean bstack-single
   ```
 
   To run a specific test scenario, use the following command with the additional 'test-name' argument:
   Maven:
   ```sh
-  mvn test -P bstack-single -Dtest=LoginDataDrivenTest
+  mvn clean test -P bstack-single -Dtest=LoginDataDrivenTest
   ```
 
   Gradle:
   ```sh
-  gradle bstack-single -Ptest-name=LoginDataDrivenTest
+  gradle clean bstack-single -Ptest-name=LoginDataDrivenTest
   ```
 
   where, the argument `test` or `test-name` can be any testclass implemented in this repository.
@@ -337,11 +337,11 @@ In this section, we will run the tests in parallel on a single browser on Browse
 
   Maven:
   ```sh
-  mvn test -P bstack-parallel
+  mvn clean test -P bstack-parallel
   ```
   Gradle:
     ```sh
-  gradle bstack-parallel
+  gradle clean bstack-parallel
   ```
 
 
@@ -362,12 +362,12 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
 
   Maven:
   ```sh
-  mvn test -P bstack-parallel-browsers
+  mvn clean test -P bstack-parallel-browsers
   ```
 
   Gradle:
   ```sh
-  gradle bstack-parallel-browsers
+  gradle clean bstack-parallel-browsers
   ```
 
 ### [Web application hosted on internal environment] Running your tests on BrowserStack using BrowserStackLocal
@@ -395,23 +395,23 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
 
   Maven:
   ```sh
-  mvn test -P bstack-local
+  mvn clean test -P bstack-local
   ```
 
   Gradle:
     ```sh
-  gradle bstack-local
+  gradle clean bstack-local
   ```
 
   To run a specific test scenario, use the following command with the additional test-name argument:
   Maven:
   ```sh
-  mvn test -P bstack-local -Dtest=LoginDataDrivenTest
+  mvn clean test -P bstack-local -Dtest=LoginDataDrivenTest
   ```
 
   Gradle:
   ```sh
-  gradle bstack-local -Ptest-name=LoginDataDrivenTest
+  gradle clean bstack-local -Ptest-name=LoginDataDrivenTest
   ```
 
   where, the argument `test` or `test-name` can be any testclass implemented in this repository.
@@ -431,12 +431,12 @@ In this section, we will run the test cases to test the internally hosted websit
   To run the entire test suite in parallel on a single BrowserStack browser using BrowserStackLocal, use the following command:
   Maven:
   ```sh
-  mvn test -P bstack-local-parallel
+  mvn clean test -P bstack-local-parallel
   ```
 
   Gradle:
   ```sh
-  gradle bstack-local-parallel
+  gradle clean bstack-local-parallel
   ```
 
 - Output
@@ -455,12 +455,12 @@ In this section, we will run the test cases to test the internally hosted websit
 
   Maven:
   ```sh
-  mvn test -P bstack-local-parallel-browsers
+  mvn clean test -P bstack-local-parallel-browsers
   ```
 
   Gradle:
     ```sh
-  gradle bstack-local-parallel-browsers
+  gradle clean bstack-local-parallel-browsers
   ```
 
 - Output
