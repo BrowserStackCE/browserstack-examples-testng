@@ -130,11 +130,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <excludes>
-                                <exclude>com.browserstack.test.suites.offers.OfferTest</exclude>
-                            </excludes>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -149,9 +144,6 @@
                         <configuration>
                             <parallel>${testng.parallel}</parallel>
                             <threadCount>${testng.threadCount}</threadCount>
-                            <excludes>
-                                <exclude>com.browserstack.test.suites.offers.OfferTest</exclude>
-                            </excludes>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -194,9 +186,6 @@
                             <suiteXmlFiles>
                                 <suiteXmlFile>src/test/resources/conf/runners/testng.xml</suiteXmlFile>
                             </suiteXmlFiles>
-                            <excludes>
-                                <exclude>com.browserstack.test.suites.offers.OfferTest</exclude>
-                            </excludes>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -278,9 +267,6 @@
                             </properties>
                             <parallel>${testng.parallel}</parallel>
                             <threadCount>${testng.threadCount}</threadCount>
-                            <excludes>
-                                <exclude>com.browserstack.test.suites.offers.OfferTest</exclude>
-                            </excludes>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -310,9 +296,6 @@
                                 <suiteXmlFile>src/test/resources/conf/runners/testng-browserstack-parallel.xml
                                 </suiteXmlFile>
                             </suiteXmlFiles>
-                            <excludes>
-                                <exclude>com.browserstack.test.suites.offers.OfferTest</exclude>
-                            </excludes>
                         </configuration>
                     </plugin>
                 </plugins>

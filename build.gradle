@@ -51,7 +51,6 @@ tasks.register('on-prem', Test) {
 
 tasks.register('on-prem-suite', Test) {
     useTestNG()
-    exclude '**/OfferTest.class'
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
@@ -75,7 +74,6 @@ tasks.register('docker-parallel', Test) {
         parallel project.property('testngParallel')
         threadCount Integer.parseInt(project.property('testngThreadCount'))
     }
-    exclude '**/OfferTest.class'
     systemProperty "environment", "docker"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
@@ -120,7 +118,6 @@ tasks.register('bstack-local-parallel', Test) {
         threadCount Integer.parseInt(project.property('testngThreadCount'))
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
-    exclude '**/OfferTest.class'
     systemProperty "environment", "remote"
     systemProperty "test", "local"
     testLogging {
@@ -135,7 +132,6 @@ tasks.register('bstack-local-parallel-browsers', Test) {
         threadCount Integer.parseInt(project.property('testngThreadCount'))
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
-    exclude '**/OfferTest.class'
     systemProperty "environment", "remote"
     systemProperty "test", "local"
     testLogging {
