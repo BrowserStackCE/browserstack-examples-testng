@@ -36,10 +36,6 @@ public class TestBase {
         return driver.get();
     }
 
-    public String getGeolocation() {
-        return "";
-    }
-
     @BeforeMethod
     @Parameters(value = {"environment", "testtype", "env_cap_id"})
     public void setUp(@Optional("on-prem") String environment, @Optional("single") String testtype, @Optional("0") int env_cap_id, Method m) throws Exception {
