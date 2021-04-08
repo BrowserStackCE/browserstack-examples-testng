@@ -16,6 +16,7 @@ import org.testng.annotations.*;
 import java.io.FileReader;
 import java.lang.reflect.Method;
 import java.net.URL;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -27,7 +28,8 @@ public class TestBase {
     public static final String PATH_TO_TEST_CAPS_JSON = "src/test/resources/conf/capabilities/test_caps.json";
     // ThreadLocal gives the ability to store data individually for the current thread
     protected ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-    private static final String DOCKER_SELENIUM_HUB_URL = "http://localhost:4444/wd/hub";
+    //private static final String DOCKER_SELENIUM_HUB_URL = "http://localhost:4444/wd/hub";
+    private static final String DOCKER_SELENIUM_HUB_URL = "http://0.0.0.0:4444/wd/hub";
     private static final String BROWSERSTACK_HUB_URL = "https://hub.browserstack.com/wd/hub";
     private Local local;
     protected WebDriverWait wait;
@@ -51,6 +53,7 @@ public class TestBase {
 
             Map<String, String> commonCapabilities = (Map<String, String>) envs.get("common_caps");
             commonCapabilities.put("name", m.getName());
+            commonCapabilities.put("build", commonCapabilities.get("build") + " - " + new Date().getTime());
             Map<String, String> envCapabilities = (Map<String, String>) ((org.json.simple.JSONArray) envs.get("env_caps")).get(env_cap_id);
             Map<String, String> localCapabilities = (Map<String, String>) envs.get("local_binding_caps");
 

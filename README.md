@@ -475,7 +475,7 @@ In this section, we will run the test cases to test the internally hosted websit
 
   Maven:
   ```sh
-  mvn allure:generate
+  mvn allure:report
   ```
 
   Gradle:
