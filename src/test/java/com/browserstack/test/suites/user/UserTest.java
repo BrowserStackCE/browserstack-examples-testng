@@ -44,7 +44,11 @@ public class UserTest extends TestBase {
     @Test
     public void addToFavourites() {
         getDriver().findElement(By.id("signin")).click();
+<<<<<<< HEAD
+        getDriver().findElement(By.cssSelector("#username input")).sendKeys("existing_orders_user" + Keys.ENTER);
+=======
         getDriver().findElement(By.cssSelector("#username input")).sendKeys("demouser" + Keys.ENTER);
+>>>>>>> review
         getDriver().findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
         getDriver().findElement(By.id("login-btn")).click();
 
