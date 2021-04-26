@@ -170,7 +170,8 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
 - Install and start [Docker](https://docs.docker.com/get-docker/).
 - Note: Docker should be running on the test machine. Ensure Docker Compose is installed as well.
-- Run `docker-compose pull` from the current directory of the repository.
+
+- Run `docker-compose pull` from the `docker` directory of the repository.
 
 ## Running Your Tests
 
@@ -252,7 +253,7 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
 - Output
 
-  This run profile executes the entire test suite in parallel on a single browser, deployed on a docker image.
+  This run profile executes the entire test suite in parallel across multiple instances of the same browser, deployed on a docker image.
 
 - Note: By default, this execution would run maximum 5 test threads in parallel on Docker. Refer to the section ["Configuring the maximum parallel test threads for this repository"](#Configuring-the-maximum-parallel-test-threads-for-this-repository) for updating the parallel thread count based on your requirements.
 
@@ -475,7 +476,8 @@ In this section, we will run the test cases to test the internally hosted websit
 
   Maven:
   ```sh
-  mvn allure:generate
+
+  mvn allure:report
   ```
 
   Gradle:

@@ -16,6 +16,10 @@ import org.testng.annotations.*;
 import java.io.FileReader;
 import java.lang.reflect.Method;
 import java.net.URL;
+<<<<<<< HEAD
+=======
+import java.util.Date;
+>>>>>>> review
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -36,10 +40,13 @@ public class TestBase {
         return driver.get();
     }
 
+<<<<<<< HEAD
     public String getGeolocation() {
         return "";
     }
 
+=======
+>>>>>>> review
     @BeforeMethod
     @Parameters(value = {"environment", "testtype", "env_cap_id"})
     public void setUp(@Optional("on-prem") String environment, @Optional("single") String testtype, @Optional("0") int env_cap_id, Method m) throws Exception {
@@ -55,6 +62,10 @@ public class TestBase {
 
             Map<String, String> commonCapabilities = (Map<String, String>) envs.get("common_caps");
             commonCapabilities.put("name", m.getName());
+<<<<<<< HEAD
+=======
+            commonCapabilities.put("build", commonCapabilities.get("build") + " - " + new Date().getTime());
+>>>>>>> review
             Map<String, String> envCapabilities = (Map<String, String>) ((org.json.simple.JSONArray) envs.get("env_caps")).get(env_cap_id);
             Map<String, String> localCapabilities = (Map<String, String>) envs.get("local_binding_caps");
 
