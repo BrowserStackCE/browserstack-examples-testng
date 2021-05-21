@@ -30,6 +30,7 @@ public class TestBase {
     protected ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     private static final String DOCKER_SELENIUM_HUB_URL = "http://localhost:4444/wd/hub";
     private static final String BROWSERSTACK_HUB_URL = "https://hub.browserstack.com/wd/hub";
+    private static final long TIMESTAMP = new Date().getTime();
     private Local local;
     protected WebDriverWait wait;
 
@@ -52,7 +53,7 @@ public class TestBase {
 
             Map<String, String> commonCapabilities = (Map<String, String>) envs.get("common_caps");
             commonCapabilities.put("name", m.getName());
-            commonCapabilities.put("build", commonCapabilities.get("build") + " - " + new Date().getTime());
+            commonCapabilities.put("build", commonCapabilities.get("build") + " - " + TIMESTAMP);
             Map<String, String> envCapabilities = (Map<String, String>) ((org.json.simple.JSONArray) envs.get("env_caps")).get(env_cap_id);
             Map<String, String> localCapabilities = (Map<String, String>) envs.get("local_binding_caps");
 
