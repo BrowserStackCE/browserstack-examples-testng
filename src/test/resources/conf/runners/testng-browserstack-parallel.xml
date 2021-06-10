@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Parallel">
     <test name="BStackDemo chrome">
-        <parameter name="env_cap_id" value="1"/>
+        <parameter name="env_cap_id" value="0"/>
         <classes>
             <class name="com.browserstack.test.suites.e2e.OrderTest"/>
             <class name="com.browserstack.test.suites.login.LoginTest"/>
