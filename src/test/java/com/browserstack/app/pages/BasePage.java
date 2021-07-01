@@ -16,7 +16,11 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    protected void waitFortextToBePresentInElement(WebElement element, String text) {
+    protected void waitForElementToBePresent(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    protected void waitForTextToBePresentInElement(WebElement element, String text) {
         wait.until(ExpectedConditions.textToBePresentInElement(element, text));
     }
 

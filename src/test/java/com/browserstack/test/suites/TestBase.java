@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
 public class TestBase {
     public static final String PATH_TO_TEST_CAPS_JSON = "src/test/resources/conf/capabilities/test_caps.json";
     // ThreadLocal gives the ability to store data individually for the current thread
-    protected ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     private static final String DOCKER_SELENIUM_HUB_URL = "http://localhost:4444/wd/hub";
     private static final String BROWSERSTACK_HUB_URL = "https://hub.browserstack.com/wd/hub";
     private static final long TIMESTAMP = new Date().getTime();
@@ -39,8 +39,8 @@ public class TestBase {
     }
 
     @BeforeMethod
-    @Parameters(value = {"environment", "testtype", "env_cap_id"})
-    public void setUp(@Optional("on-prem") String environment, @Optional("single") String testtype, @Optional("0") int env_cap_id, Method m) throws Exception {
+    @Parameters(value = {"environment", "testType", "env_cap_id"})
+    public void setUp(@Optional("on-prem") String environment, @Optional("single") String testType, @Optional("0") int env_cap_id, Method m) throws Exception {
         JSONParser parser = new JSONParser();
         JSONObject testCapsConfig = (JSONObject) parser.parse(new FileReader(PATH_TO_TEST_CAPS_JSON));
         String url = (String) testCapsConfig.get("application_endpoint");
@@ -49,7 +49,7 @@ public class TestBase {
             driver.set(new ChromeDriver());
         } else if (environment.equalsIgnoreCase("remote")) {
             JSONObject profilesJson = (JSONObject) testCapsConfig.get("tests");
-            JSONObject envs = (JSONObject) profilesJson.get(testtype);
+            JSONObject envs = (JSONObject) profilesJson.get(testType);
 
             Map<String, String> commonCapabilities = (Map<String, String>) envs.get("common_caps");
             commonCapabilities.put("name", m.getName());
@@ -60,7 +60,7 @@ public class TestBase {
             DesiredCapabilities caps = new DesiredCapabilities();
             caps.merge(new DesiredCapabilities(commonCapabilities));
             caps.merge(new DesiredCapabilities(envCapabilities));
-            if (testtype.equals("local")) {
+            if (testType.equals("local")) {
                 url = (String) envs.get("application_endpoint");
                 caps.merge(new DesiredCapabilities(localCapabilities));
             }
@@ -78,13 +78,13 @@ public class TestBase {
             driver.set(new RemoteWebDriver(new URL(DOCKER_SELENIUM_HUB_URL), dc));
         }
         getDriver().get(url);
-        wait = new WebDriverWait(getDriver(), 25);
-        getDriver().manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
+        getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        wait = new WebDriverWait(getDriver(), 30);
     }
 
     @AfterMethod
     public void tearDown() throws Exception {
-        if (driver != null) {
+        if (getDriver() != null) {
             getDriver().quit();
         }
         if (local != null) {

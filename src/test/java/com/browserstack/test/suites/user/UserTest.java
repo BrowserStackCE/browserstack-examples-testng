@@ -48,10 +48,11 @@ public class UserTest extends TestBase {
         getDriver().findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
         getDriver().findElement(By.id("login-btn")).click();
 
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".spinner")));
         getDriver().findElement(By.cssSelector("div[id='1'] > div > button")).click();
 
         getDriver().findElement(By.id("favourites")).click();
-        wait.until(ExpectedConditions.urlContains("favourites"));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".spinner")));
 
         Assertions.assertThat(getDriver().findElements(By.cssSelector("p.shelf-item__title"))
                 .stream().map(WebElement::getText)).contains("iPhone 12");
