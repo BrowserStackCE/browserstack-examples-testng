@@ -29,26 +29,25 @@
         },
         {
           "os": "OS X",
-          "os_version": "Big Sur",
-          "browser": "Chrome",
-          "browser_version": "90.0"
+          "os_version": "Catalina",
+          "browserName": "Safari",
+          "browser_version": "latest"
         },
         {
           "os": "OS X",
-          "os_version": "Catalina",
-          "browser": "Safari",
-          "browser_version": "13.0"
+          "os_version": "Big Sur",
+          "browser": "Chrome",
+          "browser_version": "latest"
         },
         {
-          "os": "Android",
-          "os_version": "11.0",
+          "os": "android",
+          "os_version": "10.0",
           "device": "Samsung Galaxy S20",
           "realMobile": true
         },
         {
-          "os": "iPhone",
-          "os_version": "13.0",
-          "device": "iPhone XS",
+          "device": "iPhone 8 Plus",
+          "os_version": "12",
           "realMobile": true
         }
       ]
@@ -84,7 +83,7 @@
           "os": "Windows",
           "os_version": "10",
           "browser": "Chrome",
-          "browser_version": "latest-1",          
+          "browser_version": "latest-1",
           "browserstack.selenium_version": "3.141.59",
           "browserstack.sendKeys": true
         },

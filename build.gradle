@@ -90,7 +90,7 @@ tasks.register('bstack-single', Test) {
         include '**/OrderTest.class'
     }
     systemProperty "environment", "remote"
-    systemProperty "testtype", "single"
+    systemProperty "testType", "single"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
@@ -106,7 +106,7 @@ tasks.register('bstack-local', Test) {
         include '**/OrderTest.class'
     }
     systemProperty "environment", "remote"
-    systemProperty "testtype", "local"
+    systemProperty "testType", "local"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
@@ -119,7 +119,7 @@ tasks.register('bstack-local-parallel', Test) {
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
     systemProperty "environment", "remote"
-    systemProperty "testtype", "local"
+    systemProperty "testType", "local"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
@@ -133,7 +133,7 @@ tasks.register('bstack-local-parallel-browsers', Test) {
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
     systemProperty "environment", "remote"
-    systemProperty "testtype", "local"
+    systemProperty "testType", "local"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
@@ -146,7 +146,7 @@ tasks.register('bstack-parallel', Test) {
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
     systemProperty "environment", "remote"
-    systemProperty "testtype", "parallel"
+    systemProperty "testType", "parallel"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
@@ -160,7 +160,7 @@ tasks.register('bstack-parallel-browsers', Test) {
         listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
     }
     systemProperty "environment", "remote"
-    systemProperty "testtype", "parallel"
+    systemProperty "testType", "parallel"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }

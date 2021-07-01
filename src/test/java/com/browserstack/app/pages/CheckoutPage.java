@@ -29,6 +29,7 @@ public class CheckoutPage extends BasePage {
     }
 
     public ConfirmationPage enterShippingDetails(String firstname, String lastname, String address, String state, String postcode) {
+        waitForElementToBePresent(firstnameInput);
         firstnameInput.sendKeys(firstname);
         lastnameInput.sendKeys(lastname);
         addressInput.sendKeys(address);

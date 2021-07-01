@@ -27,7 +27,7 @@ public class OfferTest extends TestBase {
         getDriver().findElement(By.id("login-btn")).click();
 
         getDriver().findElement(By.id("offers")).click();
-        wait.until(ExpectedConditions.urlContains("offers"));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".spinner")));
 
         Assert.assertEquals(getDriver().findElements(By.cssSelector(".offer")).size(), 3);
     }

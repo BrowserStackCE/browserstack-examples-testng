@@ -16,7 +16,7 @@ public class FilterTest extends TestBase {
 
     @Test
     public void filterLowestToHighestTest() {
-        Select sortSelect = new Select(driver.get().findElement(By.cssSelector(".sort select")));
+        Select sortSelect = new Select(getDriver().findElement(By.cssSelector(".sort select")));
         sortSelect.selectByValue("lowestprice");
 
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("p.shelf-item__title:first-of-type"), "Pixel 2"));

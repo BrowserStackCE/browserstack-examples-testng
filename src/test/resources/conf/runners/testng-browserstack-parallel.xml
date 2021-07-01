@@ -12,7 +12,7 @@
             <class name="com.browserstack.test.suites.user.UserTest"/>
         </classes>
     </test>
-    <test name="BStackDemo safari">
+    <test name="BStackDemo OSx chrome">
         <parameter name="env_cap_id" value="3"/>
         <classes>
             <class name="com.browserstack.test.suites.e2e.OrderTest"/>
