@@ -4,6 +4,8 @@ import com.browserstack.app.pages.ConfirmationPage;
 import com.browserstack.app.pages.HomePage;
 import com.browserstack.app.pages.OrdersPage;
 import com.browserstack.test.suites.TestBase;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -23,6 +25,7 @@ public class OrderTest extends TestBase {
         Assert.assertTrue(page.isConfirmationDisplayed());
 
         OrdersPage ordersPage = page.continueShopping().navigateToOrders();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".spinner")));
 
         Assert.assertEquals(ordersPage.getItemsFromOrder(), 3);
     }

@@ -42,7 +42,7 @@ public class Bag extends BasePage {
     }
 
     public HomePage waitForItemsInBag(int i) {
-        waitFortextToBePresentInElement(quantityContainer, Integer.toString(i));
+        waitForTextToBePresentInElement(quantityContainer, Integer.toString(i));
         return new HomePage(driver);
     }
 }

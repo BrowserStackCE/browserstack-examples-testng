@@ -24,6 +24,7 @@ public class LoginPage extends BasePage {
     }
 
     public HomePage loginWith(String username, String password) {
+        waitForElementToBePresent(usernameInput);
         usernameInput.sendKeys(username + Keys.ENTER);
         passwordInput.sendKeys(password + Keys.ENTER);
         logInButton.click();
