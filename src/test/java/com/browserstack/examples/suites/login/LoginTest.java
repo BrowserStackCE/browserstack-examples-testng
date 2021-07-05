@@ -7,10 +7,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.browserstack.examples.core.ManagedWebDriver;
+import com.browserstack.examples.suites.BaseTest;
 
-public class LoginTest {
+public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(dataProvider = "webdriver")
     public void loginLockedUser(ManagedWebDriver managedWebDriver) {
         WebDriver webDriver = managedWebDriver.getWebDriver();
         webDriver.findElement(By.id("signin")).click();
@@ -21,7 +22,7 @@ public class LoginTest {
         Assert.assertEquals(webDriver.findElement(By.className("api-error")).getText(), "Your account has been locked.");
     }
 
-    @Test
+    @Test(dataProvider = "webdriver")
     public void loginSuccess(ManagedWebDriver managedWebDriver) {
         WebDriver webDriver = managedWebDriver.getWebDriver();
         webDriver.findElement(By.id("signin")).click();
@@ -32,7 +33,7 @@ public class LoginTest {
         Assert.assertEquals(webDriver.findElement(By.className("username")).getText(), "fav_user");
     }
 
-    @Test
+    @Test(dataProvider = "webdriver")
     public void loginFail(ManagedWebDriver managedWebDriver) {
         WebDriver webDriver = managedWebDriver.getWebDriver();
         webDriver.findElement(By.id("signin")).click();

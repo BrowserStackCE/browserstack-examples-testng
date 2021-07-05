@@ -2,23 +2,25 @@ package com.browserstack.examples.suites;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 
 import com.browserstack.examples.core.ManagedWebDriver;
 import com.browserstack.examples.core.config.Platform;
 import com.browserstack.examples.core.config.WebDriverFactory;
+import com.browserstack.examples.core.listeners.WebDriverListener;
 
 /**
  * Created with IntelliJ IDEA.
  *
  * @author Anirudha Khanna
  */
+@Listeners({WebDriverListener.class})
 public abstract class BaseTest {
 
-    @DataProvider(parallel = true)
+    @DataProvider(name="webdriver", parallel = true)
     public static Object[] provideWebDrivers(Method testMethod) {
         List<ManagedWebDriver> managedWebDrivers = createManagedWebDrivers(testMethod.getName());
         return managedWebDrivers.toArray(new ManagedWebDriver[0]);
@@ -32,31 +34,5 @@ public abstract class BaseTest {
             managedWebDrivers.add(new ManagedWebDriver(testMethodName, p));
         });
         return managedWebDrivers;
-    }
-
-    static final class PlatformAwareIterator implements Iterator<Object[]> {
-
-        /**
-         * Returns {@code true} if the iteration has more elements.
-         * (In other words, returns {@code true} if {@link #next} would
-         * return an element rather than throwing an exception.)
-         *
-         * @return {@code true} if the iteration has more elements
-         */
-        @Override
-        public boolean hasNext() {
-            return false;
-        }
-
-        /**
-         * Returns the next element in the iteration.
-         *
-         * @return the next element in the iteration
-         * @throws NoSuchElementException if the iteration has no more elements
-         */
-        @Override
-        public Object[] next() {
-            return new Object[0];
-        }
     }
 }

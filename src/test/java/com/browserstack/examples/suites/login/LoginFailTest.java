@@ -11,7 +11,7 @@ import com.browserstack.examples.suites.BaseTest;
 
 public class LoginFailTest extends BaseTest {
 
-    @Test
+    @Test(dataProvider = "webdriver")
     public void loginSuccess(ManagedWebDriver managedWebDriver) {
         WebDriver webDriver = managedWebDriver.getWebDriver();
         webDriver.findElement(By.id("signin")).click();

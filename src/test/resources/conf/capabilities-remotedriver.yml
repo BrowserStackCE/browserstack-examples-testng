@@ -1,24 +1,13 @@
 testEndpoint: https://bstackdemo.com
 
-driverType: remoteDriver
+driverType: cloudDriver
 
-localDriver:
-  platforms:
-    - name: chrome
-      driverPath: /Users/anirudha/bin/chromedriver
-      capabilities:
-      #    -
-#    - name: safari
-#      driverPath:
-#      capabilities:
-#      #    -
-
-remoteDriver:
+cloudDriver:
   hubUrl: https://hub-cloud.browserstack.com/wd/hub
   user: BROWSERSTACK_USERNAME
   accessKey: BROWSERSTACK_ACCESSKEY
   localTunnel:
-    enable: false
+    enabled: false
     forceLocal: false
   common_capabilities:
     project:

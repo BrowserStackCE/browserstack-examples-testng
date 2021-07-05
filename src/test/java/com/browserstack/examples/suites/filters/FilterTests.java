@@ -10,22 +10,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.browserstack.examples.core.ManagedWebDriver;
 import com.browserstack.examples.core.config.WebDriverFactory;
-import com.browserstack.examples.core.listeners.WebDriverListener;
+import com.browserstack.examples.suites.BaseTest;
 
 /**
  * Test the filter capability on the BrowserStack Demo application.
  */
-@Listeners({WebDriverListener.class})
-public class FilterTests {
+public class FilterTests extends BaseTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FilterTests.class);
 
-    @Test
+    @Test(dataProvider = "webdriver")
     public void testSelectingAppleFilterDisplaysNoSamsungDevices(ManagedWebDriver managedWebDriver) throws Exception {
         /* =================== Prepare ================= */
         WebDriver webDriver = managedWebDriver.getWebDriver();
@@ -44,7 +42,7 @@ public class FilterTests {
         Assert.assertEquals(samsungDeviceCount, 0);
     }
 
-    @Test
+    @Test(dataProvider = "webdriver")
     public void testSelectingSamsungFilterDisplaysNoAppleDevices(ManagedWebDriver managedWebDriver) throws Exception {
         /* =================== Prepare ================= */
         WebDriver webDriver = managedWebDriver.getWebDriver();

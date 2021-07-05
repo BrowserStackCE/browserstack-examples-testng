@@ -13,6 +13,7 @@ import com.browserstack.examples.core.ManagedWebDriver;
 import com.browserstack.examples.suites.BaseTest;
 
 public class OfferTest extends BaseTest {
+
     private static final String LOCATION_SCRIPT_FORMAT = "navigator.geolocation.getCurrentPosition = function(success){\n" +
             "    var position = { \"coords\":{\"latitude\":\"%s\",\"longitude\":\"%s\"}};\n" +
             "    success(position);\n" +

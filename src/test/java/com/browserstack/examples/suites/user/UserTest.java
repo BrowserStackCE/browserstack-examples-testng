@@ -18,7 +18,7 @@ import com.browserstack.examples.suites.BaseTest;
 
 public class UserTest extends BaseTest {
 
-    @Test
+    @Test(dataProvider = "webdriver")
     public void loginImagesNotLoading(ManagedWebDriver managedWebDriver) {
         WebDriver webDriver = managedWebDriver.getWebDriver();
         webDriver.findElement(By.id("signin")).click();
@@ -33,7 +33,7 @@ public class UserTest extends BaseTest {
         Assert.assertTrue(!imageSrc.isEmpty());
     }
 
-    @Test
+    @Test(dataProvider = "webdriver")
     public void loginAndCheckExistingOrders(ManagedWebDriver managedWebDriver) {
         WebDriver webDriver = managedWebDriver.getWebDriver();
         webDriver.findElement(By.id("signin")).click();
@@ -48,7 +48,7 @@ public class UserTest extends BaseTest {
         Assertions.assertThat(webDriver.findElements(By.cssSelector(".order")).size()).isGreaterThanOrEqualTo(5);
     }
 
-    @Test
+    @Test(dataProvider = "webdriver")
     public void addToFavourites(ManagedWebDriver managedWebDriver) {
         WebDriver webDriver = managedWebDriver.getWebDriver();
         webDriver.findElement(By.id("signin")).click();

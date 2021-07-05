@@ -26,8 +26,8 @@
         <testng.parallel.config>classes</testng.parallel.config>
         <testng.parallel.threadCount>3</testng.parallel.threadCount>
         <testng.parallel.dataprovider.threadcount>4</testng.parallel.dataprovider.threadcount>
-        <capabilities.config.file>capabilities.yml</capabilities.config.file>
-        <testng.suiteXml>src/test/resources/conf/testng.xml</testng.suiteXml>
+        <capabilities.config.file>conf/capabilities.yml</capabilities.config.file>
+        <testng.suiteXml>src/test/resources/testng.xml</testng.suiteXml>
     </properties>
 
     <dependencies>
@@ -111,6 +111,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${testng.suiteXml}</suiteXmlFile>
+                    </suiteXmlFiles>
                     <systemPropertyVariables>
                         <capabilities.config>${capabilities.config.file}</capabilities.config>
                     </systemPropertyVariables>
@@ -141,7 +144,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <capabilities.config.file>capabilities-remotedriver.yml</capabilities.config.file>
+                <capabilities.config.file>conf/capabilities-remotedriver.yml</capabilities.config.file>
                 <testng.parallel.config>methods</testng.parallel.config>
                 <testng.parallel.threadCount>4</testng.parallel.threadCount>
                 <testng.parallel.dataprovider.threadcount>5</testng.parallel.dataprovider.threadcount>
@@ -151,7 +154,7 @@
         <profile>
             <id>localdriver</id>
             <properties>
-                <capabilities.config.file>capabilities-localdriver.yml</capabilities.config.file>
+                <capabilities.config.file>conf/capabilities-localdriver.yml</capabilities.config.file>
             </properties>
         </profile>
     </profiles>

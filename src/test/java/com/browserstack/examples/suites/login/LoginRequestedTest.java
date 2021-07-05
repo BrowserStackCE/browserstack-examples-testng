@@ -12,7 +12,7 @@ import com.browserstack.examples.suites.BaseTest;
 
 public class LoginRequestedTest extends BaseTest {
 
-    @Test
+    @Test(dataProvider = "webdriver")
     public void navigateFavoritesLoginRequested(ManagedWebDriver managedWebDriver) {
         WebDriver webDriver = managedWebDriver.getWebDriver();
         WebDriverWait wait = new WebDriverWait(webDriver, 25);

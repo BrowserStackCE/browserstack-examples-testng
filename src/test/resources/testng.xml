@@ -5,10 +5,10 @@
         <classes>
             <class name="com.browserstack.examples.suites.e2e.OrderTest"/>
             <class name="com.browserstack.examples.suites.login.LoginTest"/>
-            <class name="com.browserstack.examples.suites.login.LoginFailTest"/>
-            <class name="com.browserstack.examples.suites.offers.OfferTest"/>
-            <class name="com.browserstack.examples.suites.product.FilterTest"/>
-            <class name="com.browserstack.examples.suites.user.UserTest"/>
+<!--            <class name="com.browserstack.examples.suites.login.LoginFailTest"/>-->
+<!--            <class name="com.browserstack.examples.suites.offers.OfferTest"/>-->
+<!--            <class name="com.browserstack.examples.suites.product.FilterTest"/>-->
+<!--            <class name="com.browserstack.examples.suites.user.UserTest"/>-->
         </classes>
     </test>
 </suite>

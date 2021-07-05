@@ -18,7 +18,7 @@ import com.browserstack.examples.suites.CsvUtil;
 
 public class FilterTest extends BaseTest {
 
-    @Test
+    @Test(dataProvider = "webdriver")
     public void filterLowestToHighestTest(ManagedWebDriver managedWebDriver) {
         WebDriver webDriver = managedWebDriver.getWebDriver();
         Select sortSelect = new Select(webDriver.findElement(By.cssSelector(".sort select")));
@@ -35,7 +35,7 @@ public class FilterTest extends BaseTest {
         Assertions.assertThat(values).isSorted();
     }
 
-    @Test
+    @Test(dataProvider = "webdriver")
     public void filterVendorTest(ManagedWebDriver managedWebDriver) throws Exception {
         WebDriver webDriver = managedWebDriver.getWebDriver();
         WebDriverWait wait = new WebDriverWait(webDriver, 25);
