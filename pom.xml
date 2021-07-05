@@ -13,347 +13,151 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <aspectj.version>1.9.5</aspectj.version>
-        <allure-maven.version>2.10.0</allure-maven.version>
-        <testng.parallel>classes</testng.parallel>
-        <testng.threadCount>5</testng.threadCount>
+
+        <testng.version>7.1.0</testng.version>
+        <browserstack.local.version>1.0.6</browserstack.local.version>
+        <selenium.version>3.141.59</selenium.version>
+        <jackson.version>2.12.2</jackson.version>
+        <lombok.version>1.18.12</lombok.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <logback.version>1.2.3</logback.version>
+        <commons.lang.version>3.11</commons.lang.version>
+
+        <testng.parallel.config>classes</testng.parallel.config>
+        <testng.parallel.threadCount>3</testng.parallel.threadCount>
+        <testng.parallel.dataprovider.threadcount>4</testng.parallel.dataprovider.threadcount>
+        <capabilities.config.file>conf/capabilities.yml</capabilities.config.file>
+        <testng.suiteXml>src/test/resources/testng.xml</testng.suiteXml>
     </properties>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.10.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
-                <configuration>
-                    <systemPropertyVariables>
-                        <environment>on-prem</environment>
-                    </systemPropertyVariables>
-                    <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                    </argLine>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-    </build>
 
     <dependencies>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.30</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.30</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
-        </dependency>
-        <dependency>
-            <groupId>com.browserstack</groupId>
-            <artifactId>browserstack-local-java</artifactId>
-            <version>1.0.6</version>
-        </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.1.0</version>
+            <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>2.13.8</version>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+            <scope>test</scope>
         </dependency>
+
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.18.0</version>
+            <groupId>com.browserstack</groupId>
+            <artifactId>browserstack-local-java</artifactId>
+            <version>${browserstack.local.version}</version>
+            <scope>test</scope>
         </dependency>
+
         <dependency>
-            <groupId>com.googlecode.json-simple</groupId>
-            <artifactId>json-simple</artifactId>
-            <version>1.1.1</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.lang.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>${jackson.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.opencsv</groupId>
             <artifactId>opencsv</artifactId>
             <version>5.4</version>
+            <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.18.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${testng.suiteXml}</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <capabilities.config>${capabilities.config.file}</capabilities.config>
+                    </systemPropertyVariables>
+                    <properties>
+                        <property>
+                            <name>parallel</name>
+                            <value>${testng.parallel.config}</value>
+                        </property>
+                        <property>
+                            <name>threadcount</name>
+                            <value>${testng.parallel.threadCount}</value>
+                        </property>
+                        <property>
+                            <name>dataproviderthreadcount</name>
+                            <value>${testng.parallel.dataprovider.threadcount}</value>
+                        </property>
+                    </properties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <profiles>
+
         <profile>
-            <id>on-prem</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <includes>
-                                <include>
-                                    com.browserstack.test.suites.e2e.OrderTest
-                                </include>
-                            </includes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
+            <id>remotedriver</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <capabilities.config.file>conf/capabilities-remotedriver.yml</capabilities.config.file>
+                <testng.parallel.config>methods</testng.parallel.config>
+                <testng.parallel.threadCount>4</testng.parallel.threadCount>
+                <testng.parallel.dataprovider.threadcount>5</testng.parallel.dataprovider.threadcount>
+            </properties>
         </profile>
+
         <profile>
-            <id>on-prem-suite</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>on-prem-suite-parallel</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <parallel>${testng.parallel}</parallel>
-                            <threadCount>${testng.threadCount}</threadCount>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>docker</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <environment>docker</environment>
-                            </systemPropertyVariables>
-                            <includes>
-                                <include>
-                                    com.browserstack.test.suites.e2e.OrderTest
-                                </include>
-                            </includes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>docker-parallel</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <environment>docker</environment>
-                            </systemPropertyVariables>
-                            <parallel>${testng.parallel}</parallel>
-                            <threadCount>${testng.threadCount}</threadCount>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/conf/runners/testng.xml</suiteXmlFile>
-                            </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>bstack-single</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <environment>remote</environment>
-                                <testtype>single</testtype>
-                            </systemPropertyVariables>
-                            <properties>
-                                <property>
-                                    <name>listener</name>
-                                    <value>com.browserstack.test.utils.BrowserstackTestStatusListener</value>
-                                </property>
-                            </properties>
-                            <includes>
-                                <include>
-                                    com.browserstack.test.suites.e2e.OrderTest
-                                </include>
-                            </includes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>bstack-local</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <environment>remote</environment>
-                                <testtype>local</testtype>
-                            </systemPropertyVariables>
-                            <properties>
-                                <property>
-                                    <name>listener</name>
-                                    <value>com.browserstack.test.utils.BrowserstackTestStatusListener</value>
-                                </property>
-                            </properties>
-                            <includes>
-                                <include>
-                                    com.browserstack.test.suites.e2e.OrderTest
-                                </include>
-                            </includes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>bstack-local-parallel</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <environment>remote</environment>
-                                <testtype>local</testtype>
-                            </systemPropertyVariables>
-                            <properties>
-                                <property>
-                                    <name>listener</name>
-                                    <value>com.browserstack.test.utils.BrowserstackTestStatusListener</value>
-                                </property>
-                            </properties>
-                            <parallel>${testng.parallel}</parallel>
-                            <threadCount>${testng.threadCount}</threadCount>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>bstack-local-parallel-browsers</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <environment>remote</environment>
-                                <testtype>local</testtype>
-                            </systemPropertyVariables>
-                            <properties>
-                                <property>
-                                    <name>listener</name>
-                                    <value>com.browserstack.test.utils.BrowserstackTestStatusListener</value>
-                                </property>
-                            </properties>
-                            <parallel>${testng.parallel}</parallel>
-                            <threadCount>${testng.threadCount}</threadCount>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/conf/runners/testng-browserstack-parallel.xml
-                                </suiteXmlFile>
-                            </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>bstack-parallel</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <environment>remote</environment>
-                                <testtype>parallel</testtype>
-                            </systemPropertyVariables>
-                            <properties>
-                                <property>
-                                    <name>listener</name>
-                                    <value>com.browserstack.test.utils.BrowserstackTestStatusListener</value>
-                                </property>
-                            </properties>
-                            <parallel>${testng.parallel}</parallel>
-                            <threadCount>${testng.threadCount}</threadCount>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>bstack-parallel-browsers</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <environment>remote</environment>
-                                <testtype>parallel</testtype>
-                            </systemPropertyVariables>
-                            <properties>
-                                <property>
-                                    <name>listener</name>
-                                    <value>com.browserstack.test.utils.BrowserstackTestStatusListener</value>
-                                </property>
-                            </properties>
-                            <parallel>${testng.parallel}</parallel>
-                            <threadCount>${testng.threadCount}</threadCount>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/conf/runners/testng-browserstack-parallel.xml
-                                </suiteXmlFile>
-                            </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
+            <id>localdriver</id>
+            <properties>
+                <capabilities.config.file>conf/capabilities-localdriver.yml</capabilities.config.file>
+            </properties>
         </profile>
     </profiles>
+
+
 </project>

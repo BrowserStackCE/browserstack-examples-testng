@@ -1,0 +1,47 @@
+testEndpoint: https://bstackdemo.com
+
+driverType: cloudDriver
+
+cloudDriver:
+  hubUrl: https://hub-cloud.browserstack.com/wd/hub
+  user: BROWSERSTACK_USERNAME
+  accessKey: BROWSERSTACK_ACCESSKEY
+  localTunnel:
+    enabled: false
+    forceLocal: false
+  common_capabilities:
+    project:
+    buildPrefix: browserstack-examples-testng
+    capabilities:
+      browserstack.debug: true
+      browserstack.networkLogs: true
+      browserstack.console: debug
+  platforms:
+    - name: Win10_IE11
+      os: Windows
+      os_version: '10'
+      browser: Internet Explorer
+      browser_version: '11.0'
+    - name: Win10_Chrome_latest
+      os: Windows
+      os_version: '10'
+      browser: Chrome
+      browser_version: latest-1
+#    - name: bigSur_chrome_latest
+#      os: OS X
+#      os_version: Big Sur
+#      browser: Chrome
+#      browser_version: latest
+    - name: catalina_safari13
+      os: OS X
+      os_version: Catalina
+      browser: Safari
+      browser_version: '13.0'
+    - name: iphone12
+      os_version: 14
+      device: iPhone 12
+      real_mobile: true
+    - name: galaxy_s20
+      os_version: '10.0'
+      device: Samsung Galaxy S20
+      real_mobile: true
