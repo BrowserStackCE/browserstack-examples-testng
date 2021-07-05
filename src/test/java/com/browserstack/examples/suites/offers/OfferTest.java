@@ -21,7 +21,7 @@ public class OfferTest extends BaseTest {
     private static final String OFFER_LATITUDE = "1";
     private static final String OFFER_LONGITUDE = "103";
 
-    @Test
+    @Test(dataProvider = "webdriver")
     public void checkOffersInSingapore(ManagedWebDriver managedWebDriver) {
         WebDriver webDriver = managedWebDriver.getWebDriver();
         WebDriverWait wait = new WebDriverWait(webDriver, 25);

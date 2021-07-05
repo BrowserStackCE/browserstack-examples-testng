@@ -27,11 +27,11 @@ cloudDriver:
       os_version: '10'
       browser: Chrome
       browser_version: latest-1
-    - name: bigSur_chrome_latest
-      os: OS X
-      os_version: Big Sur
-      browser: Chrome
-      browser_version: latest
+#    - name: bigSur_chrome_latest
+#      os: OS X
+#      os_version: Big Sur
+#      browser: Chrome
+#      browser_version: latest
     - name: catalina_safari13
       os: OS X
       os_version: Catalina
