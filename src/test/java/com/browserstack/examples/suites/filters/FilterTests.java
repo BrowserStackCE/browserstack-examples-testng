@@ -24,9 +24,8 @@ public class FilterTests extends BaseTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(FilterTests.class);
 
     @Test(dataProvider = "webdriver")
-    public void testSelectingAppleFilterDisplaysNoSamsungDevices(ManagedWebDriver managedWebDriver) throws Exception {
+    public void testSelectingAppleFilterDisplaysNoSamsungDevices(WebDriver webDriver) throws Exception {
         /* =================== Prepare ================= */
-        WebDriver webDriver = managedWebDriver.getWebDriver();
         WebDriverWait wait = new WebDriverWait(webDriver, 5);
         webDriver.get(WebDriverFactory.getInstance().getTestEndpoint());
 

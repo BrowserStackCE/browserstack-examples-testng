@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
-import com.browserstack.examples.core.ManagedWebDriver;
 import com.browserstack.examples.core.config.DriverType;
 import com.browserstack.examples.core.config.WebDriverFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -34,14 +33,14 @@ public class WebDriverListener extends TestListenerAdapter {
     @Override
     public void onTestSuccess(ITestResult testResult) {
         super.onTestSuccess(testResult);
-        ManagedWebDriver managedWebDriver = getWebDriverFromParameters(testResult.getParameters());
-        markAndCloseWebDriver(managedWebDriver, "passed", "Test Passed");
+        WebDriver webDriver = getWebDriverFromParameters(testResult.getParameters());
+        markAndCloseWebDriver(webDriver, "passed", "Test Passed");
     }
 
     @Override
     public void onTestFailure(ITestResult testResult) {
         super.onTestFailure(testResult);
-        ManagedWebDriver webDriver = getWebDriverFromParameters(testResult.getParameters());
+        WebDriver webDriver = getWebDriverFromParameters(testResult.getParameters());
         markAndCloseWebDriver(webDriver, "failed", testResult.getThrowable().toString());
     }
 
@@ -50,18 +49,17 @@ public class WebDriverListener extends TestListenerAdapter {
     }
 
 
-    private ManagedWebDriver getWebDriverFromParameters(Object[] parameters) {
-        Optional<Object> webDriverParam = Arrays.stream(parameters).filter(p -> p instanceof ManagedWebDriver).findFirst();
-        return (ManagedWebDriver) webDriverParam.orElse(null);
+    private WebDriver getWebDriverFromParameters(Object[] parameters) {
+        Optional<Object> webDriverParam = Arrays.stream(parameters).filter(p -> p instanceof WebDriver).findFirst();
+        return (WebDriver) webDriverParam.orElse(null);
     }
 
 
-    private void markAndCloseWebDriver(ManagedWebDriver managedWebDriver, String status, String reason) {
-        if (managedWebDriver == null) {
+    private void markAndCloseWebDriver(WebDriver webDriver, String status, String reason) {
+        if (webDriver == null) {
             return;
         }
 
-        WebDriver webDriver = managedWebDriver.getWebDriver();
         try {
             if (webDriver instanceof RemoteWebDriver
                   && WebDriverFactory.getInstance().getDriverType() == DriverType.cloudDriver) {

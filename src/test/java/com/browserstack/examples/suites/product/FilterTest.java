@@ -12,15 +12,13 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-import com.browserstack.examples.core.ManagedWebDriver;
 import com.browserstack.examples.suites.BaseTest;
 import com.browserstack.examples.suites.CsvUtil;
 
 public class FilterTest extends BaseTest {
 
     @Test(dataProvider = "webdriver")
-    public void filterLowestToHighestTest(ManagedWebDriver managedWebDriver) {
-        WebDriver webDriver = managedWebDriver.getWebDriver();
+    public void filterLowestToHighestTest(WebDriver webDriver) {
         Select sortSelect = new Select(webDriver.findElement(By.cssSelector(".sort select")));
         sortSelect.selectByValue("lowestprice");
 
@@ -36,8 +34,7 @@ public class FilterTest extends BaseTest {
     }
 
     @Test(dataProvider = "webdriver")
-    public void filterVendorTest(ManagedWebDriver managedWebDriver) throws Exception {
-        WebDriver webDriver = managedWebDriver.getWebDriver();
+    public void filterVendorTest(WebDriver webDriver) throws Exception {
         WebDriverWait wait = new WebDriverWait(webDriver, 25);
         webDriver.findElement(By.cssSelector("input[value='Apple'] + span")).click();
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".products-found"), "9 Product(s) found."));
