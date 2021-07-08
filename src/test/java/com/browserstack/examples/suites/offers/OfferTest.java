@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.browserstack.examples.core.ManagedWebDriver;
 import com.browserstack.examples.suites.BaseTest;
 
 public class OfferTest extends BaseTest {
@@ -22,8 +21,7 @@ public class OfferTest extends BaseTest {
     private static final String OFFER_LONGITUDE = "103";
 
     @Test(dataProvider = "webdriver")
-    public void checkOffersInSingapore(ManagedWebDriver managedWebDriver) {
-        WebDriver webDriver = managedWebDriver.getWebDriver();
+    public void checkOffersInSingapore(WebDriver webDriver) {
         WebDriverWait wait = new WebDriverWait(webDriver, 25);
         String locationScript = String.format(LOCATION_SCRIPT_FORMAT, OFFER_LATITUDE, OFFER_LONGITUDE);
         ((JavascriptExecutor) webDriver).executeScript(locationScript);

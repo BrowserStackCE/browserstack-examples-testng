@@ -13,14 +13,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.browserstack.examples.core.ManagedWebDriver;
 import com.browserstack.examples.suites.BaseTest;
 
 public class UserTest extends BaseTest {
 
     @Test(dataProvider = "webdriver")
-    public void loginImagesNotLoading(ManagedWebDriver managedWebDriver) {
-        WebDriver webDriver = managedWebDriver.getWebDriver();
+    public void loginImagesNotLoading(WebDriver webDriver) {
         webDriver.findElement(By.id("signin")).click();
         webDriver.findElement(By.cssSelector("#username input")).sendKeys("image_not_loading_user" + Keys.ENTER);
         webDriver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
@@ -34,8 +32,7 @@ public class UserTest extends BaseTest {
     }
 
     @Test(dataProvider = "webdriver")
-    public void loginAndCheckExistingOrders(ManagedWebDriver managedWebDriver) {
-        WebDriver webDriver = managedWebDriver.getWebDriver();
+    public void loginAndCheckExistingOrders(WebDriver webDriver) {
         webDriver.findElement(By.id("signin")).click();
         webDriver.findElement(By.cssSelector("#username input")).sendKeys("existing_orders_user" + Keys.ENTER);
         webDriver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
@@ -49,8 +46,7 @@ public class UserTest extends BaseTest {
     }
 
     @Test(dataProvider = "webdriver")
-    public void addToFavourites(ManagedWebDriver managedWebDriver) {
-        WebDriver webDriver = managedWebDriver.getWebDriver();
+    public void addToFavourites(WebDriver webDriver) {
         webDriver.findElement(By.id("signin")).click();
         webDriver.findElement(By.cssSelector("#username input")).sendKeys("demouser" + Keys.ENTER);
         webDriver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);

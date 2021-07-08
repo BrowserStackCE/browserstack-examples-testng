@@ -2,7 +2,6 @@ package com.browserstack.examples.suites.login;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,34 +12,28 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.browserstack.examples.core.ManagedWebDriver;
+import com.browserstack.examples.core.LazyInitWebDriverIterator;
+import com.browserstack.examples.core.config.WebDriverFactory;
 import com.browserstack.examples.suites.BaseTest;
 
 public class LoginDataDrivenTest extends BaseTest {
 
     @DataProvider(name = "login_error_messages")
     public Iterator<Object[]> data(Method testMethod) {
-        Object[][] loginErrorMessages = new Object[][]{
-                {"locked_user", "testingisfun99", "Your account has been locked."},
-                {"fav_user", "wrongpass", "Invalid Password"},
-                {"helloworld", "testingisfun99", "Invalid Username"}
-        };
-        List<ManagedWebDriver> managedWebDriverList = createManagedWebDrivers(testMethod.getName());
+        List<Object[]> loginErrorMessages = new ArrayList<Object[]>() {{
+            add(new Object[]{"locked_user", "testingisfun99", "Your account has been locked."});
+            add(new Object[]{"fav_user", "wrongpass", "Invalid Password"});
+            add(new Object[]{"helloworld", "testingisfun99", "Invalid Username"});
+        }};
 
-        List<Object[]> testParams = new ArrayList<>();
-        for (Object[] lem : loginErrorMessages) {
-            for (ManagedWebDriver m : managedWebDriverList) {
-                Object[] paramRow = Arrays.copyOf(lem, lem.length + 1);
-                paramRow[lem.length] = m;
-                testParams.add(paramRow);
-            }
-        }
-        return testParams.iterator();
+        LazyInitWebDriverIterator lazyInitWebDriverIterator = new LazyInitWebDriverIterator(testMethod.getName(),
+                                                                                            WebDriverFactory.getInstance().getPlatforms(),
+                                                                                            loginErrorMessages);
+        return lazyInitWebDriverIterator;
     }
 
     @Test(dataProvider = "login_error_messages")
-    public void validateErrors(String username, String password, String error, ManagedWebDriver managedWebDriver) {
-        WebDriver webDriver = managedWebDriver.getWebDriver();
+    public void validateErrors(String username, String password, String error, WebDriver webDriver) {
 
         webDriver.findElement(By.id("signin")).click();
         webDriver.findElement(By.cssSelector("#username input")).sendKeys(username + Keys.ENTER);

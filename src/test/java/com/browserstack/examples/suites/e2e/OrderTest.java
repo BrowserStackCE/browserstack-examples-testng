@@ -12,7 +12,7 @@ import com.browserstack.examples.suites.BaseTest;
 
 public class OrderTest extends BaseTest {
 
-    @Test(dataProvider = "webdriver")
+    @Test(dataProvider = "managedwebdriver")
     public void placeOrder(ManagedWebDriver managedWebDriver) {
         WebDriver webDriver = managedWebDriver.getWebDriver();
         ConfirmationPage page = new HomePage(webDriver)

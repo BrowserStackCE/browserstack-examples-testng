@@ -6,14 +6,12 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.browserstack.examples.core.ManagedWebDriver;
 import com.browserstack.examples.suites.BaseTest;
 
 public class LoginFailTest extends BaseTest {
 
     @Test(dataProvider = "webdriver")
-    public void loginSuccess(ManagedWebDriver managedWebDriver) {
-        WebDriver webDriver = managedWebDriver.getWebDriver();
+    public void loginSuccess(WebDriver webDriver) {
         webDriver.findElement(By.id("signin")).click();
         webDriver.findElement(By.cssSelector("#username input")).sendKeys("fav_user" + Keys.ENTER);
         webDriver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
