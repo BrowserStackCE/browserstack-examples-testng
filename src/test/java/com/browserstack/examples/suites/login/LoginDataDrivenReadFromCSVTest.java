@@ -12,10 +12,10 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.browserstack.examples.core.LazyInitWebDriverIterator;
-import com.browserstack.examples.core.config.WebDriverFactory;
 import com.browserstack.examples.suites.BaseTest;
 import com.opencsv.CSVReader;
+import io.github.webdriver.core.WebDriverFactory;
+import io.github.webdriver.testng.LazyInitWebDriverIterator;
 
 public class LoginDataDrivenReadFromCSVTest extends BaseTest {
 

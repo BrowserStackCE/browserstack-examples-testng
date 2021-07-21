@@ -12,9 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.browserstack.examples.core.ManagedWebDriver;
-import com.browserstack.examples.core.config.WebDriverFactory;
 import com.browserstack.examples.suites.BaseTest;
+import io.github.webdriver.core.WebDriverFactory;
 
 /**
  * Test the filter capability on the BrowserStack Demo application.
@@ -42,9 +41,8 @@ public class FilterTests extends BaseTest {
     }
 
     @Test(dataProvider = "webdriver")
-    public void testSelectingSamsungFilterDisplaysNoAppleDevices(ManagedWebDriver managedWebDriver) throws Exception {
+    public void testSelectingSamsungFilterDisplaysNoAppleDevices(WebDriver webDriver) throws Exception {
         /* =================== Prepare ================= */
-        WebDriver webDriver = managedWebDriver.getWebDriver();
         WebDriverWait wait = new WebDriverWait(webDriver, 5);
         webDriver.get(WebDriverFactory.getInstance().getTestEndpoint());
 

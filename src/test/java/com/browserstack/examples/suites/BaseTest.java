@@ -8,11 +8,11 @@ import java.util.List;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 
-import com.browserstack.examples.core.LazyInitWebDriverIterator;
-import com.browserstack.examples.core.ManagedWebDriver;
-import com.browserstack.examples.core.config.Platform;
-import com.browserstack.examples.core.config.WebDriverFactory;
-import com.browserstack.examples.core.listeners.WebDriverListener;
+import io.github.webdriver.config.Platform;
+import io.github.webdriver.core.WebDriverFactory;
+import io.github.webdriver.testng.LazyInitWebDriverIterator;
+import io.github.webdriver.testng.ManagedWebDriver;
+import io.github.webdriver.testng.listeners.WebDriverListener;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,10 +24,9 @@ public abstract class BaseTest {
 
     @DataProvider(name="webdriver", parallel = true)
     public static Iterator<Object[]> provideWebDrivers(Method testMethod) {
-        LazyInitWebDriverIterator lazyInitWebDriverIterator = new LazyInitWebDriverIterator(testMethod.getName(),
-                                                                                            WebDriverFactory.getInstance().getPlatforms(),
-                                                                                            new Object[0]);
-        return lazyInitWebDriverIterator;
+        return new LazyInitWebDriverIterator(testMethod.getName(),
+                                             WebDriverFactory.getInstance().getPlatforms(),
+                                             new Object[0]);
     }
 
     @DataProvider(name="managedwebdriver", parallel = true)

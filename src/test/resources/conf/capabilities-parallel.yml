@@ -4,6 +4,11 @@ testEndpoint: https://bstackdemo.com
 
 driverType: cloudDriver
 
+onPremDriver:
+  platforms:
+    - name:
+      driverPath: src/test/resources/chromedriver
+
 cloudDriver:
   hubUrl: https://hub-cloud.browserstack.com/wd/hub
   user: BROWSERSTACK_USERNAME

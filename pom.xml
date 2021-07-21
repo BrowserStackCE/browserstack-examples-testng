@@ -17,11 +17,8 @@
         <testng.version>7.1.0</testng.version>
         <browserstack.local.version>1.0.6</browserstack.local.version>
         <selenium.version>3.141.59</selenium.version>
-        <jackson.version>2.12.2</jackson.version>
-        <lombok.version>1.18.12</lombok.version>
         <slf4j.version>1.7.25</slf4j.version>
         <logback.version>1.2.3</logback.version>
-        <commons.lang.version>3.11</commons.lang.version>
 
         <testng.parallel.config>classes</testng.parallel.config>
         <testng.parallel.threadCount>3</testng.parallel.threadCount>
@@ -54,23 +51,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons.lang.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-yaml</artifactId>
-            <version>${jackson.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
+            <groupId>io.github.webdriver.testng</groupId>
+            <artifactId>webdriver-framework-testng</artifactId>
+            <version>1.0-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
 
@@ -87,6 +70,7 @@
             <version>${logback.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>com.opencsv</groupId>
             <artifactId>opencsv</artifactId>
