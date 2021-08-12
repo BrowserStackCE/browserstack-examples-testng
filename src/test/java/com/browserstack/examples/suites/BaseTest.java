@@ -8,11 +8,11 @@ import java.util.List;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 
-import io.github.webdriver.config.Platform;
-import io.github.webdriver.core.WebDriverFactory;
-import io.github.webdriver.testng.LazyInitWebDriverIterator;
-import io.github.webdriver.testng.ManagedWebDriver;
-import io.github.webdriver.testng.listeners.WebDriverListener;
+import com.browserstack.webdriver.config.Platform;
+import com.browserstack.webdriver.core.WebDriverFactory;
+import com.browserstack.webdriver.testng.LazyInitWebDriverIterator;
+import com.browserstack.webdriver.testng.ManagedWebDriver;
+import com.browserstack.webdriver.testng.listeners.WebDriverListener;
 
 /**
  * Created with IntelliJ IDEA.

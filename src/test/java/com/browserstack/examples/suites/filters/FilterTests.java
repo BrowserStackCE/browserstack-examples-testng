@@ -13,7 +13,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.browserstack.examples.suites.BaseTest;
-import io.github.webdriver.core.WebDriverFactory;
+import com.browserstack.webdriver.core.WebDriverFactory;
 
 /**
  * Test the filter capability on the BrowserStack Demo application.

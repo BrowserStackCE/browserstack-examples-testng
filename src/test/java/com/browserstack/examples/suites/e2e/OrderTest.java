@@ -8,7 +8,7 @@ import com.browserstack.app.pages.ConfirmationPage;
 import com.browserstack.app.pages.HomePage;
 import com.browserstack.app.pages.OrdersPage;
 import com.browserstack.examples.suites.BaseTest;
-import io.github.webdriver.testng.ManagedWebDriver;
+import com.browserstack.webdriver.testng.ManagedWebDriver;
 
 public class OrderTest extends BaseTest {
 

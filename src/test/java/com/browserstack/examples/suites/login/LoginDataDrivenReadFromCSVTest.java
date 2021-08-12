@@ -14,8 +14,8 @@ import org.testng.annotations.Test;
 
 import com.browserstack.examples.suites.BaseTest;
 import com.opencsv.CSVReader;
-import io.github.webdriver.core.WebDriverFactory;
-import io.github.webdriver.testng.LazyInitWebDriverIterator;
+import com.browserstack.webdriver.core.WebDriverFactory;
+import com.browserstack.webdriver.testng.LazyInitWebDriverIterator;
 
 public class LoginDataDrivenReadFromCSVTest extends BaseTest {
 

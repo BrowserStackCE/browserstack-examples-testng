@@ -51,7 +51,7 @@
         </dependency>
 
         <dependency>
-            <groupId>io.github.webdriver.testng</groupId>
+            <groupId>com.browserstack.webdriver.testng</groupId>
             <artifactId>webdriver-framework-testng</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>test</scope>
