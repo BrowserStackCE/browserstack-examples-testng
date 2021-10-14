@@ -33,14 +33,20 @@ public class TestBase {
     private static final long TIMESTAMP = new Date().getTime();
     private Local local;
     protected WebDriverWait wait;
+    private String environment;
 
     public WebDriver getDriver() {
         return driver.get();
     }
 
+    public boolean isRemoteExecution() {
+        return environment.equalsIgnoreCase("remote");
+    }
+
     @BeforeMethod
     @Parameters(value = {"environment", "testType", "env_cap_id"})
     public void setUp(@Optional("on-prem") String environment, @Optional("single") String testType, @Optional("0") int env_cap_id, Method m) throws Exception {
+        this.environment = environment;
         JSONParser parser = new JSONParser();
         JSONObject testCapsConfig = (JSONObject) parser.parse(new FileReader(PATH_TO_TEST_CAPS_JSON));
         String url = (String) testCapsConfig.get("application_endpoint");
