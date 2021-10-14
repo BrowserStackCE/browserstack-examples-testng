@@ -4,18 +4,16 @@ import com.browserstack.app.pages.ConfirmationPage;
 import com.browserstack.app.pages.HomePage;
 import com.browserstack.app.pages.OrdersPage;
 import com.browserstack.test.suites.TestBase;
-import org.assertj.core.api.SoftAssertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class OrderTest extends TestBase {
 
     @Test
     public void placeOrder() {
-        SoftAssertions softly = new SoftAssertions();
+        SoftAssert softly = new SoftAssert();
         ConfirmationPage page = new HomePage(getDriver())
                 .navigateToSignIn()
                 .loginWith("fav_user", "testingisfun99")
@@ -29,12 +27,12 @@ public class OrderTest extends TestBase {
 
         if (isRemoteExecution()) {
             page.downloadPDF();
-            softly.assertThat(downloadedFileExists("confirmation.pdf")).as("file confirmation.pdf exists").isTrue();
+            softly.assertTrue(downloadedFileExists("confirmation.pdf"));
         }
 
         OrdersPage ordersPage = page.continueShopping().navigateToOrders();
 
-        softly.assertThat(ordersPage.getItemsFromOrder()).isEqualTo(3);
+        softly.assertEquals(ordersPage.getItemsFromOrder(), 3);
         softly.assertAll();
     }
 
