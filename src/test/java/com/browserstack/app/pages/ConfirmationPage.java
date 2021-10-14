@@ -11,6 +11,9 @@ public class ConfirmationPage extends BasePage {
     @FindBy(css = ".continueButtonContainer button")
     private WebElement continueShoppingButton;
 
+    @FindBy(id = "downloadpdf")
+    private WebElement downloadpdf;
+
     private By confirmationMessage = By.id("confirmation-message");
 
     public ConfirmationPage(WebDriver driver) {
@@ -24,5 +27,9 @@ public class ConfirmationPage extends BasePage {
     public HomePage continueShopping() {
         continueShoppingButton.click();
         return new HomePage(driver);
+    }
+
+    public void downloadPDF() {
+        downloadpdf.click();
     }
 }

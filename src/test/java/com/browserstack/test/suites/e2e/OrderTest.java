@@ -4,7 +4,9 @@ import com.browserstack.app.pages.ConfirmationPage;
 import com.browserstack.app.pages.HomePage;
 import com.browserstack.app.pages.OrdersPage;
 import com.browserstack.test.suites.TestBase;
+import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -13,6 +15,7 @@ public class OrderTest extends TestBase {
 
     @Test
     public void placeOrder() {
+        SoftAssertions softly = new SoftAssertions();
         ConfirmationPage page = new HomePage(getDriver())
                 .navigateToSignIn()
                 .loginWith("fav_user", "testingisfun99")
@@ -24,9 +27,19 @@ public class OrderTest extends TestBase {
                 .enterShippingDetails("firstname", "lastname", "address", "state", "12345");
         Assert.assertTrue(page.isConfirmationDisplayed());
 
-        OrdersPage ordersPage = page.continueShopping().navigateToOrders();
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".spinner")));
+        if (isRemoteExecution()) {
+            page.downloadPDF();
+            softly.assertThat(downloadedFileExists("confirmation.pdf")).as("file confirmation.pdf exists").isTrue();
+        }
 
-        Assert.assertEquals(ordersPage.getItemsFromOrder(), 3);
+        OrdersPage ordersPage = page.continueShopping().navigateToOrders();
+
+        softly.assertThat(ordersPage.getItemsFromOrder()).isEqualTo(3);
+        softly.assertAll();
+    }
+
+    private boolean downloadedFileExists(String fileName) {
+        JavascriptExecutor jse = (JavascriptExecutor) getDriver();
+        return Boolean.parseBoolean(jse.executeScript("browserstack_executor: {\"action\": \"fileExists\", \"arguments\": {\"fileName\": \"" + fileName + "\"}}").toString());
     }
 }

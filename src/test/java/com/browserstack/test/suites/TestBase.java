@@ -7,6 +7,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -33,14 +35,20 @@ public class TestBase {
     private static final long TIMESTAMP = new Date().getTime();
     private Local local;
     protected WebDriverWait wait;
+    private String environment;
 
     public WebDriver getDriver() {
         return driver.get();
     }
 
+    public boolean isRemoteExecution() {
+        return environment.equalsIgnoreCase("remote");
+    }
+
     @BeforeMethod
     @Parameters(value = {"environment", "testType", "env_cap_id"})
     public void setUp(@Optional("on-prem") String environment, @Optional("single") String testType, @Optional("0") int env_cap_id, Method m) throws Exception {
+        this.environment = environment;
         JSONParser parser = new JSONParser();
         JSONObject testCapsConfig = (JSONObject) parser.parse(new FileReader(PATH_TO_TEST_CAPS_JSON));
         String url = (String) testCapsConfig.get("application_endpoint");
@@ -60,6 +68,9 @@ public class TestBase {
             DesiredCapabilities caps = new DesiredCapabilities();
             caps.merge(new DesiredCapabilities(commonCapabilities));
             caps.merge(new DesiredCapabilities(envCapabilities));
+            if (envCapabilities.get("browser").toLowerCase().equals("firefox")) {
+                caps.setCapability(FirefoxDriver.PROFILE, createFirefoxProfile());
+            }
             if (testType.equals("local")) {
                 url = (String) envs.get("application_endpoint");
                 caps.merge(new DesiredCapabilities(localCapabilities));
@@ -119,6 +130,22 @@ public class TestBase {
             options.put("localIdentifier", uuid.toString());
             local.start(options);
         }
+    }
+
+    private FirefoxProfile createFirefoxProfile() {
+        FirefoxProfile profile = new FirefoxProfile();
+        profile.setPreference("browser.download.folderList", 1);
+        profile.setPreference("browser.download.manager.showWhenStarting", false);
+        profile.setPreference("browser.download.manager.focusWhenStarting", false);
+        profile.setPreference("browser.download.useDownloadDir", true);
+        profile.setPreference("browser.helperApps.alwaysAsk.force", false);
+        profile.setPreference("browser.download.manager.alertOnEXEOpen", false);
+        profile.setPreference("browser.download.manager.closeWhenDone", true);
+        profile.setPreference("browser.download.manager.showAlertOnComplete", false);
+        profile.setPreference("browser.download.manager.useWindow", false);
+        profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/pdf,application/x-pdf,application/octet-stream");
+        profile.setPreference("pdfjs.disabled", true);
+        return profile;
     }
 
 }
