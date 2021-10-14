@@ -68,9 +68,6 @@ public class TestBase {
             DesiredCapabilities caps = new DesiredCapabilities();
             caps.merge(new DesiredCapabilities(commonCapabilities));
             caps.merge(new DesiredCapabilities(envCapabilities));
-            if (envCapabilities.get("browser").toLowerCase().equals("firefox")) {
-                caps.setCapability(FirefoxDriver.PROFILE, createFirefoxProfile());
-            }
             if (testType.equals("local")) {
                 url = (String) envs.get("application_endpoint");
                 caps.merge(new DesiredCapabilities(localCapabilities));
@@ -130,22 +127,6 @@ public class TestBase {
             options.put("localIdentifier", uuid.toString());
             local.start(options);
         }
-    }
-
-    private FirefoxProfile createFirefoxProfile() {
-        FirefoxProfile profile = new FirefoxProfile();
-        profile.setPreference("browser.download.folderList", 1);
-        profile.setPreference("browser.download.manager.showWhenStarting", false);
-        profile.setPreference("browser.download.manager.focusWhenStarting", false);
-        profile.setPreference("browser.download.useDownloadDir", true);
-        profile.setPreference("browser.helperApps.alwaysAsk.force", false);
-        profile.setPreference("browser.download.manager.alertOnEXEOpen", false);
-        profile.setPreference("browser.download.manager.closeWhenDone", true);
-        profile.setPreference("browser.download.manager.showAlertOnComplete", false);
-        profile.setPreference("browser.download.manager.useWindow", false);
-        profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/pdf,application/x-pdf,application/octet-stream");
-        profile.setPreference("pdfjs.disabled", true);
-        return profile;
     }
 
 }
