@@ -1,5 +1,6 @@
 package com.browserstack.examples.suites.login;
 
+import com.browserstack.webdriver.core.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,6 +14,7 @@ public class LoginRequestedTest extends BaseTest {
 
     @Test(dataProvider = "webdriver")
     public void navigateFavoritesLoginRequested(WebDriver webDriver) {
+        webDriver.get(WebDriverFactory.getInstance().getTestEndpoint());
         WebDriverWait wait = new WebDriverWait(webDriver, 25);
         wait.until(ExpectedConditions.elementToBeClickable(webDriver.findElement(By.id("favourites")))).click();
         wait.until(ExpectedConditions.urlContains("favourites"));

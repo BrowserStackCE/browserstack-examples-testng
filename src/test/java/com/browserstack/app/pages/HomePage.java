@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
 
@@ -23,6 +24,7 @@ public class HomePage extends BasePage {
     }
 
     public HomePage addProductToCart(String productName) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text() = '" + productName + "']/../div[@class = 'shelf-item__buy-btn']")));
         waitAndClick(driver.findElement(By.xpath("//p[text() = '" + productName + "']/../div[@class = 'shelf-item__buy-btn']")));
         getBag().close();
         return this;

@@ -3,6 +3,7 @@ package com.browserstack.app.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CheckoutPage extends BasePage {
 
@@ -29,12 +30,12 @@ public class CheckoutPage extends BasePage {
     }
 
     public ConfirmationPage enterShippingDetails(String firstname, String lastname, String address, String state, String postcode) {
-        firstnameInput.sendKeys(firstname);
-        lastnameInput.sendKeys(lastname);
-        addressInput.sendKeys(address);
-        stateInput.sendKeys(state);
-        postcodeInput.sendKeys(postcode);
-        checkoutButton.click();
+        wait.until(ExpectedConditions.visibilityOf(firstnameInput)).sendKeys(firstname);
+        wait.until(ExpectedConditions.visibilityOf(lastnameInput)).sendKeys(lastname);
+        wait.until(ExpectedConditions.visibilityOf(addressInput)).sendKeys(address);
+        wait.until(ExpectedConditions.visibilityOf(stateInput)).sendKeys(state);
+        wait.until(ExpectedConditions.visibilityOf(postcodeInput)).sendKeys(postcode);
+        wait.until(ExpectedConditions.visibilityOf(checkoutButton)).click();
         return new ConfirmationPage(driver);
     }
 

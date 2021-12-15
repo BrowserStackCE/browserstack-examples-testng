@@ -1,5 +1,6 @@
 package com.browserstack.examples.suites.offers;
 
+import com.browserstack.webdriver.core.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -23,17 +24,22 @@ public class OfferTest extends BaseTest {
     @Test(dataProvider = "webdriver")
     public void checkOffersInSingapore(WebDriver webDriver) {
         WebDriverWait wait = new WebDriverWait(webDriver, 25);
+        webDriver.get(WebDriverFactory.getInstance().getTestEndpoint());
         String locationScript = String.format(LOCATION_SCRIPT_FORMAT, OFFER_LATITUDE, OFFER_LONGITUDE);
         ((JavascriptExecutor) webDriver).executeScript(locationScript);
 
         webDriver.findElement(By.id("signin")).click();
-        webDriver.findElement(By.cssSelector("#username input")).sendKeys("fav_user" + Keys.ENTER); // change
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By
+                        .cssSelector("#username input"))).sendKeys("fav_user" + Keys.ENTER); // change
         webDriver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
         webDriver.findElement(By.id("login-btn")).click();
 
-        webDriver.findElement(By.id("offers")).click();
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.id("offers"))).click();
         wait.until(ExpectedConditions.urlContains("offers"));
 
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(".offer")));
         Assert.assertEquals(webDriver.findElements(By.cssSelector(".offer")).size(), 3);
     }
 

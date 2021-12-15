@@ -3,6 +3,7 @@ package com.browserstack.examples.suites.user;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.browserstack.webdriver.core.WebDriverFactory;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -19,45 +20,86 @@ public class UserTest extends BaseTest {
 
     @Test(dataProvider = "webdriver")
     public void loginImagesNotLoading(WebDriver webDriver) {
-        webDriver.findElement(By.id("signin")).click();
-        webDriver.findElement(By.cssSelector("#username input")).sendKeys("image_not_loading_user" + Keys.ENTER);
-        webDriver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
-        webDriver.findElement(By.id("login-btn")).click();
+        /* =================== Prepare ================= */
+        WebDriverWait wait = new WebDriverWait(webDriver, 10);
+        webDriver.get(WebDriverFactory.getInstance().getTestEndpoint());
 
-        List<WebElement> imageSrc = webDriver.findElements(By.cssSelector(".shelf-item__thumb img"))
+        /* =================== Execute ================= */
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By
+                        .id("signin"))).click();
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By
+                        .id("react-select-2-input"))).sendKeys("image_not_loading_user" + Keys.ENTER);
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By
+                        .id("react-select-3-input"))).sendKeys("testingisfun99" + Keys.ENTER);
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By
+                        .id("login-btn"))).sendKeys(Keys.RETURN);
+        List<WebElement> imageSrc = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.
+                cssSelector(".shelf-item__thumb img")))
                 .stream()
                 .filter(image -> !image.getAttribute("src").equals(""))
                 .collect(Collectors.toList());
+
+        /* =================== Verify ================= */
         Assert.assertTrue(!imageSrc.isEmpty());
     }
 
     @Test(dataProvider = "webdriver")
     public void loginAndCheckExistingOrders(WebDriver webDriver) {
-        webDriver.findElement(By.id("signin")).click();
-        webDriver.findElement(By.cssSelector("#username input")).sendKeys("existing_orders_user" + Keys.ENTER);
-        webDriver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
-        webDriver.findElement(By.id("login-btn")).click();
+        /* =================== Prepare ================= */
+        WebDriverWait wait = new WebDriverWait(webDriver, 10);
+        webDriver.get(WebDriverFactory.getInstance().getTestEndpoint());
 
-        webDriver.findElement(By.id("orders")).click();
-        WebDriverWait wait = new WebDriverWait(webDriver, 25);
+        /* =================== Execute ================= */
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By
+                        .id("signin"))).click();
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By
+                        .id("react-select-2-input"))).sendKeys("existing_orders_user" + Keys.ENTER);
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By
+                        .id("react-select-3-input"))).sendKeys("testingisfun99" + Keys.ENTER);
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By
+                        .id("login-btn"))).sendKeys(Keys.RETURN);
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.id("orders"))).click();
         wait.until(ExpectedConditions.urlContains("orders"));
 
-        Assertions.assertThat(webDriver.findElements(By.cssSelector(".order")).size()).isGreaterThanOrEqualTo(5);
+        /* =================== Verify ================= */
+        Assertions.assertThat(wait.until(ExpectedConditions
+                .visibilityOfAllElementsLocatedBy(By.cssSelector(".order"))).size()).isGreaterThanOrEqualTo(5);
     }
 
     @Test(dataProvider = "webdriver")
     public void addToFavourites(WebDriver webDriver) {
-        webDriver.findElement(By.id("signin")).click();
-        webDriver.findElement(By.cssSelector("#username input")).sendKeys("demouser" + Keys.ENTER);
-        webDriver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
-        webDriver.findElement(By.id("login-btn")).click();
+        /* =================== Prepare ================= */
+        WebDriverWait wait = new WebDriverWait(webDriver, 10);
+        webDriver.get(WebDriverFactory.getInstance().getTestEndpoint());
 
-        webDriver.findElement(By.cssSelector("div[id='1'] > div > button")).click();
-
+        /* =================== Execute ================= */
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By
+                        .id("signin"))).click();
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By
+                        .id("react-select-2-input"))).sendKeys("demouser" + Keys.ENTER);
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By
+                        .id("react-select-3-input"))).sendKeys("testingisfun99" + Keys.ENTER);
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By
+                        .id("login-btn"))).sendKeys(Keys.RETURN);
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector("div[id='1'] > div > button"))).click();
         webDriver.findElement(By.id("favourites")).click();
-        WebDriverWait wait = new WebDriverWait(webDriver, 25);
         wait.until(ExpectedConditions.urlContains("favourites"));
 
+        /* =================== Verify ================= */
         Assertions.assertThat(webDriver.findElements(By.cssSelector("p.shelf-item__title"))
                 .stream().map(WebElement::getText)).contains("iPhone 12");
     }

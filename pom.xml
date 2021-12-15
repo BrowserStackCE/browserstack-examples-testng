@@ -21,10 +21,12 @@
         <logback.version>1.2.3</logback.version>
 
         <testng.parallel.config>classes</testng.parallel.config>
-        <testng.parallel.threadCount>3</testng.parallel.threadCount>
-        <testng.parallel.dataprovider.threadcount>4</testng.parallel.dataprovider.threadcount>
+        <testng.parallel.threadCount>1</testng.parallel.threadCount>
+        <testng.parallel.dataprovider.threadcount>1</testng.parallel.dataprovider.threadcount>
         <capabilities.config.file>conf/capabilities.yml</capabilities.config.file>
         <testng.suiteXml>src/test/resources/testng.xml</testng.suiteXml>
+        <testng.testnames>single</testng.testnames>
+
     </properties>
 
     <dependencies>
@@ -51,9 +53,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.browserstack.webdriver.testng</groupId>
+            <groupId>com.browserstack</groupId>
             <artifactId>webdriver-framework-testng</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>0.0.1</version>
             <scope>test</scope>
         </dependency>
 
@@ -114,6 +116,10 @@
                             <name>dataproviderthreadcount</name>
                             <value>${testng.parallel.dataprovider.threadcount}</value>
                         </property>
+                        <property>
+                            <name>testnames</name>
+                            <value>${testng.testnames}</value>
+                        </property>
                     </properties>
                 </configuration>
             </plugin>
@@ -121,26 +127,95 @@
     </build>
 
     <profiles>
-
         <profile>
-            <id>remotedriver</id>
+            <id>on-prem</id>
+            <properties>
+                <capabilities.config.file>conf/capabilities-on-prem.yml</capabilities.config.file>
+                <testng.testnames>single</testng.testnames>
+            </properties>
+        </profile>
+        <profile>
+            <id>on-prem-suite</id>
+            <properties>
+                <capabilities.config.file>conf/capabilities-on-prem-suite.yml</capabilities.config.file>
+                <testng.testnames>parallel</testng.testnames>
+            </properties>
+        </profile>
+        <profile>
+            <id>docker</id>
+            <properties>
+                <capabilities.config.file>conf/capabilities-docker.yml</capabilities.config.file>
+                <testng.testnames>single</testng.testnames>
+            </properties>
+        </profile>
+        <profile>
+            <id>docker-parallel</id>
+            <properties>
+                <capabilities.config.file>conf/capabilities-docker-parallel.yml</capabilities.config.file>
+                <testng.parallel.config>methods</testng.parallel.config>
+                <testng.parallel.threadCount>5</testng.parallel.threadCount>
+                <testng.parallel.dataprovider.threadcount>5</testng.parallel.dataprovider.threadcount>
+                <testng.testnames>parallel</testng.testnames>
+            </properties>
+        </profile>
+        <profile>
+            <id>bstack-single</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <capabilities.config.file>conf/capabilities-remotedriver.yml</capabilities.config.file>
+                <capabilities.config.file>conf/capabilities-single.yml</capabilities.config.file>
+                <testng.testnames>single</testng.testnames>
+            </properties>
+        </profile>
+        <profile>
+            <id>bstack-local</id>
+            <properties>
+                <capabilities.config.file>conf/capabilities-local.yml</capabilities.config.file>
+                <testng.testnames>single</testng.testnames>
+            </properties>
+        </profile>
+        <profile>
+            <id>bstack-local-parallel</id>
+            <properties>
+                <capabilities.config.file>conf/capabilities-local-parallel.yml</capabilities.config.file>
                 <testng.parallel.config>methods</testng.parallel.config>
-                <testng.parallel.threadCount>4</testng.parallel.threadCount>
+                <testng.parallel.threadCount>5</testng.parallel.threadCount>
                 <testng.parallel.dataprovider.threadcount>5</testng.parallel.dataprovider.threadcount>
+                <testng.testnames>parallel</testng.testnames>
+            </properties>
+        </profile>
+        <profile>
+            <id>bstack-local-parallel-browsers</id>
+            <properties>
+                <capabilities.config.file>conf/capabilities-local-parallel-browsers.yml</capabilities.config.file>
+                <testng.parallel.config>methods</testng.parallel.config>
+                <testng.parallel.threadCount>2</testng.parallel.threadCount>
+                <testng.parallel.dataprovider.threadcount>1</testng.parallel.dataprovider.threadcount>
+                <testng.testnames>parallel</testng.testnames>
+            </properties>
+        </profile>
+        <profile>
+            <id>bstack-parallel</id>
+            <properties>
+                <capabilities.config.file>conf/capabilities-parallel.yml</capabilities.config.file>
+                <testng.parallel.config>methods</testng.parallel.config>
+                <testng.parallel.threadCount>5</testng.parallel.threadCount>
+                <testng.parallel.dataprovider.threadcount>5</testng.parallel.dataprovider.threadcount>
+                <testng.testnames>parallel</testng.testnames>
+            </properties>
+        </profile>
+        <profile>
+            <id>bstack-parallel-browsers</id>
+            <properties>
+                <capabilities.config.file>conf/capabilities-parallel-browsers.yml</capabilities.config.file>
+                <testng.parallel.config>methods</testng.parallel.config>
+                <testng.parallel.threadCount>2</testng.parallel.threadCount>
+                <testng.parallel.dataprovider.threadcount>1</testng.parallel.dataprovider.threadcount>
+                <testng.testnames>parallel</testng.testnames>
             </properties>
         </profile>
 
-        <profile>
-            <id>localdriver</id>
-            <properties>
-                <capabilities.config.file>conf/capabilities-localdriver.yml</capabilities.config.file>
-            </properties>
-        </profile>
     </profiles>
 
 

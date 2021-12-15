@@ -25,7 +25,6 @@ public abstract class BaseTest {
     @DataProvider(name="webdriver", parallel = true)
     public static Iterator<Object[]> provideWebDrivers(Method testMethod) {
         return new LazyInitWebDriverIterator(testMethod.getName(),
-                                             WebDriverFactory.getInstance().getPlatforms(),
                                              new Object[0]);
     }
 

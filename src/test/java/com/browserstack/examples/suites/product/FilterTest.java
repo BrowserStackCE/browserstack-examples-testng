@@ -3,6 +3,7 @@ package com.browserstack.examples.suites.product;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.browserstack.webdriver.core.WebDriverFactory;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +20,7 @@ public class FilterTest extends BaseTest {
 
     @Test(dataProvider = "webdriver")
     public void filterLowestToHighestTest(WebDriver webDriver) {
+        webDriver.get(WebDriverFactory.getInstance().getTestEndpoint());
         Select sortSelect = new Select(webDriver.findElement(By.cssSelector(".sort select")));
         sortSelect.selectByValue("lowestprice");
 
@@ -35,6 +37,7 @@ public class FilterTest extends BaseTest {
 
     @Test(dataProvider = "webdriver")
     public void filterVendorTest(WebDriver webDriver) throws Exception {
+        webDriver.get(WebDriverFactory.getInstance().getTestEndpoint());
         WebDriverWait wait = new WebDriverWait(webDriver, 25);
         webDriver.findElement(By.cssSelector("input[value='Apple'] + span")).click();
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".products-found"), "9 Product(s) found."));

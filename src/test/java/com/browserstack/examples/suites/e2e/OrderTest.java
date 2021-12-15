@@ -1,5 +1,6 @@
 package com.browserstack.examples.suites.e2e;
 
+import com.browserstack.webdriver.core.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -15,6 +16,7 @@ public class OrderTest extends BaseTest {
     @Test(dataProvider = "managedwebdriver")
     public void placeOrder(ManagedWebDriver managedWebDriver) {
         WebDriver webDriver = managedWebDriver.getWebDriver();
+        webDriver.get(WebDriverFactory.getInstance().getTestEndpoint());
         ConfirmationPage page = new HomePage(webDriver)
                 .navigateToSignIn()
                 .loginWith("fav_user", "testingisfun99")
