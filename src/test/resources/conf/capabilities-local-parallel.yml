@@ -7,7 +7,7 @@ cloudDriver:
   user: BROWSERSTACK_USERNAME
   accessKey: BROWSERSTACK_ACCESSKEY
   localTunnel:
-    enable: true
+    enabled: true
     local_options:
       forcelocal: true
       force: true

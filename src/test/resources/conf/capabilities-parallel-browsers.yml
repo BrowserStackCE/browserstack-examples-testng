@@ -7,7 +7,7 @@ cloudDriver:
   user: BROWSERSTACK_USERNAME
   accessKey: BROWSERSTACK_ACCESSKEY
   localTunnel:
-    enable: false
+    enabled: false
   common_capabilities:
     project: BrowserStack Demo Repository
     buildPrefix: browserstack-examples-testng
