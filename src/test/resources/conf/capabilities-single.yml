@@ -1,0 +1,22 @@
+testEndpoint: https://bstackdemo.com
+
+driverType: cloudDriver
+
+cloudDriver:
+  hubUrl: https://hub-cloud.browserstack.com/wd/hub
+  user: raveendratudangi5
+  accessKey: xBv78saWwrNBEaJBTXwu
+  localTunnel:
+    enable: false
+  common_capabilities:
+    project: BrowserStack Demo Repository
+    buildPrefix: browserstack-examples-testng
+    capabilities:
+      browserstack.debug: true
+      browserstack.networkLogs: true
+      browserstack.console: debug
+  platforms:
+    - name: Win10_IE11
+      os: Windows
+      os_version: '10'
+      browser: Chrome

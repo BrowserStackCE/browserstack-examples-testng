@@ -1,0 +1,10 @@
+testEndpoint: https://bstackdemo.com
+
+driverType: onPremGridDriver
+
+onPremGridDriver:
+  hubUrl: http://localhost:4444/wd/hub
+  platforms:
+    - name: firefox
+      browser: firefox
+      capabilities:
