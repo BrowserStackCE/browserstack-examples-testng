@@ -26,21 +26,6 @@ node {
             }
         }
 
-        stage('Start Local') {
-            if ("${params.TEST_TYPE}".contains('local')) {
-                dir('app') {
-                    git branch: 'master', changelog: false, poll: false, url: 'https://github.com/browserstack/browserstack-demo-app'
-                    sh label: '', returnStatus: true, script: '''#!/bin/bash -l
-                cd browserstack - demo - app
-                npm install
-                npm run build
-                npm start &'''
-                }
-          } else {
-                Utils.markStageSkippedForConditional('Start Local')
-            }
-        }
-
         stage('Run Test') {
             browserstack(credentialsId: "${params.BROWSERSTACK_USERNAME}") {
                 def user = "${env.BROWSERSTACK_USERNAME}"
