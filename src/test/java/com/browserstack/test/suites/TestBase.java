@@ -3,6 +3,7 @@ package com.browserstack.test.suites;
 import com.browserstack.local.Local;
 import com.browserstack.test.utils.DriverUtil;
 import com.browserstack.test.utils.ScreenshotListener;
+import io.percy.selenium.Percy;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.openqa.selenium.WebDriver;
@@ -34,6 +35,7 @@ public class TestBase {
     private Local local;
     protected WebDriverWait wait;
     private String environment;
+    public static Percy percy;
 
     public WebDriver getDriver() {
         return driver.get();
@@ -83,6 +85,7 @@ public class TestBase {
             dc.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             driver.set(new RemoteWebDriver(new URL(DOCKER_SELENIUM_HUB_URL), dc));
         }
+        percy = new Percy(getDriver());
         getDriver().get(url);
         getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         wait = new WebDriverWait(getDriver(), 30);
