@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class LoginVisualTest extends TestBase {
 
-    private boolean changeCSS = true;
+    private boolean changeCSS = false;
 
     @Test
     public void loginLockedUser() {
