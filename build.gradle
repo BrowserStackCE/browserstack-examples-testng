@@ -17,6 +17,8 @@ buildscript {
 dependencies {
     implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
     implementation 'com.browserstack:browserstack-local-java:1.0.6'
+    implementation 'io.percy:percy-java-selenium:1.0.0'
+    implementation 'com.deque.html.axe-core:selenium:4.3.1'
     implementation 'org.testng:testng:7.1.0'
     implementation 'io.qameta.allure:allure-testng:2.13.8'
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
@@ -91,6 +93,22 @@ tasks.register('bstack-single', Test) {
     }
     systemProperty "environment", "remote"
     systemProperty "testType", "single"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+tasks.register('percy', Test) {
+    useTestNG() {}
+    include '**/LoginVisualTest.class'
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+tasks.register('percy-ignore', Test) {
+    useTestNG() {}
+    include '**/IgnoreRegionVisualTest.class'
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }

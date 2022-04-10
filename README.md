@@ -497,6 +497,75 @@ In this section, we will run the test cases to test the internally hosted websit
   gradle allureServe
   ```
 
+# Percy
+
+[Percy](https://percy.io) provides a visual review platform.
+
+## Prerequisites
+
+- Sign up with your BrowserStack account, or create a new [BrowserStack account](https://www.browserstack.com/users/sign_up).
+- Create a new Percy project.
+- Go to the Project's Settings page, identify your Percy Token, and export them as environment variables using the following commands.
+
+### Installation
+
+1. Install the Percy CLI.
+
+```shell
+npm install @percy/cli
+```
+
+### Export the Percy Token
+
+- For \*nix based and Mac machines:
+
+  ```sh
+  export PERCY_TOKEN=[your-project-token]
+  ```
+
+- For Windows:
+
+  ```shell
+  set PERCY_TOKEN=[your-project-token]
+  ```
+
+## Run your first Visual Test
+
+In this section, we will run the test cases to detect the visual differences. We run the test first, then toggle the property that instructs our test to change some CSS.
+
+1. Run the test.
+   Maven:
+  ```sh
+  npx percy exec -- mvn clean test -P percy
+  ```
+
+Gradle:
+  ```sh
+  npx percy exec -- gradle clean percy
+  ```
+
+2. Set the `changeCSS` property in the `src/test/java/com/browserstack/test/login/LoginVisuaalTest` directory to true.
+
+3. Run the test again.
+
+4. View your Project in the Percy dashboard and verify the differences.
+
+## Run the Ignore Region Test
+
+In this section, we will run the test that ignores a specific area of a webpage. In a real-world situation, you can think of dynamic content and advertisements where this use case applies.
+
+1. Run the test.
+   Maven:
+  ```sh
+  npx percy exec -- mvn clean test -P percy-ignore
+  ```
+Gradle:
+  ```sh
+  npx percy exec -- gradle clean percy-ignore
+  ```
+2. View your Project in the Percy dashboard and verify the differences.
+
+
 ## Additional Resources
 
 - View your test results on the [BrowserStack Automate dashboard](https://www.browserstack.com/automate)
