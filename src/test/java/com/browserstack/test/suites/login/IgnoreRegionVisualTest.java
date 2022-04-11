@@ -6,8 +6,6 @@ import org.testng.annotations.Test;
 
 public class IgnoreRegionVisualTest extends TestBase {
 
-    private boolean changeCSS = false;
-
     @Test
     public void ignoreLogo() {
         JavascriptExecutor ex = ((JavascriptExecutor) getDriver());
