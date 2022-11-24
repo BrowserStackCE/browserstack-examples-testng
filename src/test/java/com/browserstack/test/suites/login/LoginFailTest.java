@@ -11,12 +11,12 @@ public class LoginFailTest extends TestBase {
 
     @Test
     public void loginFail() {
-        getDriver().findElement(By.id("signin")).click();
-        getDriver().findElement(By.cssSelector("#username input")).sendKeys("fav_user" + Keys.ENTER);
-        getDriver().findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
-        getDriver().findElement(By.id("login-btn")).click();
+        driver.findElement(By.id("signin")).click();
+        driver.findElement(By.cssSelector("#username input")).sendKeys("fav_user" + Keys.ENTER);
+        driver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
+        driver.findElement(By.id("login-btn")).click();
 
-        Assert.assertEquals(getDriver().findElement(By.className("username")).getText(), "fav");
+        Assert.assertEquals(driver.findElement(By.className("username")).getText(), "fav");
     }
 
 }

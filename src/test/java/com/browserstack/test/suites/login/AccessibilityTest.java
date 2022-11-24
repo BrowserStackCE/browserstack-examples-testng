@@ -15,10 +15,10 @@ public class AccessibilityTest extends TestBase {
 
     @Test
     public void testForAccessibility() {
-        getDriver().findElement(By.id("signin")).click();
+        driver.findElement(By.id("signin")).click();
 
         AxeBuilder builder = new AxeBuilder();
-        Results results = builder.analyze(getDriver());
+        Results results = builder.analyze(driver);
         List<Rule> violations = results.getViolations().stream().filter(c -> c.getId().equals("color-contrast")).collect(Collectors.toList());
 
         Assertions.assertThat(violations).isEmpty();

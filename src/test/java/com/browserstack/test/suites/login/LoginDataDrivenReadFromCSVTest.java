@@ -19,12 +19,12 @@ public class LoginDataDrivenReadFromCSVTest extends TestBase {
 
     @Test(dataProvider = "login_error_messages")
     public void validateErrors(String username, String password, String error) {
-        getDriver().findElement(By.id("signin")).click();
-        getDriver().findElement(By.cssSelector("#username input")).sendKeys(username + Keys.ENTER);
-        getDriver().findElement(By.cssSelector("#password input")).sendKeys(password + Keys.ENTER);
-        getDriver().findElement(By.id("login-btn")).click();
+        driver.findElement(By.id("signin")).click();
+        driver.findElement(By.cssSelector("#username input")).sendKeys(username + Keys.ENTER);
+        driver.findElement(By.cssSelector("#password input")).sendKeys(password + Keys.ENTER);
+        driver.findElement(By.id("login-btn")).click();
 
-        Assert.assertEquals(getDriver().findElement(By.className("api-error")).getText(), error);
+        Assert.assertEquals(driver.findElement(By.className("api-error")).getText(), error);
     }
 
 }
