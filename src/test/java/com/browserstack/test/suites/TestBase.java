@@ -48,7 +48,7 @@ public class TestBase {
             driver.get("https://bstackdemo.com");
         }
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        wait = new WebDriverWait(driver, 30);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     @AfterMethod
