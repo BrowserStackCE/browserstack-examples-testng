@@ -42,7 +42,7 @@ public class TestBase {
             driver = new RemoteWebDriver(new URL("https://hub.browserstack.com/wd/hub"), capabilities);
         }
         percy = new Percy(driver);
-        if (System.getProperty("browserstack-local").equalsIgnoreCase("true")) {
+        if (StringUtils.equalsIgnoreCase(System.getProperty("browserstack-local"),"true")) {
             driver.get("http://localhost:3000");
         } else {
             driver.get("https://bstackdemo.com");
