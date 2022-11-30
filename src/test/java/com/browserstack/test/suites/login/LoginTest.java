@@ -10,32 +10,32 @@ public class LoginTest extends TestBase {
 
     @Test
     public void loginLockedUser() {
-        getDriver().findElement(By.id("signin")).click();
-        getDriver().findElement(By.cssSelector("#username input")).sendKeys("locked_user" + Keys.ENTER);
-        getDriver().findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
-        getDriver().findElement(By.id("login-btn")).click();
+        driver.findElement(By.id("signin")).click();
+        driver.findElement(By.cssSelector("#username input")).sendKeys("locked_user" + Keys.ENTER);
+        driver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
+        driver.findElement(By.id("login-btn")).click();
 
-        Assert.assertEquals(getDriver().findElement(By.className("api-error")).getText(), "Your account has been locked.");
+        Assert.assertEquals(driver.findElement(By.className("api-error")).getText(), "Your account has been locked.");
     }
 
     @Test
     public void loginSuccess() {
-        getDriver().findElement(By.id("signin")).click();
-        getDriver().findElement(By.cssSelector("#username input")).sendKeys("fav_user" + Keys.ENTER);
-        getDriver().findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
-        getDriver().findElement(By.id("login-btn")).click();
+        driver.findElement(By.id("signin")).click();
+        driver.findElement(By.cssSelector("#username input")).sendKeys("fav_user" + Keys.ENTER);
+        driver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
+        driver.findElement(By.id("login-btn")).click();
 
-        Assert.assertEquals(getDriver().findElement(By.className("username")).getText(), "fav_user");
+        Assert.assertEquals(driver.findElement(By.className("username")).getText(), "fav_user");
     }
 
     @Test
     public void loginFail() {
-        getDriver().findElement(By.id("signin")).click();
-        getDriver().findElement(By.cssSelector("#username input")).sendKeys("fav_user" + Keys.ENTER);
-        getDriver().findElement(By.cssSelector("#password input")).sendKeys("wrongpass" + Keys.ENTER);
-        getDriver().findElement(By.id("login-btn")).click();
+        driver.findElement(By.id("signin")).click();
+        driver.findElement(By.cssSelector("#username input")).sendKeys("fav_user" + Keys.ENTER);
+        driver.findElement(By.cssSelector("#password input")).sendKeys("wrongpass" + Keys.ENTER);
+        driver.findElement(By.id("login-btn")).click();
 
-        Assert.assertEquals(getDriver().findElement(By.className("api-error")).getText(), "Invalid Password");
+        Assert.assertEquals(driver.findElement(By.className("api-error")).getText(), "Invalid Password");
     }
 
 }

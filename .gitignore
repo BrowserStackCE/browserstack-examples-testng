@@ -17,3 +17,4 @@ settings.json
 local.log
 .gradle/
 src/test/resources/drivers/
+browserstack.yml

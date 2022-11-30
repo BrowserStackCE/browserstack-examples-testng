@@ -16,12 +16,12 @@ public class FilterTest extends TestBase {
 
     @Test
     public void filterLowestToHighestTest() {
-        Select sortSelect = new Select(getDriver().findElement(By.cssSelector(".sort select")));
+        Select sortSelect = new Select(driver.findElement(By.cssSelector(".sort select")));
         sortSelect.selectByValue("lowestprice");
 
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("p.shelf-item__title:first-of-type"), "Pixel 2"));
 
-        List<Integer> values = getDriver().findElements(By.cssSelector(".val > b"))
+        List<Integer> values = driver.findElements(By.cssSelector(".val > b"))
                 .stream()
                 .map(WebElement::getText)
                 .map(Integer::parseInt)
@@ -31,12 +31,12 @@ public class FilterTest extends TestBase {
 
     @Test
     public void filterVendorTest() throws Exception {
-        getDriver().findElement(By.cssSelector("input[value='Apple'] + span")).click();
+        driver.findElement(By.cssSelector("input[value='Apple'] + span")).click();
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".products-found"), "9 Product(s) found."));
-        getDriver().findElement(By.cssSelector("input[value='Samsung'] + span")).click();
+        driver.findElement(By.cssSelector("input[value='Samsung'] + span")).click();
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".products-found"), "16 Product(s) found."));
 
-        List<String> values = getDriver().findElements(By.cssSelector(".shelf-item__title"))
+        List<String> values = driver.findElements(By.cssSelector(".shelf-item__title"))
                 .stream()
                 .map(WebElement::getText)
                 .map(String::trim)
