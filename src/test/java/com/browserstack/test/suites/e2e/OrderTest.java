@@ -14,7 +14,7 @@ public class OrderTest extends TestBase {
     @Test
     public void placeOrder() {
         SoftAssert softly = new SoftAssert();
-        ConfirmationPage page = new HomePage(getDriver())
+        ConfirmationPage page = new HomePage(driver)
                 .navigateToSignIn()
                 .loginWith("fav_user", "testingisfun99")
                 .addProductToCart("iPhone 11")
@@ -25,7 +25,7 @@ public class OrderTest extends TestBase {
                 .enterShippingDetails("firstname", "lastname", "address", "state", "12345");
         Assert.assertTrue(page.isConfirmationDisplayed());
 
-        if (isRemoteExecution()) {
+        if (!isOnPremExecution()) {
             page.downloadPDF();
             softly.assertTrue(downloadedFileExists("confirmation.pdf"));
         }
@@ -37,7 +37,7 @@ public class OrderTest extends TestBase {
     }
 
     private boolean downloadedFileExists(String fileName) {
-        JavascriptExecutor jse = (JavascriptExecutor) getDriver();
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
         return Boolean.parseBoolean(jse.executeScript("browserstack_executor: {\"action\": \"fileExists\", \"arguments\": {\"fileName\": \"" + fileName + "\"}}").toString());
     }
 }

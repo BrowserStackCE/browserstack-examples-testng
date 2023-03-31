@@ -14,10 +14,10 @@ public class LoginVisualTest extends TestBase {
 
     @Test
     public void loginLockedUser() {
-        JavascriptExecutor ex = ((JavascriptExecutor) getDriver());
+        JavascriptExecutor ex = ((JavascriptExecutor) driver);
 
         percy.snapshot("Check Homepage");
-        getDriver().findElement(By.id("signin")).click();
+        driver.findElement(By.id("signin")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#username input")));
 
         if (changeCSS) {
@@ -25,16 +25,16 @@ public class LoginVisualTest extends TestBase {
             ex.executeScript("document.getElementById('login-btn').style.width = '60%';");
         }
         percy.snapshot("Check Signin page");
-        getDriver().findElement(By.cssSelector("#username input")).sendKeys("locked_user" + Keys.ENTER);
-        getDriver().findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
-        getDriver().findElement(By.id("login-btn")).click();
+        driver.findElement(By.cssSelector("#username input")).sendKeys("locked_user" + Keys.ENTER);
+        driver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
+        driver.findElement(By.id("login-btn")).click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("api-error")));
         if (changeCSS) {
             ex.executeScript("document.getElementsByClassName('api-error')[0].style.fontSize = '200%';");
         }
         percy.snapshot("Check Login result");
-        Assert.assertEquals(getDriver().findElement(By.className("api-error")).getText(), "Your account has been locked.");
+        Assert.assertEquals(driver.findElement(By.className("api-error")).getText(), "Your account has been locked.");
     }
 
 }

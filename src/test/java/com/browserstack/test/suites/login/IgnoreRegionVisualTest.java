@@ -10,10 +10,10 @@ public class IgnoreRegionVisualTest extends TestBase {
 
     @Test
     public void ignoreLogo() {
-        getDriver().findElement(By.id("signin")).click();
+        driver.findElement(By.id("signin")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#username input")));
 
-        JavascriptExecutor ex = ((JavascriptExecutor) getDriver());
+        JavascriptExecutor ex = ((JavascriptExecutor) driver);
         String percyCSS = "svg {visibility: hidden}";
 
         percy.snapshot("Check Loginpage with ignored logo", null, 1024, false, percyCSS);

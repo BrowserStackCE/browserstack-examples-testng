@@ -16,12 +16,12 @@ public class UserTest extends TestBase {
 
     @Test
     public void loginImagesNotLoading() {
-        getDriver().findElement(By.id("signin")).click();
-        getDriver().findElement(By.cssSelector("#username input")).sendKeys("image_not_loading_user" + Keys.ENTER);
-        getDriver().findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
-        getDriver().findElement(By.id("login-btn")).click();
+        driver.findElement(By.id("signin")).click();
+        driver.findElement(By.cssSelector("#username input")).sendKeys("image_not_loading_user" + Keys.ENTER);
+        driver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
+        driver.findElement(By.id("login-btn")).click();
 
-        List<WebElement> imageSrc = getDriver().findElements(By.cssSelector(".shelf-item__thumb img"))
+        List<WebElement> imageSrc = driver.findElements(By.cssSelector(".shelf-item__thumb img"))
                 .stream()
                 .filter(image -> !image.getAttribute("src").equals(""))
                 .collect(Collectors.toList());
@@ -30,31 +30,31 @@ public class UserTest extends TestBase {
 
     @Test
     public void loginAndCheckExistingOrders() {
-        getDriver().findElement(By.id("signin")).click();
-        getDriver().findElement(By.cssSelector("#username input")).sendKeys("existing_orders_user" + Keys.ENTER);
-        getDriver().findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
-        getDriver().findElement(By.id("login-btn")).click();
+        driver.findElement(By.id("signin")).click();
+        driver.findElement(By.cssSelector("#username input")).sendKeys("existing_orders_user" + Keys.ENTER);
+        driver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
+        driver.findElement(By.id("login-btn")).click();
 
-        getDriver().findElement(By.id("orders")).click();
+        driver.findElement(By.id("orders")).click();
         wait.until(ExpectedConditions.urlContains("orders"));
 
-        Assertions.assertThat(getDriver().findElements(By.cssSelector(".order")).size()).isGreaterThanOrEqualTo(5);
+        Assertions.assertThat(driver.findElements(By.cssSelector(".order")).size()).isGreaterThanOrEqualTo(5);
     }
 
     @Test
     public void addToFavourites() {
-        getDriver().findElement(By.id("signin")).click();
-        getDriver().findElement(By.cssSelector("#username input")).sendKeys("demouser" + Keys.ENTER);
-        getDriver().findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
-        getDriver().findElement(By.id("login-btn")).click();
+        driver.findElement(By.id("signin")).click();
+        driver.findElement(By.cssSelector("#username input")).sendKeys("demouser" + Keys.ENTER);
+        driver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
+        driver.findElement(By.id("login-btn")).click();
 
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".spinner")));
-        getDriver().findElement(By.cssSelector("div[id='1'] > div > button")).click();
+        driver.findElement(By.cssSelector("div[id='1'] > div > button")).click();
 
-        getDriver().findElement(By.id("favourites")).click();
+        driver.findElement(By.id("favourites")).click();
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".spinner")));
 
-        Assertions.assertThat(getDriver().findElements(By.cssSelector("p.shelf-item__title"))
+        Assertions.assertThat(driver.findElements(By.cssSelector("p.shelf-item__title"))
                 .stream().map(WebElement::getText)).contains("iPhone 12");
     }
 

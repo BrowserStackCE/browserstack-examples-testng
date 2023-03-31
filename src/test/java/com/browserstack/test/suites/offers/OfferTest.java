@@ -19,17 +19,17 @@ public class OfferTest extends TestBase {
     @Test
     public void checkOffersInSingapore() {
         String locationScript = String.format(LOCATION_SCRIPT_FORMAT, OFFER_LATITUDE, OFFER_LONGITUDE);
-        ((JavascriptExecutor) getDriver()).executeScript(locationScript);
+        ((JavascriptExecutor) driver).executeScript(locationScript);
 
-        getDriver().findElement(By.id("signin")).click();
-        getDriver().findElement(By.cssSelector("#username input")).sendKeys("fav_user" + Keys.ENTER); // change
-        getDriver().findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
-        getDriver().findElement(By.id("login-btn")).click();
+        driver.findElement(By.id("signin")).click();
+        driver.findElement(By.cssSelector("#username input")).sendKeys("fav_user" + Keys.ENTER); // change
+        driver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
+        driver.findElement(By.id("login-btn")).click();
 
-        getDriver().findElement(By.id("offers")).click();
+        driver.findElement(By.id("offers")).click();
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".spinner")));
 
-        Assert.assertEquals(getDriver().findElements(By.cssSelector(".offer")).size(), 3);
+        Assert.assertEquals(driver.findElements(By.cssSelector(".offer")).size(), 3);
     }
 
 }

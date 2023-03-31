@@ -19,7 +19,7 @@ public class ScreenshotListener extends TestListenerAdapter {
     public void onTestFailure(ITestResult result) {
         if (!result.isSuccess()) {
             Object currentClass = result.getInstance();
-            WebDriver driver = ((TestBase) currentClass).getDriver();
+            WebDriver driver = ((TestBase) currentClass).driver;
             attachFailedScreenshot(driver);
         }
     }

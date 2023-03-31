@@ -10,9 +10,9 @@ public class LoginRequestedTest extends TestBase {
 
     @Test
     public void navigateFavoritesLoginRequested() {
-        wait.until(ExpectedConditions.elementToBeClickable(getDriver().findElement(By.id("favourites")))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id("favourites")))).click();
         wait.until(ExpectedConditions.urlContains("favourites"));
 
-        Assert.assertTrue(getDriver().findElement(By.className("login_wrapper")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.className("login_wrapper")).isDisplayed());
     }
 }
