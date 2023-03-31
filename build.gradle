@@ -94,6 +94,19 @@ tasks.register('bstack-parallel', Test) {
     }
 }
 
+tasks.register('bstack-parallel-browsers', Test) {
+    useTestNG() {
+        dependsOn clean
+        useDefaultListeners = true
+        suites 'src/test/resources/conf/runners/testng.xml'
+        jvmArgs "-javaagent:${browserstackSDKArtifact.file}"
+    }
+    systemProperty "browserstack-local", "false"
+    systemProperty "testType", "parallel"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
 
 tasks.register('percy', Test) {
     useTestNG() {
@@ -137,6 +150,19 @@ tasks.register('bstack-local', Test) {
 }
 
 tasks.register('bstack-local-parallel', Test) {
+    useTestNG() {
+        dependsOn clean
+        useDefaultListeners = true
+        suites 'src/test/resources/conf/runners/testng.xml'
+        jvmArgs "-javaagent:${browserstackSDKArtifact.file}"
+    }
+    systemProperty "browserstack-local", "true"
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+}
+
+tasks.register('bstack-local-parallel-browsers', Test) {
     useTestNG() {
         dependsOn clean
         useDefaultListeners = true

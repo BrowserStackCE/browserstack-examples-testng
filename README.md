@@ -171,7 +171,7 @@ Note:
 
 ### Run a specific test on BrowserStack
 
-In this section, we will run a single test on Chrome browser on Browserstack. To change test capabilities for this configuration, please refer to the `browserstack-single.yml` file.
+In this section, we will run a single test on Chrome browser on Browserstack. To change test capabilities for this configuration, please refer to the `bstack-single.yml` file.
 
 - How to run the test?
 
@@ -181,13 +181,13 @@ In this section, we will run a single test on Chrome browser on Browserstack. To
 
     ```sh
     rm -f -- browserstack.yml
-    ln src/test/resources/conf/capabilities/browserstack-single.yml browserstack.yml
+    ln src/test/resources/conf/capabilities/bstack-single.yml browserstack.yml
     ```
 
     - For Windows:
 
     ```sh
-    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\browserstack-single.yml browserstack.yml
+    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\bstack-single.yml browserstack.yml
     ```
 
   To run the default test scenario (e.g. End to End Scenario) on your own machine, use the following command:
@@ -226,7 +226,7 @@ In this section, we will run a single test on Chrome browser on Browserstack. To
 
 ### Run the entire test suite in parallel on a single BrowserStack browser
 
-In this section, we will run the tests in parallel on a single browser on Browserstack. Refer to `browserstack-parallel.yml` file to change test capabilities for this configuration.
+In this section, we will run the tests in parallel on a single browser on Browserstack. Refer to `bstack-parallel.yml` file to change test capabilities for this configuration.
 
 - How to run the test?
 
@@ -236,13 +236,13 @@ In this section, we will run the tests in parallel on a single browser on Browse
 
     ```sh
     rm -f -- browserstack.yml
-    ln src/test/resources/conf/capabilities/browserstack-parallel.yml browserstack.yml
+    ln src/test/resources/conf/capabilities/bstack-parallel.yml browserstack.yml
     ```
 
     - For Windows:
 
     ```sh
-    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\browserstack-parallel.yml browserstack.yml
+    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\bstack-parallel.yml browserstack.yml
     ```
 
   To run the entire test suite in parallel on a single BrowserStack browser, use the following command:
@@ -265,7 +265,7 @@ In this section, we will run the tests in parallel on a single browser on Browse
 
 ### Run the entire test suite in parallel on multiple BrowserStack browsers
 
-In this section, we will run the tests in parallel on multiple browsers on Browserstack. Refer to the `browserstack-parallel-browsers.yml` file to change test capabilities for this configuration.
+In this section, we will run the tests in parallel on multiple browsers on Browserstack. Refer to the `bstack-parallel-browsers.yml` file to change test capabilities for this configuration.
 
 - Copy the capabilities to the root of the project:
 
@@ -273,13 +273,13 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
 
   ```sh
   rm -f -- browserstack.yml
-  ln src/test/resources/conf/capabilities/browserstack-parallel-browsers.yml browserstack.yml
+  ln src/test/resources/conf/capabilities/bstack-parallel-browsers.yml browserstack.yml
   ```
 
   - For Windows:
 
   ```sh
-  del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\browserstack-parallel-browsers.yml browserstack.yml
+  del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\bstack-parallel-browsers.yml browserstack.yml
   ```
 
 - How to run the test?
@@ -289,13 +289,13 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
   Maven:
 
   ```sh
-  mvn clean test -P bstack-parallel
+  mvn clean test -P bstack-parallel-browsers
   ```
 
   Gradle:
 
   ```sh
-  gradle clean bstack-parallel
+  gradle clean bstack-parallel-browsers
   ```
 
 ### [Web application hosted on internal environment] Running your tests on BrowserStack using BrowserStackLocal
@@ -307,7 +307,7 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
   git clone https://github.com/browserstack/browserstack-demo-app
   ```
 - Please follow the README.md on the BrowserStack demo application repository to install and start the dev server on localhost.
-- In this section, we will run a single test case to test the BrowserStack Demo app hosted on your local machine i.e. localhost. Refer to the `browserstack-local.yml` file to change test capabilities for this configuration.
+- In this section, we will run a single test case to test the BrowserStack Demo app hosted on your local machine i.e. localhost. Refer to the `bstack-local.yml` file to change test capabilities for this configuration.
 - Note: You may need to provide additional BrowserStackLocal arguments to successfully connect your localhost environment with BrowserStack infrastructure. (e.g if you are behind firewalls, proxy or VPN).
 - Further details for successfully creating a BrowserStackLocal connection can be found here:
 
@@ -324,13 +324,13 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
 
     ```sh
     rm -f -- browserstack.yml
-    ln src/test/resources/conf/capabilities/browserstack-local.yml browserstack.yml
+    ln src/test/resources/conf/capabilities/bstack-local.yml browserstack.yml
     ```
 
     - For Windows:
 
     ```sh
-    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\browserstack-local.yml browserstack.yml
+    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\bstack-local.yml browserstack.yml
     ```
 
   - To run the default test scenario (e.g. End to End Scenario) on a single BrowserStack browser using BrowserStackLocal, use the following command:
@@ -368,7 +368,7 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
 
 ### [Web application hosted on internal environment] Run the entire test suite in parallel on a single BrowserStack browser using BrowserStackLocal
 
-In this section, we will run the test cases to test the internally hosted website in parallel on a single browser on Browserstack. Refer to the `browserstack-local-parallel.yml` file to change test capabilities for this configuration.
+In this section, we will run the test cases to test the internally hosted website in parallel on a single browser on Browserstack. Refer to the `bstack-local-parallel.yml` file to change test capabilities for this configuration.
 
 - How to run the test?
 
@@ -378,13 +378,13 @@ In this section, we will run the test cases to test the internally hosted websit
 
     ```sh
     rm -f -- browserstack.yml
-    ln src/test/resources/conf/capabilities/browserstack-local-parallel.yml browserstack.yml
+    ln src/test/resources/conf/capabilities/bstack-local-parallel.yml browserstack.yml
     ```
 
     - For Windows:
 
     ```sh
-    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\browserstack-local-parallel.yml browserstack.yml
+    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\bstack-local-parallel.yml browserstack.yml
     ```
 
   To run the entire test suite in parallel on a single BrowserStack browser using BrowserStackLocal, use the following command:
@@ -406,7 +406,7 @@ In this section, we will run the test cases to test the internally hosted websit
 
 ### [Web application hosted on internal environment] Run the entire test suite in parallel on multiple BrowserStack browser using BrowserStackLocal
 
-In this section, we will run the test cases to test the internally hosted website in parallel on multiple browsers on Browserstack. Refer to the `browserstack-local-parallel-browsers.yml` file to change test capabilities for this configuration.
+In this section, we will run the test cases to test the internally hosted website in parallel on multiple browsers on Browserstack. Refer to the `bstack-local-parallel-browsers.yml` file to change test capabilities for this configuration.
 
 - How to run the test?
 
@@ -416,13 +416,13 @@ In this section, we will run the test cases to test the internally hosted websit
 
     ```sh
     rm -f -- browserstack.yml
-    ln src/test/resources/conf/capabilities/browserstack-local-parallel-browsers.yml browserstack.yml
+    ln src/test/resources/conf/capabilities/bstack-local-parallel-browsers.yml browserstack.yml
     ```
 
     - For Windows:
 
     ```sh
-    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\browserstack-local-parallel-browsers.yml browserstack.yml
+    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\bstack-local-parallel-browsers.yml browserstack.yml
     ```
 
   To run the entire test suite in parallel on a single BrowserStack browser using BrowserStackLocal, use the following command:
@@ -430,13 +430,13 @@ In this section, we will run the test cases to test the internally hosted websit
   Maven:
 
   ```sh
-  mvn clean test -P bstack-local-parallel
+  mvn clean test -P bstack-local-parallel-browsers
   ```
 
   Gradle:
 
   ```sh
-  gradle clean bstack-local-parallel
+  gradle clean bstack-local-parallel-browsers
   ```
 
 - Output
