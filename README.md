@@ -289,13 +289,13 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
   Maven:
 
   ```sh
-  mvn clean test -P bstack-parallel
+  mvn clean test -P bstack-parallel-browsers
   ```
 
   Gradle:
 
   ```sh
-  gradle clean bstack-parallel
+  gradle clean bstack-parallel-browsers
   ```
 
 ### [Web application hosted on internal environment] Running your tests on BrowserStack using BrowserStackLocal
@@ -430,13 +430,13 @@ In this section, we will run the test cases to test the internally hosted websit
   Maven:
 
   ```sh
-  mvn clean test -P bstack-local-parallel
+  mvn clean test -P bstack-local-parallel-browsers
   ```
 
   Gradle:
 
   ```sh
-  gradle clean bstack-local-parallel
+  gradle clean bstack-local-parallel-browsers
   ```
 
 - Output
