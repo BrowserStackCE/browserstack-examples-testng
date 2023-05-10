@@ -39,7 +39,19 @@ node {
                 }
             }
         }
-        stage('Upload Reports in Test Management') {
+        
+        stage('Generate Report') {
+            browserStackReportPublisher 'automate'
+        }
+        
+
+    }
+  catch (e) {
+        currentBuild.result = 'FAILURE'
+        echo e
+        throw e
+  } finally {
+      stage('Upload Reports in Test Management') {
             steps {
                 sh '''
                     export TEST_MANAGEMENT_API_TOKEN="8a1598ba-531e-4264-ad52-e8d73d1be900"
@@ -59,17 +71,6 @@ node {
                 '''
                 }
         }
-        stage('Generate Report') {
-            browserStackReportPublisher 'automate'
-        }
-        
-
-    }
-  catch (e) {
-        currentBuild.result = 'FAILURE'
-        echo e
-        throw e
-  } finally {
         notifySlack(currentBuild.result)
     }
 }
