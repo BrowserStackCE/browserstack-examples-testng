@@ -63,7 +63,7 @@ node {
     }
 
     }
-  }catch (e) {
+  catch (e) {
         currentBuild.result = 'FAILURE'
         echo e
         throw e
