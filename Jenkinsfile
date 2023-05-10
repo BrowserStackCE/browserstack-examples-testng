@@ -51,7 +51,9 @@ node {
             export JUNIT_XML_FILE_PATH="/test/target/surefire-reports/testng-results.xml"
             export TEST_RUN_NAME="test-1"
             export USER_EMAIL="arpit.a@browserstack.com"
-
+            
+            echo "Hello Testing"    
+                
             curl -k -X POST https://test-management.browserstack.com/api/v1/import/results/xml/junit \
             -H "API-TOKEN:$TEST_MANAGEMENT_API_TOKEN" \
             -F project_name="$TEST_MANAGEMENT_PROJECT_NAME" \
