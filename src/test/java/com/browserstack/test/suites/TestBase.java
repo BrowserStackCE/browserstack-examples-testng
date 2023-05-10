@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
@@ -33,7 +34,9 @@ public class TestBase {
     public void setUp() throws Exception {
         if (isOnPremExecution()) {
             DriverUtil.setDriverPathVariable();
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            driver = new ChromeDriver(options);
         } else {
             MutableCapabilities capabilities = new MutableCapabilities();
             HashMap<String, String> bstackOptions = new HashMap<>();
