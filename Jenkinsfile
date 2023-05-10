@@ -38,19 +38,20 @@ node {
                 mvn clean test -P ${TEST_TYPE} 
                 
                 export TEST_MANAGEMENT_API_TOKEN="8a1598ba-531e-4264-ad52-e8d73d1be900"
-                    export TEST_MANAGEMENT_PROJECT_NAME="Webinar"
-                    export JUNIT_XML_FILE_PATH="/target/surefire-reports/junitreports/TEST-com.browserstack.test.suites.e2e.OrderTest.xml"
-                    export TEST_RUN_NAME="test-2"
-                    export USER_EMAIL="arpit+demo@browserstack.com"
+                export TEST_MANAGEMENT_PROJECT_NAME="Webinar"
+                export JUNIT_XML_FILE_PATH="/target/surefire-reports/junitreports/TEST-com.browserstack.test.suites.e2e.OrderTest.xml"
+                export TEST_RUN_NAME="test-2"
+                export USER_EMAIL="arpit+demo@browserstack.com"
 
-                    echo "Hello Testing"    
+                echo "Hello Testing"  
+                pwd
 
-                    curl -k -X POST https://test-management.browserstack.com/api/v1/import/results/xml/junit \
-                    -H "API-TOKEN:$TEST_MANAGEMENT_API_TOKEN" \
-                    -F project_name="$TEST_MANAGEMENT_PROJECT_NAME" \
-                    -F "file_path=@$JUNIT_XML_FILE_PATH" \
-                    -F test_run_name="$TEST_RUN_NAME" \
-                    -F user_email=$USER_EMAIL
+                curl -k -X POST https://test-management.browserstack.com/api/v1/import/results/xml/junit \
+                -H "API-TOKEN:$TEST_MANAGEMENT_API_TOKEN" \
+                -F project_name="$TEST_MANAGEMENT_PROJECT_NAME" \
+                -F "file_path=@$JUNIT_XML_FILE_PATH" \
+                -F test_run_name="$TEST_RUN_NAME" \
+                -F user_email=$USER_EMAIL
                 
                 '''
                 }
