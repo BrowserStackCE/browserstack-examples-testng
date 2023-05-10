@@ -39,7 +39,7 @@ node {
                 
                 export TEST_MANAGEMENT_API_TOKEN="8a1598ba-531e-4264-ad52-e8d73d1be900"
                 export TEST_MANAGEMENT_PROJECT_NAME="Webinar"
-                export JUNIT_XML_FILE_PATH="/var/lib/jenkins/workspace/browserstack-testng-webinar/test/target/surefire-reports/junitreports/*.xml"
+                export JUNIT_XML_FILE_PATH="/var/lib/jenkins/workspace/browserstack-testng-webinar/test/target/surefire-reports/junitreports/TEST-com.browserstack.test.suites.e2e.OrderTest.xml"
                 export TEST_RUN_NAME="test-2"
                 export USER_EMAIL="arpit+demo@browserstack.com"
 
@@ -60,6 +60,30 @@ node {
         
         stage('Generate Report') {
             browserStackReportPublisher 'automate'
+        }
+        
+        stage('Upload to Test Management') {
+            browserstack(credentialsId: "${params.BROWSERSTACK_USERNAME}") {
+                
+                withEnv(['TEST_MANAGEMENT_API_TOKEN=8a1598ba-531e-4264-ad52-e8d73d1be900']) {
+                    sh label: '', returnStatus: true, script:'''#!/bin/bash -l
+                
+                export TEST_MANAGEMENT_API_TOKEN=$TEST_MANAGEMENT_API_TOKEN
+                export TEST_MANAGEMENT_PROJECT_NAME="Webinar"
+                export JUNIT_XML_FILE_PATH="/var/lib/jenkins/workspace/browserstack-testng-webinar/test/target/surefire-reports/junitreports/TEST-com.browserstack.test.suites.e2e.OrderTest.xml"
+                export TEST_RUN_NAME="test-4"
+                export USER_EMAIL="arpit+demo@browserstack.com"
+
+                curl -k -X POST https://test-management.browserstack.com/api/v1/import/results/xml/junit \
+                -H "API-TOKEN:$TEST_MANAGEMENT_API_TOKEN" \
+                -F project_name="$TEST_MANAGEMENT_PROJECT_NAME" \
+                -F "file_path=@$JUNIT_XML_FILE_PATH" \
+                -F test_run_name="$TEST_RUN_NAME" \
+                -F user_email=$USER_EMAIL
+                
+                '''
+                }
+            }
         }
 
     }
