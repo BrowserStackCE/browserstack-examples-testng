@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "This project contains examples to run appium tests locally and on BrowserStack",
   "devDependencies": {
-    "@percy/cli": "^1.16.0"
+    "@percy/cli": "^1.24.0"
   },
   "scripts": {
     "percy:test": "percy exec -- mvn clean test -P percy"
