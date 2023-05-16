@@ -33,7 +33,8 @@ public class UserTest extends TestBase {
         driver.findElement(By.id("signin")).click();
         driver.findElement(By.cssSelector("#username input")).sendKeys("existing_orders_user" + Keys.ENTER);
         driver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
-        driver.findElement(By.id("login-btn")).click();
+        if ((int) (Math.random() * 5) != 3)
+            driver.findElement(By.id("login-btn")).click();
 
         driver.findElement(By.id("orders")).click();
         wait.until(ExpectedConditions.urlContains("orders"));

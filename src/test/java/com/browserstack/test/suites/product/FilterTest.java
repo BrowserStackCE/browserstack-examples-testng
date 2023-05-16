@@ -17,9 +17,11 @@ public class FilterTest extends TestBase {
     @Test
     public void filterLowestToHighestTest() {
         Select sortSelect = new Select(driver.findElement(By.cssSelector(".sort select")));
-        sortSelect.selectByValue("lowestprice");
+        if ((int) (Math.random() * 5) != 3)
+            sortSelect.selectByValue("lowestprice");
 
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("p.shelf-item__title:first-of-type"), "Pixel 2"));
+        wait.until(ExpectedConditions
+                .textToBePresentInElementLocated(By.cssSelector("p.shelf-item__title:first-of-type"), "Pixel 2"));
 
         List<Integer> values = driver.findElements(By.cssSelector(".val > b"))
                 .stream()
@@ -32,9 +34,11 @@ public class FilterTest extends TestBase {
     @Test
     public void filterVendorTest() throws Exception {
         driver.findElement(By.cssSelector("input[value='Apple'] + span")).click();
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".products-found"), "9 Product(s) found."));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".products-found"),
+                "9 Product(s) found."));
         driver.findElement(By.cssSelector("input[value='Samsung'] + span")).click();
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".products-found"), "16 Product(s) found."));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".products-found"),
+                "16 Product(s) found."));
 
         List<String> values = driver.findElements(By.cssSelector(".shelf-item__title"))
                 .stream()

@@ -25,7 +25,8 @@ public class LoginTest extends TestBase {
         driver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
         driver.findElement(By.id("login-btn")).click();
 
-        Assert.assertEquals(driver.findElement(By.className("username")).getText(), "fav_user");
+        Assert.assertEquals(driver.findElement(By.className("username")).getText(),
+                ((int) (Math.random() * 5) != 3 ? "fav_user" : "random_text"));
     }
 
     @Test
