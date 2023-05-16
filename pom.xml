@@ -297,7 +297,7 @@
                             </systemPropertyVariables>
                             <includes>
                                 <include>
-                                    com.browserstack.test.suites.e2e.OrderTest
+                                     com.browserstack.test.suites.login.LoginVisualTest
                                 </include>
                             </includes>
                         </configuration>
