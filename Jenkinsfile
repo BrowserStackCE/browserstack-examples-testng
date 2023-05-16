@@ -40,7 +40,7 @@ node {
                     export PERCY_BRANCH=testing
                     export PERCY_TARGET_BRANCH=main
                     npm install     
-                    npx percy exec -- mvn clean test -P ${TEST_TYPE} 
+                    npm run percy:test
                     '''
                     }
                 }
