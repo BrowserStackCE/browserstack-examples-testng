@@ -21,7 +21,7 @@ node {
 
         stage('Pull code from Github') {
             dir('test') {
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/browserstack/browserstack-examples-testng'
+                git branch: 'webinar', changelog: false, poll: false, url: 'https://github.com/browserstack/browserstack-examples-testng'
             }
         }
 
