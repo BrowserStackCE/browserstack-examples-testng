@@ -18,3 +18,4 @@ local.log
 .gradle/
 src/test/resources/drivers/
 browserstack.yml
+node_modules
