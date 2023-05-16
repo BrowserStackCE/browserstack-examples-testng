@@ -38,7 +38,9 @@ node {
                 export PERCY_TOKEN=web_8a347768d703940f17fe7e544efcf7d932b15d55473d807b640ddf6e85e02fe3
                 export PERCY_BRANCH=testing
                 export PERCY_TARGET_BRANCH=main
-                npm install --save-dev @percy/cli
+                source ~/.bashrc
+                nvm use 16
+                npm install     
                 npx percy exec -- mvn clean test -P ${TEST_TYPE} 
                 '''
                 }
