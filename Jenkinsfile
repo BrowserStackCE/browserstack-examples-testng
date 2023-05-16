@@ -31,17 +31,21 @@ node {
                 if (user.contains('-')) {
                     user = user.substring(0, user.lastIndexOf('-'))
                 }
-                withEnv(['BROWSERSTACK_USERNAME=' + user]) {
+                sshagent(['samirans89_demo_jenkins']) {
+                    withEnv(['BROWSERSTACK_USERNAME=' + user]) {
                     sh label: '', returnStatus: true, script:'''#!/bin/bash -l
-                cd test
-                ln src/test/resources/conf/capabilities/${TEST_TYPE}.yml browserstack.yml
-                export PERCY_TOKEN=web_8a347768d703940f17fe7e544efcf7d932b15d55473d807b640ddf6e85e02fe3
-                export PERCY_BRANCH=testing
-                export PERCY_TARGET_BRANCH=main
-                npm install     
-                npx percy exec -- mvn clean test -P ${TEST_TYPE} 
-                '''
+                    cd test
+                    ln src/test/resources/conf/capabilities/${TEST_TYPE}.yml browserstack.yml
+                    export PERCY_TOKEN=web_8a347768d703940f17fe7e544efcf7d932b15d55473d807b640ddf6e85e02fe3
+                    export PERCY_BRANCH=testing
+                    export PERCY_TARGET_BRANCH=main
+                    npm install     
+                    npx percy exec -- mvn clean test -P ${TEST_TYPE} 
+                    '''
+                    }
                 }
+
+                
             }
         }
         
