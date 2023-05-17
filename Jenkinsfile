@@ -32,9 +32,10 @@ node {
                     user = user.substring(0, user.lastIndexOf('-'))
                 }
                 sshagent(['samirans89_demo_jenkins']) {
-                    withEnv(['BROWSERSTACK_USERNAME=' + user]) {
+                    withEnv(['BROWSERSTACK_USERNAME=' + user, 'BROWSERSTACK_LOCAL=true']) {
                     sh label: '', returnStatus: true, script:'''#!/bin/bash -l
                     cd test
+                    git checkout webinar
                     rm -rf browserstack.yml
                     ln src/test/resources/conf/capabilities/${TEST_TYPE}.yml browserstack.yml
                     export PERCY_TOKEN=web_8a347768d703940f17fe7e544efcf7d932b15d55473d807b640ddf6e85e02fe3
