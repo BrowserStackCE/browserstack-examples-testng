@@ -37,7 +37,6 @@ public class FilterTest extends TestBase {
         driver.findElement(By.cssSelector("input[value='Apple'] + span")).click();
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".products-found"),
                 "9 Product(s) found."));
-        percy.snapshot("Filter Page");
         driver.findElement(By.cssSelector("input[value='Samsung'] + span")).click();
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".products-found"),
                 "16 Product(s) found."));

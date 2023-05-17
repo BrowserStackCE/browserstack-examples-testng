@@ -37,7 +37,7 @@ node {
                     cd test
                     git checkout webinar
                     rm -rf browserstack.yml
-                    ln src/test/resources/conf/capabilities/${TEST_TYPE}.yml browserstack.yml
+                    ln src/test/resources/conf/capabilities/bstack-parallel.yml browserstack.yml
                     mvn clean test -P ${TEST_TYPE}
                     export PERCY_TOKEN=web_8a347768d703940f17fe7e544efcf7d932b15d55473d807b640ddf6e85e02fe3
                     export PERCY_BRANCH=testing
@@ -45,7 +45,7 @@ node {
                     source ~/.bashrc
                     nvm use 16
                     npm install     
-                    npm run percy:test-local
+                    npm run percy:test
                     '''
                     }
                 }
