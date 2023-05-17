@@ -9,14 +9,4 @@
             <class name="com.browserstack.test.suites.user.UserTest"/>
         </classes>
     </test>
-    <test name="BStackDemo 2">
-        <classes>
-            <class name="com.browserstack.test.suites.login.LoginTest"/>
-        </classes>
-    </test>
-    <test name="BStackDemo 3">
-        <classes>
-            <class name="com.browserstack.test.suites.product.FilterTest"/>
-        </classes>
-    </test>
 </suite>
