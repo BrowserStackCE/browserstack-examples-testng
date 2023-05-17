@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.apache.commons.lang3.StringUtils;
 
 public class HomePage extends BasePage {
 
@@ -25,9 +24,7 @@ public class HomePage extends BasePage {
 
     public HomePage addProductToCart(String productName) {
         waitAndClick(driver.findElement(By.xpath("//p[text() = '" + productName + "']/../div[@class = 'shelf-item__buy-btn']")));
-        if (StringUtils.equalsIgnoreCase(System.getProperty("browserstack-local"),"false")) {
-            getBag().close();
-        }
+        getBag().close();
         return this;
     }
 
