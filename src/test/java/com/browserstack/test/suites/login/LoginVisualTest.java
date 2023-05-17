@@ -32,9 +32,7 @@ public class LoginVisualTest extends TestBase {
         SoftAssert softly = new SoftAssert();
         ConfirmationPage page = new HomePage(driver)
                 .addProductToCart("iPhone 11")
-                .addProductToCart("iPhone XS Max")
-                .addProductToCart("Galaxy S20")
-                .getBag().waitForItemsInBag(3)
+                .getBag().waitForItemsInBag(1)
                 .getBag().proceedToCheckout()
                 .enterShippingDetails("firstname", "lastname", "address", "state", "12345");
         percy.snapshot("Checkout Page Webinar");

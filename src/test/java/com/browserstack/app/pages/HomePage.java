@@ -24,7 +24,12 @@ public class HomePage extends BasePage {
 
     public HomePage addProductToCart(String productName) {
         waitAndClick(driver.findElement(By.xpath("//p[text() = '" + productName + "']/../div[@class = 'shelf-item__buy-btn']")));
-        getBag().close();
+        if (StringUtils.equalsIgnoreCase(System.getProperty("browserstack-local"),"true")) {
+            continue;
+        }
+        else{
+            getBag().close();
+        }
         return this;
     }
 
