@@ -6,7 +6,7 @@
     "@percy/cli": "^1.24.0"
   },
   "scripts": {
-    "percy:test": "percy exec -- mvn clean test -P percy",
+    "percy:test": "percy exec -- mvn clean test -P bstack-parallel",
     "percy:test-local" : "percy exec -- mvn clean test -P bstack-local"
   },
   "keywords": [
