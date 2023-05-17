@@ -16,7 +16,7 @@
             <class name="com.browserstack.test.suites.product.FilterTest"/>
         </classes>
     </test>
-    <test name="BStackDemo 3">
+    <test name="BStackDemo 4">
         <classes>
             <class name="com.browserstack.test.suites.user.UserTest"/>
         </classes>
