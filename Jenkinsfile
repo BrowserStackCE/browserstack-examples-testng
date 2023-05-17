@@ -45,6 +45,8 @@ node {
                     source ~/.bashrc
                     nvm use 16
                     npm install     
+                    rm -rf browserstack.yml
+                    ln src/test/resources/conf/capabilities/bstack-single.yml browserstack.yml
                     npm run percy:test
                     '''
                     }
