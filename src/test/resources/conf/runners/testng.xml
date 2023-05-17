@@ -4,8 +4,20 @@
     <test name="BStackDemo 1">
         <classes>
             <class name="com.browserstack.test.suites.e2e.OrderTest"/>
+        </classes>
+    </test>
+    <test name="BStackDemo 2">
+        <classes>
             <class name="com.browserstack.test.suites.login.LoginTest"/>
+        </classes>
+    </test>
+    <test name="BStackDemo 3">
+        <classes>
             <class name="com.browserstack.test.suites.product.FilterTest"/>
+        </classes>
+    </test>
+    <test name="BStackDemo 3">
+        <classes>
             <class name="com.browserstack.test.suites.user.UserTest"/>
         </classes>
     </test>
