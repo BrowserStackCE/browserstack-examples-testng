@@ -44,8 +44,10 @@ public class TestBase {
         percy = new Percy(driver);
         if (StringUtils.equalsIgnoreCase(System.getProperty("browserstack-local"),"true")) {
             driver.get("http://localhost:3000");
+            driver.manage().window().maximize();
         } else {
             driver.get("https://bstackdemo.com");
+            driver.manage().window().maximize();
         }
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
