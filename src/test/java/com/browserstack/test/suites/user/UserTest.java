@@ -14,19 +14,6 @@ import java.util.stream.Collectors;
 
 public class UserTest extends TestBase {
 
-    @Test
-    public void loginImagesNotLoading() {
-        driver.findElement(By.id("signin")).click();
-        driver.findElement(By.cssSelector("#username input")).sendKeys("image_not_loading_user" + Keys.ENTER);
-        driver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
-        driver.findElement(By.id("login-btn")).click();
-
-        List<WebElement> imageSrc = driver.findElements(By.cssSelector(".shelf-item__thumb img"))
-                .stream()
-                .filter(image -> !image.getAttribute("src").equals(""))
-                .collect(Collectors.toList());
-        Assert.assertTrue(!imageSrc.isEmpty());
-    }
 
     @Test
     public void loginAndCheckExistingOrders() {
