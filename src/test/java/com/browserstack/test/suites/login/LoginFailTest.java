@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class LoginFailTest extends TestBase {
 
     @Test
-    public void loginFail() {
+    public void invalid() {
         driver.findElement(By.id("signin")).click();
         driver.findElement(By.cssSelector("#username input")).sendKeys("fav_user" + Keys.ENTER);
         driver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
