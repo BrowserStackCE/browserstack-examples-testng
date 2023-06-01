@@ -21,4 +21,11 @@
             <class name="com.browserstack.test.suites.user.UserTest"/>
         </classes>
     </test>
+     <test name="BStackDemo 5">
+        <classes>
+            <class name="com.browserstack.test.suites.login.LoginFailTest"/>
+        </classes>
+    </test>
+    
+    
 </suite>
