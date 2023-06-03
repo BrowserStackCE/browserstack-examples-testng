@@ -26,7 +26,7 @@
             <class name="com.browserstack.test.suites.login.LoginFailTest"/>
         </classes>
     </test>
-    <test name="BStackDemo 5">
+    <test name="BStackDemo 6">
         <classes>
             <class name="com.browserstack.test.suites.offers.OfferTest"/>
         </classes>
