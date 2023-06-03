@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Single">
+    <test name="BStackDemo 1">
+        <classes>
+            <class name="com.browserstack.test.suites.e2e.OrderTest"/>
+        </classes>
+    </test>
+    <test name="BStackDemo 2">
+        <classes>
+            <class name="com.browserstack.test.suites.login.LoginTest"/>
+        </classes>
+    </test>
+    <test name="BStackDemo 3">
+        <classes>
+            <class name="com.browserstack.test.suites.product.FilterTest"/>
+        </classes>
+    </test>
+    <test name="BStackDemo 4">
+        <classes>
+            <class name="com.browserstack.test.suites.user.UserTest"/>
+        </classes>
+    </test>
+     <test name="BStackDemo 5">
+        <classes>
+            <class name="com.browserstack.test.suites.login.LoginFailTest"/>
+        </classes>
+    </test>
+    <test name="BStackDemo 5">
+        <classes>
+            <class name="com.browserstack.test.suites.offers.OfferTest"/>
+        </classes>
+    </test>
+    
+    
+</suite>

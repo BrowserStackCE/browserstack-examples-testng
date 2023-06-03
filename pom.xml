@@ -349,5 +349,27 @@
                 </plugins>
             </build>
         </profile>
+        <profile>
+            <id>bstack-parallel-browsers</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <argLine>
+                                -javaagent:${com.browserstack:browserstack-java-sdk:jar}
+                            </argLine>
+                            <systemPropertyVariables>
+                                <browserstack-local>false</browserstack-local>
+                            </systemPropertyVariables>
+                            <suiteXmlFiles>
+                                <suiteXmlFile>src/test/resources/conf/runners/testng-webinar.xml</suiteXmlFile>
+                            </suiteXmlFiles>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 </project>
