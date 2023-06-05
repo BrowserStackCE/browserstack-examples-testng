@@ -269,7 +269,7 @@
                                 -javaagent:${com.browserstack:browserstack-java-sdk:jar}
                             </argLine>
                             <systemPropertyVariables>
-                                <browserstack-local>false</browserstack-local>
+                                <browserstack-local>true</browserstack-local>
                             </systemPropertyVariables>
                             <includes>
                                 <include>
