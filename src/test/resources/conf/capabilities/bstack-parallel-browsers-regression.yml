@@ -17,14 +17,13 @@ accessKey: ${BROWSERSTACK_ACCESS_KEY}
 # CI/CD or timestamp at the end of every build; otherwise tests from different
 # executions will be grouped together on BrowserStack
 #buildName: browserstack-demo-web-regression-run
-buildName: DemoRunSuite
+buildName: browserstack-run
 
 buildIdentifier: '#${BUILD_NUMBER}'
 
 # Use `projectName` to set the name of your project. Example, Marketing Website
 #projectName: BStackDemo-WebApp-Test-Platform
-
-projectName: DemoRunProj
+projectName: DemoRun
 
 # Use `framework` to set the framework of your project. Example, testng, cucumber, cucumber-testng
 framework: testng
