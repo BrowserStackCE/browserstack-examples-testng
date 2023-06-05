@@ -16,14 +16,12 @@ accessKey: ${BROWSERSTACK_ACCESS_KEY}
 # Ensure you add a dynamic identifier, like an incremental build number from your
 # CI/CD or timestamp at the end of every build; otherwise tests from different
 # executions will be grouped together on BrowserStack
-#buildName: browserstack-demo-web-regression-run
-buildName: browserstack-run
-
-buildIdentifier: '#${BUILD_NUMBER}'
+buildName: browserstack-demo-web-regression-run
 
 # Use `projectName` to set the name of your project. Example, Marketing Website
-#projectName: BStackDemo-WebApp-Test-Platform
-projectName: DemoRun
+projectName: BStackDemo-WebApp-Test-Platform
+
+buildIdentifier: '#${BUILD_NUMBER}'
 
 # Use `framework` to set the framework of your project. Example, testng, cucumber, cucumber-testng
 framework: testng
