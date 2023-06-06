@@ -17,7 +17,7 @@ accessKey: ${BROWSERSTACK_ACCESS_KEY}
 # CI/CD or timestamp at the end of every build; otherwise tests from different
 # executions will be grouped together on BrowserStack
 #buildName: browserstack-demo-web-regression-run
-buildName: DemoRunSuite
+buildName: bstackdemo-web-regression-run
 
 buildIdentifier: '#${BUILD_NUMBER}'
 
