@@ -19,14 +19,16 @@ accessKey: ${BROWSERSTACK_ACCESS_KEY}
 #buildName: browserstack-demo-web-regression-run
 buildName: bstackdemo-web-regression-run
 
+# Use `projectName` to set the name of your project. Example, Marketing Website
+projectName: BStackDemo-WebApp-Test-Platform
+
 buildIdentifier: '#${BUILD_NUMBER}'
 
-# Use `projectName` to set the name of your project. Example, Marketing Website
-#projectName: BStackDemo-WebApp-Test-Platform
+
 # Use `framework` to set the framework of your project. Example, testng, cucumber, cucumber-testng
 framework: testng
 
-projectName: BStackDemo-WebApp-Test-Platform
+
 
 # =======================================
 # Platforms (Browsers / Devices to test)
