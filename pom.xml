@@ -105,67 +105,6 @@
     </dependencies>
     <profiles>
         <profile>
-            <id>on-prem</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <on-prem>true</on-prem>
-                            </systemPropertyVariables>
-                            <includes>
-                                <include>
-                                    com.browserstack.test.suites.e2e.OrderTest
-                                </include>
-                            </includes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>on-prem-suite</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <on-prem>true</on-prem>
-                            </systemPropertyVariables>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/conf/runners/testng.xml</suiteXmlFile>
-                            </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>on-prem-suite-parallel</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <on-prem>true</on-prem>
-                            </systemPropertyVariables>
-                            <parallel>classes</parallel>
-                            <threadCount>5</threadCount>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/conf/runners/testng.xml</suiteXmlFile>
-                            </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
             <id>bstack-single</id>
             <build>
                 <plugins>
@@ -184,28 +123,6 @@
                                     com.browserstack.test.suites.e2e.OrderTest
                                 </include>
                             </includes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>bstack-parallel</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <argLine>
-                                -javaagent:${com.browserstack:browserstack-java-sdk:jar}
-                            </argLine>
-                            <systemPropertyVariables>
-                                <browserstack-local>false</browserstack-local>
-                            </systemPropertyVariables>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/conf/runners/testng.xml</suiteXmlFile>
-                            </suiteXmlFiles>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -276,74 +193,6 @@
                                     com.browserstack.test.suites.login.IgnoreRegionVisualTest
                                 </include>
                             </includes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>bstack-local</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <argLine>
-                                -javaagent:${com.browserstack:browserstack-java-sdk:jar}
-                            </argLine>
-                            <systemPropertyVariables>
-                                <browserstack-local>true</browserstack-local>
-                            </systemPropertyVariables>
-                            <includes>
-                                <include>
-                                     com.browserstack.test.suites.login.LoginVisualTest
-                                </include>
-                            </includes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>bstack-local-parallel</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <argLine>
-                                -javaagent:${com.browserstack:browserstack-java-sdk:jar}
-                            </argLine>
-                            <systemPropertyVariables>
-                                <browserstack-local>true</browserstack-local>
-                            </systemPropertyVariables>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/conf/runners/testng.xml</suiteXmlFile>
-                            </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>bstack-local-parallel-browsers</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <argLine>
-                                -javaagent:${com.browserstack:browserstack-java-sdk:jar}
-                            </argLine>
-                            <systemPropertyVariables>
-                                <browserstack-local>true</browserstack-local>
-                            </systemPropertyVariables>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/conf/runners/testng-webinar.xml</suiteXmlFile>
-                            </suiteXmlFiles>
                         </configuration>
                     </plugin>
                 </plugins>
