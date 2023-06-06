@@ -26,7 +26,7 @@ buildIdentifier: '#${BUILD_NUMBER}'
 # Use `framework` to set the framework of your project. Example, testng, cucumber, cucumber-testng
 framework: testng
 
-projectName: DemoRunProj
+projectName: BStackDemo-WebApp-Test-Platform
 
 # =======================================
 # Platforms (Browsers / Devices to test)
