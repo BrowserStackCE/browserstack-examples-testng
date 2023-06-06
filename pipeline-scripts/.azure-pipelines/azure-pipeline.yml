@@ -1,0 +1,61 @@
+trigger:
+  branches:
+    include:
+      - '*'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  BROWSERSTACK_USERNAME=: "<BROWSERSTACK_USERNAME>"
+  BROWSERSTACK_ACCESS_KEY=: "$(BROWSERSTACK_ACCESS_KEY)"
+
+
+stages:
+  - stage: PullCodeFromGitHub
+    jobs:
+      - job: PullCode
+        displayName: 'Pull code from GitHub'
+        steps:
+          - checkout: self
+            submodules: true
+
+  - stage: RunTests
+    jobs:
+      - job: RunTest
+        displayName: 'Run Tests'
+        steps:
+          - script: |
+              cd test
+              git checkout webinar
+              mvn clean test -P parallel
+              export PERCY_TOKEN=$(PERCY_TOKEN)
+              export PERCY_BRANCH=testing
+              export PERCY_TARGET_BRANCH=main
+              source ~/.bashrc
+              nvm use 16
+              npm install
+              rm -rf browserstack.yml
+              ln src/test/resources/conf/capabilities/bstack-single.yml browserstack.yml
+              npm run percy:test
+            displayName: 'Run Test Steps'
+
+  - stage: GenerateReport
+    jobs:
+      - job: GenerateReport
+        displayName: 'Generate Report'
+        steps:
+          - task: PublishTestResults@2
+            inputs:
+              testResultsFiles: '**/TEST-*.xml'
+              searchFolder: '$(System.DefaultWorkingDirectory)'
+
+  - stage: CleanUp
+    jobs:
+      - job: CleanWorkspace
+        displayName: 'Clean Workspace'
+        steps:
+          - script: |
+              echo "Cleaning workspace..."
+              rm -rf *
+            displayName: 'Clean Workspace Steps'

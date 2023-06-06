@@ -1,0 +1,58 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+env:
+  BROWSERSTACK_USERNAME: "<your_username>"
+  BROWSERSTACK_ACCESS_KEY: "<your_username>"
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+      - name: Install Maven
+        run: sudo apt-get install maven
+
+      - name: Pull code from GitHub
+        run: |
+          git clone --branch webinar --depth 1 https://github.com/browserstack/browserstack-examples-testng test
+
+      - name: Run Tests
+        run: |
+          cd test
+          git checkout webinar
+          mvn clean test -P parallel
+          export PERCY_TOKEN= $(PERCY_TOKEN)
+          export PERCY_BRANCH=testing
+          export PERCY_TARGET_BRANCH=main
+          source ~/.bashrc
+          nvm use 16
+          npm install
+          rm -rf browserstack.yml
+          ln src/test/resources/conf/capabilities/bstack-single.yml browserstack.yml
+          npm run percy:test
+
+    if: ${{ failure() }}
+    run: |
+      echo "Pipeline Failed: ${{ github.workflow }}"
+      echo "[${{ github.run_number }}]"
