@@ -20,6 +20,8 @@ buildName: browserstack-build-1
 # Use `projectName` to set the name of your project. Example, Marketing Website
 projectName: BrowserStack Samples
 
+testObservability: true
+
 # Use `framework` to set the framework of your project. Example, testng, cucumber, cucumber-testng
 framework: testng
 
