@@ -175,19 +175,17 @@ In this section, we will run a single test on Chrome browser on Browserstack. To
 
 - How to run the test?
 
-  - Copy the capabilities to the root of the project:
+  - Set Environment Variable to pick desired YML file:
 
     - For \*nix based and Mac machines:
 
-    ```sh
-    rm -f -- browserstack.yml
-    ln src/test/resources/conf/capabilities/bstack-single.yml browserstack.yml
+   ```sh
+    
+    export BROWSERSTACK_CONFIG_FILE="src/test/resources/conf/capabilities/bstack-single.yml"
     ```
-
     - For Windows:
-
     ```sh
-    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\bstack-single.yml browserstack.yml
+    set BROWSERSTACK_CONFIG_FILE="src\test\resources\conf\capabilities\bstack-single.yml"
     ```
 
   To run the default test scenario (e.g. End to End Scenario) on your own machine, use the following command:
@@ -230,19 +228,17 @@ In this section, we will run the tests in parallel on a single browser on Browse
 
 - How to run the test?
 
-  - Copy the capabilities to the root of the project:
+  - Set Environment Variable to pick desired YML file:
 
     - For \*nix based and Mac machines:
 
-    ```sh
-    rm -f -- browserstack.yml
-    ln src/test/resources/conf/capabilities/bstack-parallel.yml browserstack.yml
+   ```sh
+    
+    export BROWSERSTACK_CONFIG_FILE="src/test/resources/conf/capabilities/bstack-parallel.yml"
     ```
-
     - For Windows:
-
     ```sh
-    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\bstack-parallel.yml browserstack.yml
+    set BROWSERSTACK_CONFIG_FILE="src\test\resources\conf\capabilities\bstack-parallel.yml"
     ```
 
   To run the entire test suite in parallel on a single BrowserStack browser, use the following command:
@@ -267,20 +263,18 @@ In this section, we will run the tests in parallel on a single browser on Browse
 
 In this section, we will run the tests in parallel on multiple browsers on Browserstack. Refer to the `bstack-parallel-browsers.yml` file to change test capabilities for this configuration.
 
-- Copy the capabilities to the root of the project:
+- Set Environment Variable to pick desired YML file:
 
-  - For \*nix based and Mac machines:
+    - For \*nix based and Mac machines:
 
-  ```sh
-  rm -f -- browserstack.yml
-  ln src/test/resources/conf/capabilities/bstack-parallel-browsers.yml browserstack.yml
-  ```
-
-  - For Windows:
-
-  ```sh
-  del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\bstack-parallel-browsers.yml browserstack.yml
-  ```
+   ```sh
+    
+    export BROWSERSTACK_CONFIG_FILE="src/test/resources/conf/capabilities/bstack-parallel-browsers.yml"
+    ```
+    - For Windows:
+    ```sh
+    set BROWSERSTACK_CONFIG_FILE="src\test\resources\conf\capabilities\bstack-parallel-browsers.yml"
+    ```
 
 - How to run the test?
 
@@ -318,19 +312,17 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
 
 - How to run the test?
 
-  - Copy the capabilities to the root of the project:
+  - Set Environment Variable to pick desired YML file:
 
     - For \*nix based and Mac machines:
 
-    ```sh
-    rm -f -- browserstack.yml
-    ln src/test/resources/conf/capabilities/bstack-local.yml browserstack.yml
+   ```sh
+    
+    export BROWSERSTACK_CONFIG_FILE="src/test/resources/conf/capabilities/bstack-local.yml"
     ```
-
     - For Windows:
-
     ```sh
-    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\bstack-local.yml browserstack.yml
+    set BROWSERSTACK_CONFIG_FILE="src\test\resources\conf\capabilities\bstack-local.yml"
     ```
 
   - To run the default test scenario (e.g. End to End Scenario) on a single BrowserStack browser using BrowserStackLocal, use the following command:
@@ -372,19 +364,17 @@ In this section, we will run the test cases to test the internally hosted websit
 
 - How to run the test?
 
-  - Copy the capabilities to the root of the project:
+ - Set Environment Variable to pick desired YML file:
 
     - For \*nix based and Mac machines:
 
-    ```sh
-    rm -f -- browserstack.yml
-    ln src/test/resources/conf/capabilities/bstack-local-parallel.yml browserstack.yml
+   ```sh
+    
+    export BROWSERSTACK_CONFIG_FILE="src/test/resources/conf/capabilities/bstack-local-parallel.yml"
     ```
-
     - For Windows:
-
     ```sh
-    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\bstack-local-parallel.yml browserstack.yml
+    set BROWSERSTACK_CONFIG_FILE="src\test\resources\conf\capabilities\browserstack-local-parallel.yml"
     ```
 
   To run the entire test suite in parallel on a single BrowserStack browser using BrowserStackLocal, use the following command:
@@ -410,19 +400,17 @@ In this section, we will run the test cases to test the internally hosted websit
 
 - How to run the test?
 
-  - Copy the capabilities to the root of the project:
+  - Set Environment Variable to pick desired YML file:
 
     - For \*nix based and Mac machines:
 
-    ```sh
-    rm -f -- browserstack.yml
-    ln src/test/resources/conf/capabilities/bstack-local-parallel-browsers.yml browserstack.yml
+   ```sh
+    
+    export BROWSERSTACK_CONFIG_FILE="src/test/resources/conf/capabilities/bstack-local-parallel-browsers.yml"
     ```
-
     - For Windows:
-
     ```sh
-    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\bstack-local-parallel-browsers.yml browserstack.yml
+    set BROWSERSTACK_CONFIG_FILE="src\test\resources\conf\capabilities\browserstack-local-parallel-browsers.yml"
     ```
 
   To run the entire test suite in parallel on a single BrowserStack browser using BrowserStackLocal, use the following command:
