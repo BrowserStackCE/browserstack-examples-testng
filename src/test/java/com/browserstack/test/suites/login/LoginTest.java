@@ -20,12 +20,15 @@ public class LoginTest extends TestBase {
 
     @Test
     public void loginSuccess() {
+        percy.screenshot("Home Page");
         driver.findElement(By.id("signin")).click();
         driver.findElement(By.cssSelector("#username input")).sendKeys("fav_user" + Keys.ENTER);
         driver.findElement(By.cssSelector("#password input")).sendKeys("testingisfun99" + Keys.ENTER);
+        percy.screenshot("Login Page");
         driver.findElement(By.id("login-btn")).click();
 
         Assert.assertEquals(driver.findElement(By.className("username")).getText(), "fav_user");
+        percy.screenshot("LoggedIn Page");
     }
 
     @Test

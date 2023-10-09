@@ -2,6 +2,7 @@ package com.browserstack.test.suites.offers;
 
 import com.browserstack.test.suites.TestBase;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,7 +28,11 @@ public class OfferTest extends TestBase {
         driver.findElement(By.id("login-btn")).click();
 
         driver.findElement(By.id("offers")).click();
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".spinner")));
+
+        // wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".spinner")));
+
+
+
 
         Assert.assertEquals(driver.findElements(By.cssSelector(".offer")).size(), 3);
     }

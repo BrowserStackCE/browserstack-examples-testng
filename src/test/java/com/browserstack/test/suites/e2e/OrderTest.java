@@ -23,7 +23,9 @@ public class OrderTest extends TestBase {
                 .getBag().waitForItemsInBag(3)
                 .getBag().proceedToCheckout()
                 .enterShippingDetails("firstname", "lastname", "address", "state", "12345");
+
         Assert.assertTrue(page.isConfirmationDisplayed());
+        percy.screenshot("Shipping details");
 
         if (!isOnPremExecution()) {
             page.downloadPDF();
@@ -33,7 +35,10 @@ public class OrderTest extends TestBase {
         OrdersPage ordersPage = page.continueShopping().navigateToOrders();
 
         softly.assertEquals(ordersPage.getItemsFromOrder(), 3);
+        percy.screenshot("Orders Page");
         softly.assertAll();
+
+
     }
 
     private boolean downloadedFileExists(String fileName) {

@@ -45,7 +45,8 @@ public class TestBase {
         if (StringUtils.equalsIgnoreCase(System.getProperty("browserstack-local"),"true")) {
             driver.get("http://localhost:3000");
         } else {
-            driver.get("https://bstackdemo.com");
+           driver.get("https://bstackdemo.com");
+
         }
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));

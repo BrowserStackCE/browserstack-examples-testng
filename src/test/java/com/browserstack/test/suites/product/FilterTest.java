@@ -43,5 +43,6 @@ public class FilterTest extends TestBase {
                 .collect(Collectors.toList());
         List<String> expectedValues = CsvUtil.readSpecificColumn("src/test/resources/data/products.csv", 2);
         Assertions.assertThat(values).containsExactly(expectedValues.toArray(new String[0]));
+        percy.screenshot("Filter Added");
     }
 }
