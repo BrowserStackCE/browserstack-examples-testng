@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Report Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+    
+       
+        h2{
+            padding-top: 10;
+            margin-top: 10;
+             color: #f0f0f0;
+        }
+
+    
+
+        .header {
+            background-color: #007BFF;
+            padding: 20px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 28px;
+            margin-left: 20px;
+        }
+
+        .header img {
+            max-width: 150px;
+            max-height: 40px;
+            margin-right: 20px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 10px;
+            justify-items: normal;
+            padding: 10;
+        }
+
+        .link {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            padding: 20px;
+            border: 2px solid #007BFF;
+            border-radius: 30px;
+            background-color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .link:hover {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        .icon {
+            font-size: 36px;
+            margin-right: 10px;
+        }
+
+        .link-text {
+            flex: 1;
+            text-align: center;
+        }
+
+        .section {
+            text-align: left;
+            margin-bottom: 30px;
+            width: inherit;
+        }
+
+    
+        
+
+        .section1
+        {
+            justify-content:right
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .report-background {
+            background-image: url('https://static.vecteezy.com/system/resources/previews/008/617/161/large_2x/abstract-gradient-pastel-blue-and-purple-background-neon-pastel-color-template-for-website-or-presentation-free-free-vector.jpg'); /* Replace with your background image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            min-height: 100vh;
+        }
+
+        /* Responsive Styles */
+        @media screen and (min-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .link {
+                font-size: 20px;
+            }
+
+            .icon {
+                font-size: 40px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="report-background">
+        <div class="header">
+           
+            <h2>Report Dashboard</h2>
+            <img src="https://browserstack.wpenginepowered.com/wp-content/themes/browserstack/img/bstack-logo-global.svg" data-skiplazy="1" width="230" height="50" alt="BrowserStack Logo">
+        </div>
+        <br>
+
+        <div class="container">
+            <!-- Test Automation Section -->
+            <div class="section section1">
+                <div class="section-title">Test Automation</div>
+                <br>
+    
+               
+                <a class="link" href="https://automate.browserstack.com/dashboard/v2/builds/" target="_blank">
+                    <i class="icon fas fa-rocket"></i>
+                    <div class="link-text">
+                        <h3>Automate</h3>
+                        <p>Automated Builds</p>
+                    </div>
+                </a>
+                
+                <br>
+                
+                
+                <a class="link" href="https://percy.io/9560f98d/BrowserStackDemo-WebQA-Visual" target="_blank">
+                 <i class="icon fas fa-image"></i>
+                    <div class="link-text">
+                        <h3>Percy</h3>
+                        <p>Visual Testing</p>
+                    </div>
+                </a>
+
+                <br>
+                <a class="link" href="https://accessibility.browserstack.com/automated-tests/projects/BrowserStackDemo-WebQA-Project/" target="_blank">
+                    <i class="icon fas fa-globe"></i>
+                    <div class="link-text">
+                        <h3>Accessibility </h3>
+                        <p>Accessibility Dashboard</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Management & Optimization Section -->
+            <div class="section section2">
+                <div class="section-title">Management & Optimization</div>
+                <br>
+                <a class="link" href="https://test-management.browserstack.com/projects/37129/test-runs" target="_blank">
+                    <i class="icon fas fa-tasks"></i>
+                    <div class="link-text">
+                        <h3>Test Management</h3>
+                        <p>Manage Test Runs</p>
+                    </div>
+                </a>
+
+                <br>
+                <a class="link" href="https://observability.browserstack.com/projects/BrowserStackDemo-WebQA-Project/testing_trends" target="_blank">
+                    <i class="icon fas fa-chart-line"></i>
+                    <div class="link-text">
+                        <h3>Testing Management</h3>
+                        <p>Testing Trends</p>
+                    </div>
+                </a>
+
+              
+               
+            </div>
+        </div>
+    </div>
+</body>
+</html>

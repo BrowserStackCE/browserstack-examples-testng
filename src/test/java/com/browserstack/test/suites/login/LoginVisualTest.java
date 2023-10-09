@@ -19,6 +19,7 @@ public class LoginVisualTest extends TestBase {
         JavascriptExecutor ex = ((JavascriptExecutor) driver);
 
         percy.snapshot("Homepage Webinar");
+
         driver.findElement(By.id("signin")).click();
         
         driver.findElement(By.cssSelector("#username input")).sendKeys("fav_user" + Keys.ENTER);
@@ -38,6 +39,7 @@ public class LoginVisualTest extends TestBase {
                 .getBag().proceedToCheckout()
                 .enterShippingDetails("firstname", "lastname", "address", "state", "12345");
         percy.snapshot("Checkout Page Webinar");
+        // percy.screenshot("Checkout Page Webinar);
         Assert.assertTrue(page.isConfirmationDisplayed());
 
         OrdersPage ordersPage = page.continueShopping().navigateToOrders();

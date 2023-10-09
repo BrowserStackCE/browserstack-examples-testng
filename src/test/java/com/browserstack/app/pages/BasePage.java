@@ -1,5 +1,6 @@
 package com.browserstack.app.pages;
 
+import com.browserstack.test.suites.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class BasePage {
+public class BasePage extends TestBase {
     protected WebDriver driver;
     protected WebDriverWait wait;
 

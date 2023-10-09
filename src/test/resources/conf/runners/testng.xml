@@ -6,7 +6,7 @@
             <class name="com.browserstack.test.suites.e2e.OrderTest"/>
         </classes>
     </test>
-    <test name="BStackDemo 2">
+   <test name="BStackDemo 2">
         <classes>
             <class name="com.browserstack.test.suites.login.LoginTest"/>
         </classes>
@@ -24,6 +24,11 @@
      <test name="BStackDemo 5">
         <classes>
             <class name="com.browserstack.test.suites.login.LoginFailTest"/>
+        </classes>
+    </test>
+    <test name="BStackDemo 6">
+        <classes>
+            <class name="com.browserstack.test.suites.offers.OfferTest"/>
         </classes>
     </test>
     

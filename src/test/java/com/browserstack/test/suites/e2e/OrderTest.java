@@ -23,6 +23,7 @@ public class OrderTest extends TestBase {
                 .getBag().waitForItemsInBag(3)
                 .getBag().proceedToCheckout()
                 .enterShippingDetails("firstname", "lastname", "address", "state", "12345");
+
         Assert.assertTrue(page.isConfirmationDisplayed());
 
         if (!isOnPremExecution()) {
@@ -31,6 +32,7 @@ public class OrderTest extends TestBase {
         }
 
         OrdersPage ordersPage = page.continueShopping().navigateToOrders();
+        percy.screenshot("Orders Page");
         
 
         softly.assertEquals(ordersPage.getItemsFromOrder(), 3);

@@ -30,6 +30,7 @@ public class OfferTest extends TestBase {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".spinner")));
 
         Assert.assertEquals(driver.findElements(By.cssSelector(".offer")).size(), 3);
+        percy.screenshot("Offers Page");
     }
 
 }
