@@ -1,145 +1,30 @@
 {
-  "user": "BROWSERSTACK_USERNAME",
-  "key": "BROWSERSTACK_ACCESS_KEY",
   "application_endpoint": "https://bstackdemo.com",
   "tests": {
     "parallel": {
       "common_caps": {
-        "project": "browserstack-examples",
-        "build": "browserstack-examples-testNG",
-        "name": "Parallel Test",
-        "browserstack.debug": "true",
-        "browserstack.networkLogs": "true",
-        "browserstack.console": "verbose"
+        "projectName": "browserstack-examples",
+        "buildName": "browserstack-examples-testNG",
+        "sessionName": "Parallel Test",
+        "networkLogs": "true",
+        "video": "true",
+        "interactiveDebugging": "true",
+        "debug": "true",
+        "os": "Windows",
+        "osVersion": "11"
       },
       "env_caps": [
         {
-          "os": "Windows",
-          "os_version": "10",
-          "browser": "Chrome",
-          "browser_version": "latest-1",
-          "browserstack.selenium_version": "3.141.59",
-          "browserstack.sendKeys": true
+          "browserName": "Chrome",
+          "browserVersion": "115.0"
         },
         {
-          "os": "Windows",
-          "os_version": "10",
-          "browser": "Internet Explorer",
-          "browser_version": "11.0"
+          "browserName": "Firefox",
+          "browserVersion": "116.0"
         },
         {
-          "os": "OS X",
-          "os_version": "Catalina",
-          "browserName": "Safari",
-          "browser_version": "latest"
-        },
-        {
-          "os": "OS X",
-          "os_version": "Big Sur",
-          "browser": "Chrome",
-          "browser_version": "latest"
-        },
-        {
-          "os": "android",
-          "os_version": "10.0",
-          "device": "Samsung Galaxy S20",
-          "realMobile": true
-        },
-        {
-          "device": "iPhone 8 Plus",
-          "os_version": "12",
-          "realMobile": true
-        }
-      ]
-    },
-    "single": {
-      "common_caps": {
-        "project": "browserstack-examples",
-        "build": "browserstack-examples-testNG",
-        "name": "Single Test"
-      },
-      "env_caps": [
-        {
-          "os": "Windows",
-          "os_version": "10",
-          "browser": "Chrome"
-        }
-      ]
-    },
-    "local": {
-      "application_env": "dev",
-      "application_endpoint": "http://localhost:3000",
-      "common_caps": {
-        "project": "browserstack-examples",
-        "build": "browserstack-examples-testNG",
-        "name": "Parallel Test",
-        "browserstack.debug": "true",
-        "browserstack.networkLogs": "true",
-        "browserstack.console": "verbose",
-        "browserstack.local": "true"
-      },
-      "env_caps": [
-        {
-          "os": "Windows",
-          "os_version": "10",
-          "browser": "Chrome",
-          "browser_version": "latest-1",
-          "browserstack.selenium_version": "3.141.59",
-          "browserstack.sendKeys": true
-        },
-        {
-          "os": "Windows",
-          "os_version": "10",
-          "browser": "Internet Explorer",
-          "browser_version": "11.0"
-        },
-        {
-          "os": "OS X",
-          "os_version": "Big Sur",
-          "browser": "Chrome",
-          "browser_version": "latest"
-        },
-        {
-          "os": "OS X",
-          "os_version": "Catalina",
-          "browser": "Safari",
-          "browser_version": "13.0"
-        },
-        {
-          "os": "Android",
-          "os_version": "11.0",
-          "device": "Samsung Galaxy S20",
-          "realMobile": true
-        },
-        {
-          "os": "iPhone",
-          "os_version": "13.0",
-          "device": "iPhone XS",
-          "realMobile": true
-        }
-      ],
-      "local_binding_caps": {
-        "force": "true",
-        "forceLocal": "true",
-        "verbose": "true",
-        "logFile": "local_test.log"
-      }
-    },
-    "mobile": {
-      "common_caps": {
-        "project": "browserstack-examples",
-        "build": "browserstack-examples-testNG",
-        "name": "Mobile Parallel Test"
-      },
-      "env_caps": [
-        {
-          "device": "Google Pixel",
-          "realMobile": true
-        },
-        {
-          "device": "iPhone 11",
-          "os_version": "13",
-          "realMobile": true
+          "browserName": "Edge",
+          "browserVersion": "116.0"
         }
       ]
     }

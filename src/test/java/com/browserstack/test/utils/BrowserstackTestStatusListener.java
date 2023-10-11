@@ -21,7 +21,7 @@ public class BrowserstackTestStatusListener extends TestListenerAdapter {
     public void onTestSuccess(ITestResult result) {
         Object currentClass = result.getInstance();
         WebDriver driver = ((TestBase) currentClass).getDriver();
-        markTestStatus("passed", "", driver);
+        markTestStatus("passed", "Test Passed", driver);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class BrowserstackTestStatusListener extends TestListenerAdapter {
         WebDriver driver = ((TestBase) currentClass).getDriver();
         String message = result.getThrowable().getMessage();
         String reason = (message != null && message.length() > 254) ? message.substring(0, 254) : message;
-        markTestStatus("failed", reason.replaceAll("[^a-zA-Z0-9._-]", " "), driver);
+        markTestStatus("failed", reason, driver);
     }
 
 }
