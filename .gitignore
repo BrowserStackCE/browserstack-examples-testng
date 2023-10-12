@@ -17,5 +17,4 @@ settings.json
 local.log
 .gradle/
 src/test/resources/drivers/
-Jenkins.file
 .java-version

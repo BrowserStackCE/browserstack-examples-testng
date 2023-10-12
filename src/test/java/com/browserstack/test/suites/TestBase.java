@@ -61,7 +61,7 @@ public class TestBase {
         HashMap<String, String> browserstackOptions = (HashMap<String, String>) envs.get("common_caps");
         browserstackOptions.put("sessionName", m.getName());
         browserstackOptions.put("buildName", browserstackOptions.get("buildName") + " - " + TIMESTAMP);
-        browserstackOptions.put("username", username);
+        browserstackOptions.put("userName", username);
         browserstackOptions.put("accessKey", accessKey);
         HashMap<String, String> envCapabilities = (HashMap<String, String>) ((org.json.simple.JSONArray) envs.get("env_caps")).get(env_cap_id);
         // MutableCapabilities caps = new MutableCapabilities();
