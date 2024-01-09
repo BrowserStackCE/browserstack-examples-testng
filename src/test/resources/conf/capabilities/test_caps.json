@@ -9,9 +9,7 @@
         "networkLogs": "true",
         "video": "true",
         "interactiveDebugging": "true",
-        "debug": "true",
-        "os": "Windows",
-        "osVersion": "11"
+        "debug": "true"
       },
       "env_caps": [
         {
