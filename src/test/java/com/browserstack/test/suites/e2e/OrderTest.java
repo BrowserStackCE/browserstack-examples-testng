@@ -1,5 +1,6 @@
 package com.browserstack.test.suites.e2e;
 
+import com.browserstack.PercySDK;
 import com.browserstack.app.pages.ConfirmationPage;
 import com.browserstack.app.pages.HomePage;
 import com.browserstack.app.pages.OrdersPage;
@@ -25,7 +26,7 @@ public class OrderTest extends TestBase {
                 .enterShippingDetails("firstname", "lastname", "address", "state", "12345");
 
         Assert.assertTrue(page.isConfirmationDisplayed());
-        percy.screenshot("Shipping details");
+        PercySDK.screenshot(driver,"Shipping details");
 
         if (!isOnPremExecution()) {
             page.downloadPDF();
@@ -35,7 +36,7 @@ public class OrderTest extends TestBase {
         OrdersPage ordersPage = page.continueShopping().navigateToOrders();
 
         softly.assertEquals(ordersPage.getItemsFromOrder(), 3);
-        percy.screenshot("Orders Page");
+        PercySDK.screenshot(driver,"Orders Page");
         softly.assertAll();
 
 

@@ -1,5 +1,6 @@
 package com.browserstack.test.suites.offers;
 
+import com.browserstack.PercySDK;
 import com.browserstack.test.suites.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
@@ -35,6 +36,8 @@ public class OfferTest extends TestBase {
 
 
         Assert.assertEquals(driver.findElements(By.cssSelector(".offer")).size(), 3);
+
+        PercySDK.screenshot(driver,"Offer Page");
     }
 
 }

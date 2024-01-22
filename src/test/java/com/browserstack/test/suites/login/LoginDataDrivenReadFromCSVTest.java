@@ -23,7 +23,6 @@ public class LoginDataDrivenReadFromCSVTest extends TestBase {
         driver.findElement(By.cssSelector("#username input")).sendKeys(username + Keys.ENTER);
         driver.findElement(By.cssSelector("#password input")).sendKeys(password + Keys.ENTER);
         driver.findElement(By.id("login-btn")).click();
-
         Assert.assertEquals(driver.findElement(By.className("api-error")).getText(), error);
     }
 

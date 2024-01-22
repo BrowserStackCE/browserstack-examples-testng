@@ -1,5 +1,6 @@
 package com.browserstack.test.suites.product;
 
+import com.browserstack.PercySDK;
 import com.browserstack.test.suites.TestBase;
 import com.browserstack.test.utils.CsvUtil;
 import org.assertj.core.api.Assertions;
@@ -27,6 +28,8 @@ public class FilterTest extends TestBase {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
         Assertions.assertThat(values).isSorted();
+
+        PercySDK.screenshot(driver,"Filter Lowest to Highest");
     }
 
     @Test
@@ -43,5 +46,7 @@ public class FilterTest extends TestBase {
                 .collect(Collectors.toList());
         List<String> expectedValues = CsvUtil.readSpecificColumn("src/test/resources/data/products.csv", 2);
         Assertions.assertThat(values).containsExactly(expectedValues.toArray(new String[0]));
+
+        PercySDK.screenshot(driver,"Vendor Filter Applied");
     }
 }
