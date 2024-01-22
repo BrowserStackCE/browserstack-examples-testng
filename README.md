@@ -84,32 +84,6 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
   gradle clean bstack-parallel-browsers
   ```
 
-## Run your first Visual Test
-
-In this section, we will run the test cases to detect the visual differences. We run the test first, then toggle the property that instructs our test to change some CSS.
-
-1. Run the test.
-   Maven:
-
-```sh
-npx percy exec --  mvn clean test -P bstack-parallel-browsers
-```
-
-Gradle:
-
-```sh
-npx percy exec -- gradle clean test -P bstack-parallel-browsers
-```
-
-2. Set the `changeCSS` property in the `src/test/java/com/browserstack/test/login/LoginVisuaalTest` directory to true.
-
-3. Run the test again.
-
-4. View your Project in the Percy dashboard and verify the differences.
-
-
-
-2. View your Project in the Percy dashboard and verify the differences.
 
 ## Additional Resources
 
