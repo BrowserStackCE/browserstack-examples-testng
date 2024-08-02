@@ -188,7 +188,7 @@ In this section, we will run a single test on Chrome browser on Browserstack. To
     set BROWSERSTACK_CONFIG_FILE="src\test\resources\conf\capabilities\bstack-single.yml"
     ```
 
-  To run the default test scenario (e.g. End to End Scenario) on your own machine, use the following command:
+  To run the default test scenario (e.g. End to End Scenario) on BrowserStack, use the following command:
 
   Maven:
 
