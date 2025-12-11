@@ -97,3 +97,9 @@ percyCaptureMode: manual
 
 #performnace
 performance: report
+
+#self healing
+selfHeal: true
+
+#cross browser ai authoring
+aiAuthoring: true
