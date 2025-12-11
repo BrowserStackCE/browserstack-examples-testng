@@ -31,4 +31,9 @@
             <class name="com.browserstack.test.suites.user.UserTest"/>
         </classes>
     </test>
+    <test name="BStackDemo 7">
+        <classes>
+            <class name="com.browserstack.test.suites.ai_features.AiFeaturesTest"/>
+        </classes>
+    </test>
 </suite>
